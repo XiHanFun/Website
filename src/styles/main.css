@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 滚动条样式 - 与主题一致 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.4);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.3) rgba(15, 23, 42, 0.5);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply antialiased text-slate-300;
+    background: #050508;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient-neon {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #22d3ee 0%, #a855f7 50%, #3b82f6 100%);
+  }
+  .glass {
+    @apply backdrop-blur-xl;
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid rgba(34, 211, 238, 0.1);
+  }
+  .glass-hologram {
+    @apply backdrop-blur-xl;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.05) 0%, rgba(168, 85, 247, 0.03) 50%, rgba(59, 130, 246, 0.05) 100%);
+    border: 1px solid rgba(34, 211, 238, 0.15);
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.05), inset 0 0 60px rgba(34, 211, 238, 0.02);
+  }
+}
+
+.floating-code-window {
+  @apply relative animate-float;
+  animation: float 6s ease-in-out infinite;
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--float-offset, -12px)); }
+}
