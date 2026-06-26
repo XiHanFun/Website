@@ -1,6 +1,10 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 
-export function useScrollAnimation(threshold = 0.15) {
+/**
+ * 进入视口即揭示一次（latch），向上滚动不回退。
+ * 返回 el（挂到目标元素）与 visible（用于切换 reveal-init / reveal-in）。
+ */
+export function useScrollAnimation(threshold = 0.12) {
   const el = ref<HTMLElement | null>(null)
   const visible = ref(false)
   let obs: IntersectionObserver | null = null
@@ -8,10 +12,14 @@ export function useScrollAnimation(threshold = 0.15) {
   function observe() {
     if (!el.value || obs) return
     obs = new IntersectionObserver(
-      ([e]) => {
-        visible.value = e.isIntersecting
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          visible.value = true
+          obs?.disconnect()
+          obs = null
+        }
       },
-      { threshold }
+      { threshold },
     )
     obs.observe(el.value)
   }

@@ -1,52 +1,7 @@
 <script setup lang="ts">
-import GridBackground from './components/GridBackground.vue'
-import ParticlesBackground from './components/ParticlesBackground.vue'
+import SiteBackground from './components/SiteBackground.vue'
 import FloatingCodeWindow from './components/FloatingCodeWindow.vue'
 import { useScrollAnimation } from './composables/useScrollAnimation'
-
-const products = [
-  {
-    title: 'XiHan.Framework',
-    subtitle: '开发框架',
-    desc: '基于 .NET 10 的模块化后端框架，支持 DDD、CQRS、多租户、AI 集成。动态 API 生成、SqlSugar 仓储、混合缓存、事件总线一应俱全。40+ 模块，分层清晰，依赖可追踪。',
-    features: ['动态 API', '多租户', 'AI 集成', '混合缓存'],
-    link: 'https://framework.xihanfun.com',
-    doc: 'https://docs.xihanfun.com/cosmos/framework',
-  },
-  {
-    title: 'XiHan.UI',
-    subtitle: '视图组件',
-    desc: '基于 Vue 3 的企业级组件库，11 个子包、55+ 组件，支持树摇按需、主题定制、多语言。TypeScript 支持，可统一引入也可按需引入。',
-    features: ['55+ 组件', '11 子包', '主题系统', '按需引入'],
-    link: 'https://ui.xihanfun.com',
-    doc: 'https://docs.xihanfun.com/cosmos/ui',
-  },
-  {
-    title: 'XiHan.BasicApp',
-    subtitle: '基础应用',
-    desc: '模块化企业管理系统，基于 Framework 与 UI 构建。RBAC 权限、代码生成、系统升级开箱即用，支持 DDD 分层、多租户、分布式部署，前后分离可水平扩展。',
-    features: ['RBAC', '代码生成', '系统升级', '多租户'],
-    link: 'https://basicapp.xihanfun.com',
-    doc: 'https://docs.xihanfun.com/cosmos/basic-app',
-  },
-]
-
-const frameworkLayers = [
-  { name: '核心', items: ['Core', 'Utils', 'Metadata'], desc: '模块系统、依赖注入、生命周期、配置与选项模式' },
-  { name: '应用', items: ['Application', 'Application.Contracts'], desc: 'CRUD、DTO 映射、批量操作、自动查询分页' },
-  { name: '领域', items: ['Domain', 'Domain.Shared'], desc: 'DDD 模式、实体审计、领域事件、查询过滤器' },
-  { name: '基础设施', items: ['Data', 'Caching', 'Auth', 'Messaging', 'AI', 'Bot'], desc: 'SqlSugar 仓储、混合缓存 L1/L2、多租户、事件总线' },
-  { name: '展示', items: ['Web.Api', 'Web.Core', 'Web.Docs', 'Web.Gateway', 'Web.RealTime'], desc: '动态 API、Swagger、网关、SignalR' },
-]
-
-const frameworkFeatures = [
-  { title: '动态 API', items: ['[DynamicApi] 自动生成 REST 控制器', '方法名映射 HTTP 动词', 'XML 注释生成 OpenAPI'] },
-  { title: 'AI 集成', items: ['Semantic Kernel 1.72', 'Kernel Memory RAG', 'OpenAI / Ollama', 'Qdrant / Redis 向量库'] },
-  { title: '数据访问', items: ['Repository 模式', '实体基类审计', '软删除', 'UoW 事务'] },
-  { title: 'HTTP 客户端', items: ['Polly 重试与熔断', '代理池管理', '请求日志'] },
-  { title: '混合缓存', items: ['L1 内存 + L2 Redis', '租户隔离 Key', 'UoW 联动失效'] },
-  { title: '其他', items: ['本地化', 'Elasticsearch 搜索', '虚拟文件系统', 'Scriban 模板', '可观测性'] },
-]
 
 const links = {
   docs: 'https://docs.xihanfun.com',
@@ -57,346 +12,347 @@ const links = {
   qq: 'https://qm.qq.com/q/qYp1Urv3z2',
 }
 
-const uiComponentGroups = [
-  { name: '基础', items: ['Button', 'Icon', 'Input', 'Form', 'Select', 'Radio', 'Checkbox', 'Switch'] },
-  { name: '布局', items: ['Row', 'Col', 'Space', 'Divider'] },
-  { name: '数据', items: ['Table', 'Tree', 'TreeSelect', 'Pagination', 'Transfer'] },
-  { name: '反馈', items: ['Message', 'Notification', 'Drawer', 'Progress', 'Skeleton'] },
-  { name: '导航', items: ['Menu', 'Tabs', 'Breadcrumb', 'Anchor', 'Steps'] },
+const products = [
+  {
+    idx: '01',
+    title: 'XiHan.Framework',
+    subtitle: '后端框架',
+    status: 'v3.0.0',
+    desc: '基于 .NET 10 的模块化后端框架，50 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线、混合缓存、多租户与 AI 集成一体提供。',
+    features: ['50 模块', '动态 API', '多租户', 'AI 集成'],
+    link: 'https://framework.xihanfun.com',
+    doc: 'https://docs.xihanfun.com/cosmos/framework',
+  },
+  {
+    idx: '02',
+    title: 'XiHan.UI',
+    subtitle: '视图组件',
+    status: 'Vue 3 · TS',
+    desc: '面向 Vue 3 的组件库，完整工程化 Monorepo。11 个子包贯通主题引擎、多语言、图标、Hooks、指令与插件，TypeScript 优先，按需引入与树摇内建。',
+    features: ['11 子包', '主题引擎', 'i18n', '按需引入'],
+    link: 'https://ui.xihanfun.com',
+    doc: 'https://docs.xihanfun.com/cosmos/ui',
+  },
+  {
+    idx: '03',
+    title: 'XiHan.BasicApp',
+    subtitle: '多租户中后台',
+    status: '在线 Demo',
+    desc: '基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、消息中心、六类审计开箱即用，DDD 分层、前后分离、可水平扩展。',
+    features: ['多租户', 'RBAC+ABAC', '代码生成', '六类审计'],
+    link: 'https://basicapp.xihanfun.com',
+    doc: 'https://docs.xihanfun.com/cosmos/basic-app',
+  },
 ]
 
+const frameworkLayers = [
+  { name: '展示', en: 'Presentation', items: ['Web.Api', 'Web.Core', 'Web.Gateway', 'Web.RealTime', 'Web.Grpc', 'Web.Docs'], desc: '动态 API、网关、SignalR、gRPC、Scalar 文档' },
+  { name: '基础设施', en: 'Infrastructure', items: ['Data', 'Caching', 'Authentication', 'EventBus', 'AI', 'Bot', 'MultiTenancy', 'SearchEngines', 'ObjectStorage'], desc: 'SqlSugar 仓储、混合缓存 L1/L2、事件总线、AI、多租户' },
+  { name: '领域', en: 'Domain', items: ['Domain', 'Domain.Shared'], desc: 'DDD 模式、实体审计、领域事件、查询过滤' },
+  { name: '应用', en: 'Application', items: ['Application', 'Application.Contracts'], desc: 'CRUD、DTO 映射、批量操作、自动分页' },
+  { name: '核心', en: 'Core', items: ['Core', 'Utils', 'Metadata'], desc: '模块系统、依赖注入、生命周期、配置选项' },
+]
+
+const frameworkFeatures = [
+  { title: '动态 API', items: ['[DynamicApi] 自动生成 REST', '方法名映射 HTTP 动词', 'Scalar 文档界面'] },
+  { title: '自研事件总线', items: ['进程内与分布式事件', '处理器工厂与缓存', '与工作单元联动'] },
+  { title: '混合缓存', items: ['L1 内存 + L2 Redis', '租户隔离 Key', 'UoW 失效联动'] },
+  { title: 'AI 集成', items: ['Semantic Kernel', 'Model Context Protocol', 'OpenAI / Ollama'] },
+  { title: '数据与事务', items: ['SqlSugar 仓储', '实体审计与软删除', 'UoW 工作单元'] },
+  { title: '韧性与可观测', items: ['Polly 重试与熔断', '限流与流量治理', '健康检查与指标'] },
+]
+
+const frameworkTech = '.NET 10 · SqlSugar · Serilog · Scalar · Redis · Semantic Kernel · Polly · Elasticsearch · gRPC'
+
 const uiPackages = [
-  { name: '@xihan-ui/constants', desc: '共享常量' },
-  { name: '@xihan-ui/utils', desc: '工具函数' },
+  { name: '@xihan-ui/components', desc: '组件集合' },
   { name: '@xihan-ui/themes', desc: '主题引擎、样式编译' },
   { name: '@xihan-ui/hooks', desc: '组合式 Hooks' },
   { name: '@xihan-ui/icons', desc: '图标生成与加载' },
   { name: '@xihan-ui/locales', desc: 'i18n 多语言' },
   { name: '@xihan-ui/directives', desc: '指令' },
-  { name: '@xihan-ui/plugins', desc: '事件总线、插件' },
-  { name: '@xihan-ui/components', desc: '55+ 组件' },
+  { name: '@xihan-ui/plugins', desc: '事件总线与插件' },
+  { name: '@xihan-ui/utils', desc: '工具函数' },
+  { name: '@xihan-ui/constants', desc: '共享常量' },
 ]
 
-const basicAppFeatures = [
-  {
-    name: 'RBAC 权限',
-    items: ['用户角色', '权限矩阵', '资源操作', '菜单导航', '部门数据范围'],
-    desc: '用户管理、角色层级、权限矩阵、资源与操作类型、菜单导航、部门结构与数据范围过滤、授权缓存',
-  },
-  {
-    name: '代码生成',
-    items: ['模板管理', '实体脚手架', 'CRUD 生成', '自定义模板'],
-    desc: '模板管理、实体脚手架、CRUD 代码生成、自定义模板，提升开发效率',
-  },
-  {
-    name: '系统升级',
-    items: ['版本迁移', '数据转换', '向后兼容'],
-    desc: '版本迁移、数据转换、向后兼容，平滑升级',
-  },
+const uiPrinciples = [
+  { k: '工程化', v: 'pnpm + Turborepo + unbuild，产物含 ESM / CJS 与类型声明' },
+  { k: '主题', v: '主题引擎与样式编译，设计令牌可定制' },
+  { k: '国际化', v: '组件级 locale 与 i18n 集成' },
+  { k: '按需', v: 'sideEffects 标注，树摇与按需引入' },
+]
+
+const basicAppPillars = [
+  { name: '权限三层', items: ['RBAC 功能权限码', 'ABAC 数据范围', '字段级安全脱敏', '授权申请与审计'], desc: '功能、数据范围到字段三层叠加，越权请求在服务端拦截' },
+  { name: '多租户', items: ['登录后选租户', '平台态运维', '版本白名单门控', '开通一站式'], desc: '邮箱全局唯一登录，智能落点，超管可切入任意租户代管' },
+  { name: '工程能力', items: ['全栈代码生成', '企业级消息中心', '六类审计日志', '网关灰度发布'], desc: '从脚手架到运营开箱即用，请求落库前自动脱敏' },
 ]
 
 const basicAppModules = [
-  { name: 'XiHan.BasicApp.Core', desc: '聚合 25+ Framework 包：认证、缓存、数据、多租户、事件总线等' },
-  { name: 'XiHan.BasicApp.Web.Core', desc: 'Web API、Swagger、网关、SignalR 实时通信' },
-  { name: 'XiHan.BasicApp.Rbac', desc: '4 子项目：Domain、Application、Contracts、EFCore' },
-  { name: 'XiHan.BasicApp.CodeGeneration', desc: '4 子项目：模板与代码生成引擎' },
-  { name: 'XiHan.BasicApp.Upgrade', desc: '版本迁移与数据转换' },
+  { name: 'XiHan.BasicApp.Core', desc: '聚合 Framework 多包：认证 / 缓存 / 数据 / 多租户 / 事件总线' },
+  { name: 'XiHan.BasicApp.Web.Core', desc: '动态 API、Scalar、SignalR、网关与灰度路由' },
+  { name: 'XiHan.BasicApp.Saas', desc: '用户 / 角色 / 权限 / 租户 / 配置 / 字典 / 通知 / 日志 / 任务' },
+  { name: 'XiHan.BasicApp.CodeGeneration', desc: '数据源、表结构导入、模板配置、全栈代码生成' },
+  { name: 'XiHan.BasicApp.WebHost', desc: '启动入口，聚合所有模块' },
 ]
 
-const productsVisible = useScrollAnimation(0.1)
-const frameworkVisible = useScrollAnimation(0.1)
-const quickStartVisible = useScrollAnimation(0.1)
-const communityVisible = useScrollAnimation(0.1)
+const productsVis = useScrollAnimation()
+const frameworkVis = useScrollAnimation()
+const uiVis = useScrollAnimation()
+const basicAppVis = useScrollAnimation()
+const startVis = useScrollAnimation()
+const communityVis = useScrollAnimation()
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#050508] overflow-x-hidden">
-    <!-- 背景层 -->
+  <div class="relative min-h-screen overflow-x-hidden bg-base">
     <div class="fixed inset-0 z-0">
-      <GridBackground />
-      <ParticlesBackground />
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050508]/90 pointer-events-none" />
+      <SiteBackground />
     </div>
 
     <!-- 导航 -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 py-3 sm:py-4">
-      <nav class="max-w-7xl mx-auto flex items-center justify-between glass rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 border border-cyan-500/10 shadow-neon-cyan/20">
-        <a href="#" class="flex items-center shrink-0">
-          <img src="/assets/logo.png" alt="曦寒" class="h-8 w-8 sm:h-10 sm:w-10 rounded-lg object-contain hover:opacity-90 transition-opacity" />
+    <header class="fixed inset-x-0 top-0 z-50 px-3 py-3 sm:px-6 sm:py-4">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-line/40 px-4 py-2.5 backdrop-blur-xl sm:px-6 sm:py-3" style="background: rgb(var(--c-base) / 0.55)">
+        <a href="#top" class="flex shrink-0 items-center gap-2.5">
+          <img src="/assets/logo.png" alt="曦寒 XiHanFun" class="h-8 w-8 rounded-lg object-contain sm:h-9 sm:w-9" />
+          <span class="hidden font-cjk text-base font-bold text-ink sm:inline">曦寒</span>
         </a>
-        <div class="flex items-center flex-wrap justify-end gap-2 sm:gap-4 lg:gap-6 text-xs sm:text-sm min-w-0">
-          <a :href="links.docs" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition-colors">文档</a>
-          <a href="#products" class="text-slate-400 hover:text-cyan-400 transition-colors">产品</a>
-          <a href="#framework" class="text-slate-400 hover:text-cyan-400 transition-colors">架构</a>
-          <a href="#community" class="text-slate-400 hover:text-cyan-400 transition-colors">社区</a>
-          <a :href="links.github" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition-colors">GitHub</a>
-          <a :href="links.gitee" target="_blank" rel="noopener" class="text-slate-400 hover:text-cyan-400 transition-colors">Gitee</a>
-          <a :href="links.docs" target="_blank" rel="noopener" class="px-3 py-2 sm:px-5 sm:py-2.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/30 text-cyan-300 hover:border-cyan-400/50 hover:shadow-neon-cyan transition-all duration-300 font-medium shrink-0">
-            快速开始
-          </a>
+        <div class="flex min-w-0 flex-wrap items-center justify-end gap-x-4 gap-y-1 text-xs sm:gap-x-6 sm:text-sm">
+          <a href="#products" class="text-ink2 transition-colors hover:text-cyan">产品</a>
+          <a href="#framework" class="hidden text-ink2 transition-colors hover:text-cyan sm:inline">架构</a>
+          <a :href="links.github" target="_blank" rel="noopener" class="text-ink2 transition-colors hover:text-cyan">GitHub</a>
+          <a :href="links.docs" target="_blank" rel="noopener" class="btn btn-primary px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm">快速开始</a>
         </div>
       </nav>
     </header>
 
     <!-- Hero -->
-    <section class="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20 pb-8">
-      <div class="relative z-10 max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-10 sm:gap-16 lg:gap-24">
-        <div class="flex-1 text-center lg:text-left w-full">
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-4 sm:mb-6 animate-fade-in">
-            <span class="text-gradient-neon animate-glow-cyan">曦寒</span>
-          </h1>
-          <p class="text-base sm:text-xl lg:text-2xl text-slate-400 mb-4 sm:mb-6 animate-slide-up" style="animation-delay: 0.1s">
-            快速、轻量、高效、用心 · 企业级开发框架与组件库
-          </p>
-          <p class="text-slate-500 text-sm sm:text-base mb-6 sm:mb-8 animate-slide-up" style="animation-delay: 0.2s">
-            基于 .NET 10 与 Vue 3 · 40+ 模块 · 55+ 组件 · 企业级解决方案
-          </p>
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 animate-slide-up" style="animation-delay: 0.3s">
-            <a :href="links.docs" target="_blank" rel="noopener" class="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-200 hover:bg-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 font-medium text-sm sm:text-base">
-              查看文档
-            </a>
-            <a :href="links.github" target="_blank" rel="noopener" class="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg bg-white/[0.04] border border-white/[0.12] text-slate-300 hover:bg-white/[0.08] hover:border-cyan-400/30 hover:text-cyan-300 transition-all duration-300 font-medium text-sm sm:text-base">
-              GitHub
-            </a>
-            <a :href="links.gitee" target="_blank" rel="noopener" class="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg bg-white/[0.04] border border-white/[0.12] text-slate-300 hover:bg-white/[0.08] hover:border-cyan-400/30 hover:text-cyan-300 transition-all duration-300 font-medium text-sm sm:text-base">
-              Gitee
-            </a>
-          </div>
+    <section id="top" class="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-12 px-4 pb-12 pt-28 sm:px-6 lg:flex-row lg:gap-16 lg:pt-20 xl:gap-24">
+      <div class="w-full flex-1">
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-line/50 px-3 py-1 text-xs text-ink2 animate-reveal">
+          <span class="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-soft" />
+          .NET 10 + Vue 3 · 企业级开源底座
         </div>
-        <div class="flex-1 relative w-full max-w-xl flex flex-col gap-3 sm:gap-5 min-w-0">
-          <FloatingCodeWindow
-            title="Framework"
-            :code="`dotnet add package XiHan.Framework.Core
+        <h1 class="font-cjk text-[clamp(5rem,17vw,13rem)] font-black leading-[0.92] tracking-tightest text-ink wordmark-glow animate-reveal">曦寒</h1>
+        <p class="mt-5 max-w-xl text-lg text-ink2 sm:text-xl lg:text-2xl animate-reveal" style="animation-delay: 0.08s">
+          从后端框架、前端组件到完整中后台，<br class="hidden sm:block" />一套可落地的企业级开发底座。
+        </p>
+        <p class="mt-4 max-w-lg text-sm leading-relaxed text-ink3 animate-reveal" style="animation-delay: 0.16s">
+          模块化、可追踪、开箱即用。Framework 打底，UI 拼装，BasicApp 直接跑。
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3 animate-reveal" style="animation-delay: 0.24s">
+          <a :href="links.docs" target="_blank" rel="noopener" class="btn btn-primary">查看文档</a>
+          <a :href="links.github" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          <a :href="links.gitee" target="_blank" rel="noopener" class="btn btn-ghost">Gitee</a>
+        </div>
+      </div>
+
+      <div class="flex w-full min-w-0 flex-1 flex-col gap-4 sm:gap-5 lg:max-w-xl">
+        <FloatingCodeWindow
+          title="Framework · NuGet"
+          :float-offset="-12"
+          class="animate-reveal"
+          :code="`dotnet add package XiHan.Framework.Core
 dotnet add package XiHan.Framework.Application
-dotnet add package XiHan.Framework.Application.Contracts
 dotnet add package XiHan.Framework.Data
 dotnet add package XiHan.Framework.Web.Api`"
-            :delay="0"
-            :float-offset="-12"
-            class="animate-float"
-          />
-          <FloatingCodeWindow
-            title="UI Components"
-            :code="`pnpm add @xihan-ui/components
+        />
+        <FloatingCodeWindow
+          title="UI · npm"
+          :float-offset="-8"
+          class="animate-float-slow"
+          :code="`pnpm add @xihan-ui/components
 
-import { XhButton, XhInput, XhForm } from '@xihan-ui/components'
-
-// 或按需引入
-import { XhButton } from '@xihan-ui/components'`"
-            :delay="200"
-            :float-offset="-8"
-            class="animate-float-slow"
-          />
-          <FloatingCodeWindow
-            title="BasicApp"
-            :code="`// 克隆并运行
-git clone https://github.com/XiHanFun/XiHan.BasicApp
-cd XiHan.BasicApp/backend
-dotnet run`"
-            :delay="400"
-            :float-offset="-6"
-            class="animate-float"
-          />
-        </div>
+import { XhButton, XhIcon } from '@xihan-ui/components'`"
+        />
+        <FloatingCodeWindow
+          title="BasicApp · 一行跑起来"
+          :float-offset="-6"
+          class="animate-reveal"
+          :code="`git clone https://github.com/XiHanFun/XiHan.BasicApp
+cd XiHan.BasicApp/backend && dotnet run`"
+        />
       </div>
     </section>
 
     <!-- 产品 -->
-    <section id="products" ref="productsVisible.el" class="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-2 transition-all duration-700" :class="productsVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          <span class="text-gradient-neon">三大产品</span>
-        </h2>
-        <p class="text-slate-500 text-center mb-8 sm:mb-10 max-w-2xl mx-auto text-xs sm:text-sm transition-all duration-700 delay-100" :class="productsVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          从后端框架、前端组件到完整应用，一站式企业级开发解决方案
-        </p>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          <article
-            v-for="(p, i) in products"
-            :key="i"
-            class="group glass-hologram p-4 sm:p-6 rounded-xl sm:rounded-2xl hover:border-cyan-400/30 transition-all duration-500"
-            :class="productsVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
-            :style="{ transitionDelay: `${200 + i * 100}ms` }"
-          >
-            <h3 class="text-xl font-semibold text-white mb-1">{{ p.title }}</h3>
-            <div class="text-cyan-400 text-sm font-medium mb-3">{{ p.subtitle }}</div>
-            <p class="text-slate-400 text-sm mb-4 leading-relaxed">{{ p.desc }}</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span v-for="f in p.features" :key="f" class="px-3 py-1 rounded-lg bg-white/[0.05] text-slate-400 text-xs border border-white/[0.06]">{{ f }}</span>
+    <section id="products" :ref="(el) => (productsVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div :class="productsVis.visible ? 'reveal-in' : 'reveal-init'">
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ 三大产品</p>
+        <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">从框架到应用，一套打底</h2>
+      </div>
+      <div class="mt-10 border-t border-line/40">
+        <article
+          v-for="(p, i) in products"
+          :key="p.title"
+          class="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-4 border-b border-line/40 py-8 transition-colors duration-500 hover:bg-surface/30 sm:gap-x-8 lg:grid-cols-[5rem_1fr_auto] lg:px-2"
+          :class="productsVis.visible ? 'reveal-in' : 'reveal-init'"
+          :style="{ transitionDelay: `${i * 90}ms` }"
+        >
+          <div class="font-mono text-sm text-cyan">{{ p.idx }}</div>
+          <div class="min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h3 class="text-xl font-bold sm:text-2xl">{{ p.title }}</h3>
+              <span class="text-sm text-ink3">{{ p.subtitle }}</span>
             </div>
-            <div class="flex gap-4">
-              <a :href="p.link" target="_blank" rel="noopener" class="text-cyan-400 hover:text-cyan-300 font-medium text-sm">在线体验</a>
-              <a :href="p.doc" target="_blank" rel="noopener" class="text-slate-500 hover:text-slate-400 text-sm">文档</a>
+            <p class="mt-2.5 max-w-2xl text-sm leading-relaxed text-ink2">{{ p.desc }}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span v-for="f in p.features" :key="f" class="chip">{{ f }}</span>
             </div>
-          </article>
-        </div>
+          </div>
+          <div class="col-start-2 flex items-center gap-4 lg:col-start-3 lg:flex-col lg:items-end lg:gap-3">
+            <span class="chip border-cyan/25 text-cyan">{{ p.status }}</span>
+            <div class="flex gap-4 text-sm">
+              <a :href="p.link" target="_blank" rel="noopener" class="font-medium text-ink transition-colors hover:text-cyan">在线体验</a>
+              <a :href="p.doc" target="_blank" rel="noopener" class="text-ink3 transition-colors hover:text-ink2">文档</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- Framework 架构 -->
-    <section id="framework" ref="frameworkVisible.el" class="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white text-center mb-2 transition-all duration-700" :class="frameworkVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          <span class="text-gradient-neon">Framework 架构</span>
-        </h2>
-        <p class="text-slate-500 text-center mb-8 sm:mb-10 text-xs sm:text-sm transition-all duration-700 delay-100" :class="frameworkVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          模块化分层，依赖可追踪，展示层、应用层、领域层、基础设施、核心各司其职
-        </p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-          <div
-            v-for="(layer, i) in frameworkLayers"
-            :key="i"
-            class="glass-hologram p-3 sm:p-5 rounded-lg sm:rounded-xl hover:border-cyan-400/25 transition-all duration-500"
-            :class="frameworkVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
-            :style="{ transitionDelay: `${200 + i * 80}ms` }"
-          >
-            <div class="text-cyan-400 font-semibold mb-2">{{ layer.name }}</div>
-            <div class="text-slate-400 text-xs space-y-1 mb-2">
-              <span v-for="item in layer.items" :key="item" class="block">{{ item }}</span>
-            </div>
-            <p class="text-slate-500 text-xs leading-relaxed">{{ layer.desc }}</p>
-          </div>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-6">
-          <div
-            v-for="(feat, i) in frameworkFeatures"
-            :key="i"
-            class="glass-hologram p-3 sm:p-4 rounded-lg sm:rounded-xl hover:border-cyan-400/20 transition-all duration-500"
-            :class="frameworkVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
-            :style="{ transitionDelay: `${400 + i * 60}ms` }"
-          >
-            <div class="text-purple-400 font-medium text-sm mb-2">{{ feat.title }}</div>
-            <ul class="text-slate-500 text-xs space-y-1">
-              <li v-for="item in feat.items" :key="item" class="flex items-start gap-1.5">
-                <span class="text-cyan-500/70 shrink-0">·</span>
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="text-center text-slate-500 text-xs mt-6">.NET 10 · SqlSugar · Serilog · MediatR · Swagger · Redis · Semantic Kernel · Polly · Elasticsearch</p>
+    <section id="framework" :ref="(el) => (frameworkVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div :class="frameworkVis.visible ? 'reveal-in' : 'reveal-init'">
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ Framework · 50 模块</p>
+        <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">分层即依赖，依赖可追踪</h2>
+        <p class="mt-3 max-w-2xl text-sm text-ink3">展示、基础设施、领域、应用、核心，自上而下各司其职。</p>
       </div>
+
+      <!-- 分层架构图 -->
+      <div class="mt-10 overflow-hidden rounded-2xl border border-line/40" :class="frameworkVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 80ms">
+        <div
+          v-for="layer in frameworkLayers"
+          :key="layer.name"
+          class="grid gap-2 border-b border-line/30 px-5 py-4 transition-colors duration-500 last:border-0 hover:bg-surface/50 sm:grid-cols-[8.5rem_1fr] sm:gap-5"
+        >
+          <div class="flex items-baseline gap-2">
+            <span class="text-base font-semibold text-cyan">{{ layer.name }}</span>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-ink3">{{ layer.en }}</span>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-ink2">
+              <span v-for="m in layer.items" :key="m">{{ m }}</span>
+            </div>
+            <p class="mt-1.5 text-xs text-ink3">{{ layer.desc }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 能力清单 -->
+      <div class="mt-8 grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-3" :class="frameworkVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 160ms">
+        <div v-for="feat in frameworkFeatures" :key="feat.title">
+          <div class="mb-2.5 flex items-center gap-2 border-b border-line/30 pb-2">
+            <span class="h-1 w-1 rounded-full bg-violet" />
+            <h3 class="text-sm font-semibold text-ink">{{ feat.title }}</h3>
+          </div>
+          <ul class="space-y-1.5 text-xs text-ink2">
+            <li v-for="it in feat.items" :key="it">{{ it }}</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-8 font-mono text-xs text-ink3">{{ frameworkTech }}</p>
     </section>
 
     <!-- UI 组件 -->
-    <section class="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-2">
-          <span class="text-gradient-neon">UI 组件</span>
-        </h2>
-        <p class="text-slate-500 text-center mb-6 sm:mb-8 text-xs sm:text-sm">55+ 组件，11 子包，主题引擎、i18n、图标系统、事件总线，pnpm + Turborepo + unbuild</p>
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-6">
-          <div
-            v-for="(g, i) in uiComponentGroups"
-            :key="i"
-            class="glass-hologram p-3 sm:p-4 rounded-lg sm:rounded-xl hover:border-purple-400/25 transition-all duration-500"
-          >
-            <div class="text-cyan-400 font-medium text-sm mb-2">{{ g.name }}</div>
-            <div class="text-slate-500 text-xs flex flex-wrap gap-1">
-              <span v-for="c in g.items" :key="c" class="px-2 py-0.5 rounded bg-white/[0.04]">{{ c }}</span>
-            </div>
+    <section :ref="(el) => (uiVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div :class="uiVis.visible ? 'reveal-in' : 'reveal-init'">
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-violet">/ XiHan.UI · Monorepo</p>
+        <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">十一个子包，各司其职</h2>
+        <p class="mt-3 max-w-2xl text-sm text-ink3">面向 Vue 3 的组件库，工程化优先：主题、国际化、图标、Hooks 全部独立成包，按需取用。</p>
+      </div>
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+        <div class="grid gap-2 sm:grid-cols-2" :class="uiVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 80ms">
+          <div v-for="pkg in uiPackages" :key="pkg.name" class="panel panel-hover px-3.5 py-3">
+            <div class="truncate font-mono text-xs text-violet">{{ pkg.name }}</div>
+            <div class="mt-0.5 text-xs text-ink3">{{ pkg.desc }}</div>
           </div>
         </div>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
-          <div
-            v-for="(pkg, i) in uiPackages"
-            :key="i"
-            class="glass-hologram px-3 py-2.5 rounded-lg hover:border-purple-400/20 transition-all duration-500"
-          >
-            <div class="font-mono text-purple-400/90 text-xs truncate">{{ pkg.name }}</div>
-            <div class="text-slate-500 text-xs mt-0.5">{{ pkg.desc }}</div>
+        <div class="space-y-5" :class="uiVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 160ms">
+          <div v-for="pr in uiPrinciples" :key="pr.k" class="border-b border-line/30 pb-4 last:border-0">
+            <div class="text-sm font-semibold text-ink">{{ pr.k }}</div>
+            <p class="mt-1 text-xs leading-relaxed text-ink2">{{ pr.v }}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BasicApp 功能 -->
-    <section class="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-2">
-          <span class="text-gradient-neon">BasicApp 功能</span>
-        </h2>
-        <p class="text-slate-500 text-center mb-6 sm:mb-8 text-xs sm:text-sm">开箱即用，25+ 功能页面，DDD 分层、多租户、分布式、无状态后端、SignalR 实时通信</p>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6">
-          <div
-            v-for="(f, i) in basicAppFeatures"
-            :key="i"
-            class="glass-hologram p-4 sm:p-6 rounded-xl hover:border-cyan-400/25 transition-all duration-500"
-          >
-            <div class="text-purple-400 font-semibold mb-2">{{ f.name }}</div>
-            <div class="text-slate-400 text-sm space-y-1 mb-3">
-              <span v-for="item in f.items" :key="item" class="block">{{ item }}</span>
-            </div>
-            <p class="text-slate-500 text-xs leading-relaxed">{{ f.desc }}</p>
-          </div>
+    <!-- BasicApp -->
+    <section :ref="(el) => (basicAppVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div :class="basicAppVis.visible ? 'reveal-in' : 'reveal-init'">
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ XiHan.BasicApp · 多租户中后台</p>
+        <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">权限做到字段级，租户隔离到底</h2>
+      </div>
+
+      <div class="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line/40 md:grid-cols-3" :class="basicAppVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 80ms">
+        <div v-for="pillar in basicAppPillars" :key="pillar.name" class="bg-surface/40 p-5 transition-colors duration-500 hover:bg-surface/70 sm:p-6">
+          <h3 class="text-base font-semibold text-ink">{{ pillar.name }}</h3>
+          <ul class="mt-3 space-y-1.5 text-sm text-ink2">
+            <li v-for="it in pillar.items" :key="it" class="flex items-start gap-2">
+              <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan/70" />
+              <span>{{ it }}</span>
+            </li>
+          </ul>
+          <p class="mt-3.5 border-t border-line/30 pt-3 text-xs leading-relaxed text-ink3">{{ pillar.desc }}</p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
-          <div
-            v-for="(m, i) in basicAppModules"
-            :key="i"
-            class="glass-hologram p-3 sm:p-4 rounded-lg hover:border-cyan-400/20 transition-all duration-500"
-          >
-            <div class="font-mono text-cyan-400/90 text-xs mb-1.5 truncate" :title="m.name">{{ m.name }}</div>
-            <div class="text-slate-500 text-xs leading-relaxed">{{ m.desc }}</div>
-          </div>
+      </div>
+
+      <div class="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3" :class="basicAppVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 160ms">
+        <div v-for="m in basicAppModules" :key="m.name" class="panel panel-hover px-3.5 py-3">
+          <div class="truncate font-mono text-xs text-cyan" :title="m.name">{{ m.name }}</div>
+          <div class="mt-1 text-xs leading-relaxed text-ink3">{{ m.desc }}</div>
         </div>
+        <a :href="'https://basicapp.xihanfun.com'" target="_blank" rel="noopener" class="panel flex items-center justify-between px-3.5 py-3 transition-colors duration-500 hover:border-cyan/40">
+          <span class="text-xs font-medium text-ink">打开在线 Demo</span>
+          <span class="text-cyan">→</span>
+        </a>
       </div>
     </section>
 
     <!-- 快速开始 -->
-    <section ref="quickStartVisible.el" class="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 transition-all duration-700" :class="quickStartVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          <span class="text-gradient-neon">快速开始</span>
-        </h2>
-        <p class="text-slate-500 mb-8 text-sm transition-all duration-700 delay-100" :class="quickStartVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          后端 NuGet、前端 npm，文档齐全
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-3">
-          <a :href="links.nuget" target="_blank" rel="noopener" class="glass-hologram px-4 py-3 sm:px-6 sm:py-4 rounded-xl hover:border-cyan-400/30 transition-all duration-500 text-left group">
-            <span class="text-slate-500 text-xs block mb-1">后端</span>
-            <span class="font-mono text-cyan-400 text-sm group-hover:text-cyan-300">dotnet add package XiHan.Framework.*</span>
-          </a>
-          <a :href="links.npm" target="_blank" rel="noopener" class="glass-hologram px-4 py-3 sm:px-6 sm:py-4 rounded-xl hover:border-purple-400/30 transition-all duration-500 text-left group">
-            <span class="text-slate-500 text-xs block mb-1">前端</span>
-            <span class="font-mono text-purple-400 text-sm group-hover:text-purple-300">pnpm add @xihan-ui/components</span>
-          </a>
-        </div>
-        <a :href="links.docs" target="_blank" rel="noopener" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-medium text-sm transition-colors">查看完整文档 →</a>
+    <section :ref="(el) => (startVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:py-24">
+      <div class="text-center" :class="startVis.visible ? 'reveal-in' : 'reveal-init'">
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ 快速开始</p>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">后端 NuGet，前端 npm</h2>
+      </div>
+      <div class="mt-8 grid gap-3 sm:grid-cols-2" :class="startVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 90ms">
+        <a :href="links.nuget" target="_blank" rel="noopener" class="panel panel-hover group p-5 text-left">
+          <span class="mb-1.5 block text-xs text-ink3">后端</span>
+          <span class="font-mono text-sm text-cyan">dotnet add package XiHan.Framework.*</span>
+        </a>
+        <a :href="links.npm" target="_blank" rel="noopener" class="panel panel-hover group p-5 text-left">
+          <span class="mb-1.5 block text-xs text-ink3">前端</span>
+          <span class="font-mono text-sm text-violet">pnpm add @xihan-ui/components</span>
+        </a>
+      </div>
+      <div class="mt-6 text-center" :class="startVis.visible ? 'reveal-in' : 'reveal-init'" style="transition-delay: 180ms">
+        <a :href="links.docs" target="_blank" rel="noopener" class="text-sm font-medium text-cyan transition-colors hover:text-ink">查看完整文档 →</a>
       </div>
     </section>
 
     <!-- 社区 -->
-    <section id="community" ref="communityVisible.el" class="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 transition-all duration-700" :class="communityVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          <span class="text-gradient-neon">加入社区</span>
-        </h2>
-        <p class="text-slate-500 mb-8 text-sm transition-all duration-700 delay-100" :class="communityVisible.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
-          开源项目，MIT 许可，欢迎贡献
-        </p>
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
-          <a :href="links.github" target="_blank" rel="noopener" class="glass-hologram px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-white text-xs sm:text-sm hover:border-cyan-400/40 hover:shadow-neon-cyan transition-all duration-500 border border-white/[0.08]">
-            GitHub
-          </a>
-          <a :href="links.gitee" target="_blank" rel="noopener" class="glass-hologram px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-white text-xs sm:text-sm hover:border-cyan-400/40 transition-all duration-500 border border-white/[0.08] bg-[#c71d23]/20">
-            Gitee
-          </a>
-          <a :href="links.qq" target="_blank" rel="noopener" class="glass-hologram px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl text-white text-xs sm:text-sm hover:border-cyan-400/40 transition-all duration-500 border border-white/[0.08] bg-[#12b7f5]/20">
-            QQ 群
-          </a>
+    <section id="community" :ref="(el) => (communityVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-2xl px-4 py-16 text-center sm:px-6 lg:py-24">
+      <div :class="communityVis.visible ? 'reveal-in' : 'reveal-init'">
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ 社区</p>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">开源 · MIT · 欢迎贡献</h2>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a :href="links.github" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          <a :href="links.gitee" target="_blank" rel="noopener" class="btn btn-ghost">Gitee</a>
+          <a :href="links.qq" target="_blank" rel="noopener" class="btn btn-ghost">QQ 群</a>
         </div>
       </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="relative z-10 py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-slate-500 text-center sm:text-left">
+    <footer class="relative z-10 border-t border-line/30">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-ink3 sm:flex-row sm:px-6">
         <div>© XiHanFun · MIT License · 曦寒懿</div>
-        <div class="flex items-center gap-4 sm:gap-8">
-          <a :href="links.docs" target="_blank" rel="noopener" class="hover:text-cyan-400 transition-colors">文档</a>
-          <a :href="links.github" target="_blank" rel="noopener" class="hover:text-cyan-400 transition-colors">GitHub</a>
-          <a :href="links.gitee" target="_blank" rel="noopener" class="hover:text-cyan-400 transition-colors">Gitee</a>
+        <div class="flex items-center gap-6">
+          <a :href="links.docs" target="_blank" rel="noopener" class="transition-colors hover:text-cyan">文档</a>
+          <a :href="links.github" target="_blank" rel="noopener" class="transition-colors hover:text-cyan">GitHub</a>
+          <a :href="links.nuget" target="_blank" rel="noopener" class="transition-colors hover:text-cyan">NuGet</a>
         </div>
       </div>
     </footer>
