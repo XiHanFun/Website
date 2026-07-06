@@ -17,9 +17,11 @@ const products = [
     idx: '01',
     title: 'XiHan.Framework',
     subtitle: '后端框架',
-    status: 'v3.0.0',
-    desc: '基于 .NET 10 的模块化后端框架，50 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线、混合缓存、多租户与 AI 集成一体提供。',
-    features: ['50 模块', '动态 API', '多租户', 'AI 集成'],
+    status: 'v3.2.0',
+    tone: 'cyan',
+    hasDemo: true,
+    desc: '基于 .NET 10 的模块化后端框架，57 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线、混合缓存、多租户与 AI 集成一体提供。',
+    features: ['57 模块', '动态 API', '多租户', 'AI 集成'],
     link: 'https://framework.xihanfun.com',
     doc: 'https://docs.xihanfun.com/cosmos/framework',
   },
@@ -27,9 +29,11 @@ const products = [
     idx: '02',
     title: 'XiHan.UI',
     subtitle: '视图组件',
-    status: 'Vue 3 · TS',
-    desc: '面向 Vue 3 的组件库，完整工程化 Monorepo。11 个子包贯通主题引擎、多语言、图标、Hooks、指令与插件，TypeScript 优先，按需引入与树摇内建。',
-    features: ['11 子包', '主题引擎', 'i18n', '按需引入'],
+    status: '实验性 · 开发中',
+    tone: 'warn',
+    hasDemo: false,
+    desc: '面向 Vue 3 的组件库，工程化 Monorepo 架构，10 个子包覆盖组件、主题、多语言、图标、Hooks、指令、插件与 CLI，TypeScript 优先。目前正在重写，暂不建议生产使用。',
+    features: ['10 子包', '主题系统', 'i18n', '按需引入'],
     link: 'https://ui.xihanfun.com',
     doc: 'https://docs.xihanfun.com/cosmos/ui',
   },
@@ -38,8 +42,10 @@ const products = [
     title: 'XiHan.BasicApp',
     subtitle: '多租户中后台',
     status: '在线 Demo',
-    desc: '基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、消息中心、六类审计开箱即用，DDD 分层、前后分离、可水平扩展。',
-    features: ['多租户', 'RBAC+ABAC', '代码生成', '六类审计'],
+    tone: 'cyan',
+    hasDemo: true,
+    desc: '基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、消息中心、六类审计、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。',
+    features: ['多租户', 'RBAC+ABAC', '代码生成', '六类审计', 'AI 知识库'],
     link: 'https://basicapp.xihanfun.com',
     doc: 'https://docs.xihanfun.com/cosmos/basic-app',
   },
@@ -66,12 +72,13 @@ const frameworkTech = '.NET 10 · SqlSugar · Serilog · Scalar · Redis · Sema
 
 const uiPackages = [
   { name: '@xihan-ui/components', desc: '组件集合' },
-  { name: '@xihan-ui/themes', desc: '主题引擎、样式编译' },
+  { name: '@xihan-ui/themes', desc: '统一样式系统：主题 / 响应式 / 动画' },
   { name: '@xihan-ui/hooks', desc: '组合式 Hooks' },
-  { name: '@xihan-ui/icons', desc: '图标生成与加载' },
+  { name: '@xihan-ui/icons', desc: '图标' },
   { name: '@xihan-ui/locales', desc: 'i18n 多语言' },
   { name: '@xihan-ui/directives', desc: '指令' },
-  { name: '@xihan-ui/plugins', desc: '事件总线与插件' },
+  { name: '@xihan-ui/plugins', desc: '插件' },
+  { name: '@xihan-ui/cli', desc: '脚手架 CLI' },
   { name: '@xihan-ui/utils', desc: '工具函数' },
   { name: '@xihan-ui/constants', desc: '共享常量' },
 ]
@@ -94,6 +101,7 @@ const basicAppModules = [
   { name: 'XiHan.BasicApp.Web.Core', desc: '动态 API、Scalar、SignalR、网关与灰度路由' },
   { name: 'XiHan.BasicApp.Saas', desc: '用户 / 角色 / 权限 / 租户 / 配置 / 字典 / 通知 / 日志 / 任务' },
   { name: 'XiHan.BasicApp.CodeGeneration', desc: '数据源、表结构导入、模板配置、全栈代码生成' },
+  { name: 'XiHan.BasicApp.AI', desc: 'AI Provider 库化管理、RAG 知识库、知识检索技能与 MCP Server' },
   { name: 'XiHan.BasicApp.WebHost', desc: '启动入口，聚合所有模块' },
 ]
 
@@ -122,6 +130,7 @@ const communityVis = useScrollAnimation()
           <a href="#products" class="text-ink2 transition-colors hover:text-cyan">产品</a>
           <a href="#framework" class="hidden text-ink2 transition-colors hover:text-cyan sm:inline">架构</a>
           <a :href="links.github" target="_blank" rel="noopener" class="text-ink2 transition-colors hover:text-cyan">GitHub</a>
+          <a :href="links.gitee" target="_blank" rel="noopener" class="hidden text-ink2 transition-colors hover:text-cyan sm:inline">Gitee</a>
           <a :href="links.docs" target="_blank" rel="noopener" class="btn btn-primary px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm">快速开始</a>
         </div>
       </nav>
@@ -134,7 +143,7 @@ const communityVis = useScrollAnimation()
           <span class="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-soft" />
           .NET 10 + Vue 3 · 企业级开源底座
         </div>
-        <h1 class="font-cjk text-[clamp(5rem,17vw,13rem)] font-black leading-[0.92] tracking-tightest text-ink wordmark-glow animate-reveal">曦寒</h1>
+        <h1 class="font-cjk text-[clamp(3.5rem,12vw,9rem)] font-black leading-[0.95] tracking-tightest text-ink wordmark-glow animate-reveal">曦寒</h1>
         <p class="mt-5 max-w-xl text-lg text-ink2 sm:text-xl lg:text-2xl animate-reveal" style="animation-delay: 0.08s">
           从后端框架、前端组件到完整中后台，<br class="hidden sm:block" />一套可落地的企业级开发底座。
         </p>
@@ -177,7 +186,7 @@ cd XiHan.BasicApp/backend && dotnet run`"
     </section>
 
     <!-- 产品 -->
-    <section id="products" :ref="(el) => (productsVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <section id="products" :ref="(el) => (productsVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 lg:py-24">
       <div :class="productsVis.visible ? 'reveal-in' : 'reveal-init'">
         <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ 三大产品</p>
         <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">从框架到应用，一套打底</h2>
@@ -190,7 +199,7 @@ cd XiHan.BasicApp/backend && dotnet run`"
           :class="productsVis.visible ? 'reveal-in' : 'reveal-init'"
           :style="{ transitionDelay: `${i * 90}ms` }"
         >
-          <div class="font-mono text-sm text-cyan">{{ p.idx }}</div>
+          <div class="font-mono text-base font-medium text-cyan/85 lg:text-lg">{{ p.idx }}</div>
           <div class="min-w-0">
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h3 class="text-xl font-bold sm:text-2xl">{{ p.title }}</h3>
@@ -202,9 +211,10 @@ cd XiHan.BasicApp/backend && dotnet run`"
             </div>
           </div>
           <div class="col-start-2 flex items-center gap-4 lg:col-start-3 lg:flex-col lg:items-end lg:gap-3">
-            <span class="chip border-cyan/25 text-cyan">{{ p.status }}</span>
+            <span class="chip" :class="p.tone === 'warn' ? 'border-warn/30 text-warn' : 'border-cyan/25 text-cyan'">{{ p.status }}</span>
             <div class="flex gap-4 text-sm">
-              <a :href="p.link" target="_blank" rel="noopener" class="font-medium text-ink transition-colors hover:text-cyan">在线体验</a>
+              <a v-if="p.hasDemo" :href="p.link" target="_blank" rel="noopener" class="font-medium text-ink transition-colors hover:text-cyan">在线体验</a>
+              <span v-else class="font-medium text-warn/80">开发中</span>
               <a :href="p.doc" target="_blank" rel="noopener" class="text-ink3 transition-colors hover:text-ink2">文档</a>
             </div>
           </div>
@@ -213,9 +223,9 @@ cd XiHan.BasicApp/backend && dotnet run`"
     </section>
 
     <!-- Framework 架构 -->
-    <section id="framework" :ref="(el) => (frameworkVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+    <section id="framework" :ref="(el) => (frameworkVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 lg:py-24">
       <div :class="frameworkVis.visible ? 'reveal-in' : 'reveal-init'">
-        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ Framework · 50 模块</p>
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">/ Framework · 57 模块</p>
         <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">分层即依赖，依赖可追踪</h2>
         <p class="mt-3 max-w-2xl text-sm text-ink3">展示、基础设施、领域、应用、核心，自上而下各司其职。</p>
       </div>
@@ -258,9 +268,9 @@ cd XiHan.BasicApp/backend && dotnet run`"
     <!-- UI 组件 -->
     <section :ref="(el) => (uiVis.el.value = el as HTMLElement)" class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
       <div :class="uiVis.visible ? 'reveal-in' : 'reveal-init'">
-        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-violet">/ XiHan.UI · Monorepo</p>
-        <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">十一个子包，各司其职</h2>
-        <p class="mt-3 max-w-2xl text-sm text-ink3">面向 Vue 3 的组件库，工程化优先：主题、国际化、图标、Hooks 全部独立成包，按需取用。</p>
+        <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-violet">/ XiHan.UI · 实验性</p>
+        <h2 class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">十个子包，各司其职</h2>
+        <p class="mt-3 max-w-2xl text-sm text-ink3">面向 Vue 3 的组件库，工程化优先：主题、国际化、图标、Hooks 全部独立成包。组件库仍处于实验阶段，接口可能调整，暂不建议生产使用。</p>
       </div>
 
       <div class="mt-10 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -304,9 +314,9 @@ cd XiHan.BasicApp/backend && dotnet run`"
           <div class="truncate font-mono text-xs text-cyan" :title="m.name">{{ m.name }}</div>
           <div class="mt-1 text-xs leading-relaxed text-ink3">{{ m.desc }}</div>
         </div>
-        <a :href="'https://basicapp.xihanfun.com'" target="_blank" rel="noopener" class="panel flex items-center justify-between px-3.5 py-3 transition-colors duration-500 hover:border-cyan/40">
+        <a :href="'https://basicapp.xihanfun.com'" target="_blank" rel="noopener" class="panel group flex items-center justify-between px-3.5 py-3 transition-colors duration-500 hover:border-cyan/40">
           <span class="text-xs font-medium text-ink">打开在线 Demo</span>
-          <span class="text-cyan">→</span>
+          <span class="text-cyan transition-transform duration-300 group-hover:translate-x-1">→</span>
         </a>
       </div>
     </section>
@@ -347,13 +357,8 @@ cd XiHan.BasicApp/backend && dotnet run`"
 
     <!-- 页脚 -->
     <footer class="relative z-10 border-t border-line/30">
-      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-ink3 sm:flex-row sm:px-6">
+      <div class="mx-auto flex max-w-6xl items-center justify-center gap-3 px-4 py-6 text-xs text-ink3 sm:px-6">
         <div>© XiHanFun · MIT License · 曦寒懿</div>
-        <div class="flex items-center gap-6">
-          <a :href="links.docs" target="_blank" rel="noopener" class="transition-colors hover:text-cyan">文档</a>
-          <a :href="links.github" target="_blank" rel="noopener" class="transition-colors hover:text-cyan">GitHub</a>
-          <a :href="links.nuget" target="_blank" rel="noopener" class="transition-colors hover:text-cyan">NuGet</a>
-        </div>
       </div>
     </footer>
   </div>

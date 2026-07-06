@@ -12,6 +12,7 @@ export default {
         ink3: 'rgb(var(--c-ink-3) / <alpha-value>)',
         cyan: 'rgb(var(--c-cyan) / <alpha-value>)',
         violet: 'rgb(var(--c-violet) / <alpha-value>)',
+        warn: 'rgb(var(--c-warn) / <alpha-value>)',
         line: 'rgb(var(--c-line) / <alpha-value>)',
       },
       fontFamily: {

@@ -16,6 +16,7 @@
   --c-ink-3: 104 116 140;
   --c-cyan: 56 211 230;
   --c-violet: 158 130 246;
+  --c-warn: 240 180 80;
   --c-line: 58 70 98;
 }
 
@@ -34,6 +35,11 @@
   ::selection {
     background: rgb(var(--c-cyan) / 0.22);
     color: rgb(var(--c-ink));
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid rgb(var(--c-cyan) / 0.7);
+    outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
