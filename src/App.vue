@@ -17,10 +17,10 @@ const products = [
     idx: '01',
     title: 'XiHan.Framework',
     subtitle: '后端框架',
-    status: 'v3.2.0',
+    status: 'v3.4.0',
     tone: 'cyan',
     hasDemo: true,
-    desc: '基于 .NET 10 的模块化后端框架，57 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线、混合缓存、多租户与 AI 集成一体提供。',
+    desc: '基于 .NET 10 的模块化后端框架，57 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、后台作业、混合缓存、多租户与 AI 集成一体提供。',
     features: ['57 模块', '动态 API', '多租户', 'AI 集成'],
     link: 'https://framework.xihanfun.com',
     doc: 'https://docs.xihanfun.com/cosmos/framework',
@@ -53,7 +53,7 @@ const products = [
 
 const frameworkLayers = [
   { name: '展示', en: 'Presentation', items: ['Web.Api', 'Web.Core', 'Web.Gateway', 'Web.RealTime', 'Web.Grpc', 'Web.Docs'], desc: '动态 API、网关、SignalR、gRPC、Scalar 文档' },
-  { name: '基础设施', en: 'Infrastructure', items: ['Data', 'Caching', 'Authentication', 'EventBus', 'AI', 'Bot', 'MultiTenancy', 'SearchEngines', 'ObjectStorage'], desc: 'SqlSugar 仓储、混合缓存 L1/L2、事件总线、AI、多租户' },
+  { name: '基础设施', en: 'Infrastructure', items: ['Data', 'Caching', 'Authentication', 'EventBus', 'BackgroundJobs', 'Auditing', 'AI', 'Bot', 'MultiTenancy', 'SearchEngines', 'ObjectStorage'], desc: 'SqlSugar 仓储、混合缓存 L1/L2、分布式事件总线、后台作业、审计、AI、多租户' },
   { name: '领域', en: 'Domain', items: ['Domain', 'Domain.Shared'], desc: 'DDD 模式、实体审计、领域事件、查询过滤' },
   { name: '应用', en: 'Application', items: ['Application', 'Application.Contracts'], desc: 'CRUD、DTO 映射、批量操作、自动分页' },
   { name: '核心', en: 'Core', items: ['Core', 'Utils', 'Metadata'], desc: '模块系统、依赖注入、生命周期、配置选项' },
@@ -61,7 +61,7 @@ const frameworkLayers = [
 
 const frameworkFeatures = [
   { title: '动态 API', items: ['[DynamicApi] 自动生成 REST', '方法名映射 HTTP 动词', 'Scalar 文档界面'] },
-  { title: '自研事件总线', items: ['进程内与分布式事件', '处理器工厂与缓存', '与工作单元联动'] },
+  { title: '自研事件总线', items: ['进程内与分布式事件', 'RabbitMQ / Kafka / Redis Broker', '处理器工厂与工作单元联动'] },
   { title: '混合缓存', items: ['L1 内存 + L2 Redis', '租户隔离 Key', 'UoW 失效联动'] },
   { title: 'AI 集成', items: ['Semantic Kernel', 'Model Context Protocol', 'OpenAI / Ollama'] },
   { title: '数据与事务', items: ['SqlSugar 仓储', '实体审计与软删除', 'UoW 工作单元'] },
