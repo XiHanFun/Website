@@ -18,11 +18,11 @@ const products = [
     idx: "01",
     title: "XiHan.Framework",
     subtitle: "后端框架",
-    status: "v3.4.0",
+    status: "v3.5.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 .NET 10 的模块化后端框架，57 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、后台作业、混合缓存、多租户与 AI 集成一体提供。",
-    features: ["57 模块", "动态 API", "多租户", "AI 集成"],
+    desc: "基于 .NET 10 的模块化后端框架，57 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、后台作业、混合缓存、多租户、OpenTelemetry 链路追踪与 AI 集成一体提供。",
+    features: ["57 模块", "动态 API", "多租户", "链路追踪", "AI 集成"],
     link: "https://framework.xihanfun.com",
     doc: "https://docs.xihanfun.com/cosmos/framework",
   },
@@ -42,11 +42,18 @@ const products = [
     idx: "03",
     title: "XiHan.BasicApp",
     subtitle: "多租户中后台",
-    status: "v3.4.0",
+    status: "v3.5.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、消息中心、六类审计、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
-    features: ["多租户", "RBAC+ABAC", "代码生成", "六类审计", "AI 知识库"],
+    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、消息中心、六类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
+    features: [
+      "多租户",
+      "RBAC+ABAC",
+      "代码生成",
+      "六类审计",
+      "链路追踪",
+      "AI 知识库",
+    ],
     link: "https://basicapp.xihanfun.com",
     doc: "https://docs.xihanfun.com/cosmos/basic-app",
   },
@@ -76,13 +83,14 @@ const frameworkLayers = [
       "EventBus",
       "BackgroundJobs",
       "Auditing",
+      "Observability",
       "AI",
       "Bot",
       "MultiTenancy",
       "SearchEngines",
       "ObjectStorage",
     ],
-    desc: "SqlSugar 仓储、混合缓存 L1/L2、分布式事件总线、后台作业、审计、AI、多租户",
+    desc: "SqlSugar 仓储、混合缓存 L1/L2、分布式事件总线、后台作业、审计、可观测性、AI、多租户",
   },
   {
     name: "领域",
@@ -135,12 +143,16 @@ const frameworkFeatures = [
   },
   {
     title: "韧性与可观测",
-    items: ["Polly 重试与熔断", "限流与流量治理", "健康检查与指标"],
+    items: [
+      "OpenTelemetry / W3C 链路追踪",
+      "HTTP / DB / MQ / Redis 全链路 span",
+      "Polly 重试熔断、限流与指标导出",
+    ],
   },
 ];
 
 const frameworkTech =
-  ".NET 10 · SqlSugar · Serilog · Scalar · Redis · Semantic Kernel · Polly · Elasticsearch · gRPC";
+  ".NET 10 · SqlSugar · Serilog · Scalar · Redis · OpenTelemetry · Semantic Kernel · Polly · Elasticsearch · gRPC";
 
 const uiPackages = [
   { name: "@xihan-ui/components", desc: "组件集合" },
@@ -180,8 +192,14 @@ const basicAppPillars = [
   },
   {
     name: "工程能力",
-    items: ["全栈代码生成", "企业级消息中心", "六类审计日志", "网关灰度发布"],
-    desc: "从脚手架到运营开箱即用，请求落库前自动脱敏",
+    items: [
+      "全栈代码生成",
+      "企业级消息中心",
+      "六类审计日志",
+      "链路追踪时间线",
+      "网关灰度发布",
+    ],
+    desc: "从脚手架到运营开箱即用，请求落库前自动脱敏，一次请求全链路可回溯",
   },
 ];
 
