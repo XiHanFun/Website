@@ -777,6 +777,26 @@ cd XiHan.BasicApp/backend && dotnet run`"
             >QQ 群</a
           >
         </div>
+        <div
+          class="flex flex-col items-center mt-12"
+          :class="communityVis.visible ? 'reveal-in' : 'reveal-init'"
+          style="transition-delay: 120ms"
+        >
+          <p
+            class="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-ink3"
+          >
+            / 微信公众号
+          </p>
+          <div class="w-full max-w-lg rounded-md sm:p-7">
+            <img
+              src="/assets/weixinmp.png"
+              alt="微信搜一搜「摘繁华」公众号二维码"
+              class="block object-contain w-full h-auto select-none"
+              loading="lazy"
+              draggable="false"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
