@@ -18,11 +18,11 @@ const products = [
     idx: "01",
     title: "XiHan.Framework",
     subtitle: "后端框架",
-    status: "v3.6.0",
+    status: "v3.7.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 .NET 10 的模块化后端框架，57 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、后台作业、混合缓存、多租户、OpenTelemetry 链路追踪与 AI 集成一体提供。",
-    features: ["57 模块", "动态 API", "多租户", "链路追踪", "AI 集成"],
+    desc: "基于 .NET 10 的模块化后端框架，63 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OpenTelemetry 链路追踪与 AI 集成一体提供。",
+    features: ["63 模块", "动态 API", "多租户", "工作流", "链路追踪"],
     link: "https://framework.xihanfun.com",
     doc: "https://docs.xihanfun.com/cosmos/framework",
   },
@@ -42,10 +42,10 @@ const products = [
     idx: "03",
     title: "XiHan.BasicApp",
     subtitle: "多租户中后台",
-    status: "v3.6.0",
+    status: "v3.7.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、消息中心、六类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
+    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、工作流设计器、消息中心、六类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
     features: [
       "多租户",
       "RBAC+ABAC",
@@ -81,6 +81,7 @@ const frameworkLayers = [
       "Caching",
       "Authentication",
       "EventBus",
+      "Workflow",
       "BackgroundJobs",
       "Auditing",
       "Observability",
@@ -90,7 +91,7 @@ const frameworkLayers = [
       "SearchEngines",
       "ObjectStorage",
     ],
-    desc: "SqlSugar 仓储、混合缓存 L1/L2、分布式事件总线、后台作业、审计、可观测性、AI、多租户",
+    desc: "SqlSugar 仓储、混合缓存 L1/L2、分布式事件总线、工作流引擎、后台作业、审计、可观测性、AI、多租户",
   },
   {
     name: "领域",
@@ -128,6 +129,10 @@ const frameworkFeatures = [
       "RabbitMQ / Kafka / Redis Broker",
       "处理器工厂与工作单元联动",
     ],
+  },
+  {
+    title: "工作流引擎",
+    items: ["契约与实现分包", "书签驱动与波次隔离", "可视化设计器"],
   },
   {
     title: "混合缓存",
@@ -194,6 +199,7 @@ const basicAppPillars = [
     name: "工程能力",
     items: [
       "全栈代码生成",
+      "工作流设计器",
       "企业级消息中心",
       "六类审计日志",
       "链路追踪时间线",
@@ -223,6 +229,10 @@ const basicAppModules = [
   {
     name: "XiHan.BasicApp.AI",
     desc: "AI Provider 库化管理、RAG 知识库、知识检索技能与 MCP Server",
+  },
+  {
+    name: "XiHan.BasicApp.Workflow",
+    desc: "工作流定义与实例、可视化设计器、运行态追踪与审批流转",
   },
   { name: "XiHan.BasicApp.WebHost", desc: "启动入口，聚合所有模块" },
 ];
@@ -480,7 +490,7 @@ cd XiHan.BasicApp/backend && dotnet run`"
     >
       <div :class="frameworkVis.visible ? 'reveal-in' : 'reveal-init'">
         <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">
-          / Framework · 57 模块
+          / Framework · 63 模块
         </p>
         <h2
           class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
