@@ -66,4 +66,4 @@ pnpm run preview    # 本地预览构建产物
 
 ## License
 
-[MIT](./LICENSE) © 2026 摘繁华
+[MIT](./LICENSE) © 2021-Present XiHanFun and contributors.
