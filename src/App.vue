@@ -18,7 +18,7 @@ const products = [
     idx: "01",
     title: "XiHan.Framework",
     subtitle: "后端框架",
-    status: "v3.8.0",
+    status: "v3.9.0",
     tone: "cyan",
     hasDemo: true,
     desc: "基于 .NET 10 的模块化后端框架，63 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OpenTelemetry 链路追踪与 AI 集成一体提供。",
@@ -42,10 +42,10 @@ const products = [
     idx: "03",
     title: "XiHan.BasicApp",
     subtitle: "多租户中后台",
-    status: "v3.8.0",
+    status: "v3.9.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、工作流设计器、消息中心、六类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
+    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、工作流设计器、在线聊天与 AI 助手、消息中心、六类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
     features: [
       "多租户",
       "RBAC+ABAC",
@@ -228,7 +228,7 @@ const basicAppModules = [
   },
   {
     name: "XiHan.BasicApp.AI",
-    desc: "AI Provider 库化管理、RAG 知识库、知识检索技能与 MCP Server",
+    desc: "AI Provider 库化管理、RAG 知识库、可配置 AI 助手与 MCP Server",
   },
   {
     name: "XiHan.BasicApp.Workflow",
