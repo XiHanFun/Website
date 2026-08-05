@@ -18,11 +18,11 @@ const products = [
     idx: "01",
     title: "XiHan.Framework",
     subtitle: "后端框架",
-    status: "v3.9.0",
+    status: "v3.10.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 .NET 10 的模块化后端框架，63 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OpenTelemetry 链路追踪与 AI 集成一体提供。",
-    features: ["63 模块", "动态 API", "多租户", "工作流", "链路追踪"],
+    desc: "基于 .NET 10 的模块化后端框架，66 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OAuth2 与 OIDC、搜索引擎、OpenTelemetry 链路追踪与 AI 集成一体提供。",
+    features: ["66 模块", "动态 API", "多租户", "工作流", "OIDC", "链路追踪"],
     link: "https://framework.xihanfun.com",
     doc: "https://docs.xihanfun.com/cosmos/framework",
   },
@@ -33,8 +33,8 @@ const products = [
     status: "实验性 · 开发中",
     tone: "warn",
     hasDemo: false,
-    desc: "面向 Vue 3 的组件库，工程化 Monorepo 架构，10 个子包覆盖组件、主题、多语言、图标、Hooks、指令、插件与 CLI，TypeScript 优先。目前正在重写，暂不建议生产使用。",
-    features: ["10 子包", "主题系统", "i18n", "按需引入"],
+    desc: "正在重写为框架无关的设计系统运行时：14 个子包，内核与状态机不绑定任何框架，Vue 与 Web Components 各自作为适配器接入，定位、高亮、状态机等底层能力自研，不引入第三方运行时依赖。重写期间接口仍会调整，暂不建议生产使用。",
+    features: ["14 子包", "框架无关", "无第三方运行时", "多适配器"],
     link: "https://ui.xihanfun.com",
     doc: "https://docs.xihanfun.com/cosmos/ui",
   },
@@ -42,15 +42,15 @@ const products = [
     idx: "03",
     title: "XiHan.BasicApp",
     subtitle: "多租户中后台",
-    status: "v3.9.0",
+    status: "v3.10.0",
     tone: "cyan",
     hasDemo: true,
-    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、工作流设计器、在线聊天与 AI 助手、消息中心、六类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
+    desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、工作流设计器、在线聊天与 AI 助手、消息中心、七类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
     features: [
       "多租户",
       "RBAC+ABAC",
       "代码生成",
-      "六类审计",
+      "七类审计",
       "链路追踪",
       "AI 知识库",
     ],
@@ -70,6 +70,7 @@ const frameworkLayers = [
       "Web.RealTime",
       "Web.Grpc",
       "Web.Docs",
+      "Web.Mcp",
     ],
     desc: "动态 API、网关、SignalR、gRPC、Scalar 文档",
   },
@@ -82,7 +83,7 @@ const frameworkLayers = [
       "Authentication",
       "EventBus",
       "Workflow",
-      "BackgroundJobs",
+      "Tasks",
       "Auditing",
       "Observability",
       "AI",
@@ -140,7 +141,7 @@ const frameworkFeatures = [
   },
   {
     title: "AI 集成",
-    items: ["Semantic Kernel", "Model Context Protocol", "OpenAI / Ollama"],
+    items: ["Microsoft.Extensions.AI", "Model Context Protocol", "RAG 与向量检索"],
   },
   {
     title: "数据与事务",
@@ -157,26 +158,36 @@ const frameworkFeatures = [
 ];
 
 const frameworkTech =
-  ".NET 10 · SqlSugar · Serilog · Scalar · Redis · OpenTelemetry · Semantic Kernel · Polly · Elasticsearch · gRPC";
+  ".NET 10 · SqlSugar · Serilog · Scalar · Redis · OpenTelemetry · Microsoft.Extensions.AI · MCP · Polly · Elasticsearch · gRPC";
 
 const uiPackages = [
-  { name: "@xihan-ui/components", desc: "组件集合" },
-  { name: "@xihan-ui/themes", desc: "统一样式系统：主题 / 响应式 / 动画" },
-  { name: "@xihan-ui/hooks", desc: "组合式 Hooks" },
+  { name: "@xihan-ui/core", desc: "基础原语，框架无关、零运行时依赖" },
+  { name: "@xihan-ui/machine", desc: "轻量状态机运行时" },
+  { name: "@xihan-ui/headless", desc: "无样式组件：结构、状态机与连接器" },
+  { name: "@xihan-ui/styled", desc: "纯 CSS 皮肤，由数据属性与设计令牌驱动" },
+  { name: "@xihan-ui/system", desc: "设计令牌与主题运行时" },
+  { name: "@xihan-ui/behavior", desc: "交互行为：关闭层、焦点域、滚动锁、贴底" },
+  { name: "@xihan-ui/position", desc: "定位引擎，无第三方运行时依赖" },
+  { name: "@xihan-ui/vue", desc: "Vue 适配器：组件、组合式函数与机器运行时" },
+  { name: "@xihan-ui/wc", desc: "Web Components 适配器，Light DOM 行为宿主" },
+  { name: "@xihan-ui/ai", desc: "AI 协议核心：SSE 传输、协议归一、消息分片" },
+  { name: "@xihan-ui/markdown", desc: "流式 Markdown 增量渲染" },
+  { name: "@xihan-ui/highlight", desc: "代码高亮，无第三方运行时依赖" },
+  { name: "@xihan-ui/visual", desc: "WebGL2 背景与数据驱动粒子视觉层" },
   { name: "@xihan-ui/icons", desc: "图标" },
-  { name: "@xihan-ui/locales", desc: "i18n 多语言" },
-  { name: "@xihan-ui/directives", desc: "指令" },
-  { name: "@xihan-ui/plugins", desc: "插件" },
-  { name: "@xihan-ui/cli", desc: "脚手架 CLI" },
-  { name: "@xihan-ui/utils", desc: "工具函数" },
-  { name: "@xihan-ui/constants", desc: "共享常量" },
 ];
 
 const uiPrinciples = [
-  { k: "工程化", v: "pnpm + Turborepo + unbuild，产物含 ESM / CJS 与类型声明" },
-  { k: "主题", v: "主题引擎与样式编译，设计令牌可定制" },
-  { k: "国际化", v: "组件级 locale 与 i18n 集成" },
-  { k: "按需", v: "sideEffects 标注，树摇与按需引入" },
+  {
+    k: "框架无关",
+    v: "内核与状态机不绑定框架，Vue 与 Web Components 各为一层适配器",
+  },
+  {
+    k: "无第三方",
+    v: "定位引擎、状态机、代码高亮均自研，底层包不引入运行时依赖",
+  },
+  { k: "分层", v: "无样式的 headless 与纯 CSS 的 styled 分离，皮肤可整体替换" },
+  { k: "令牌", v: "设计令牌与主题运行时独立成包，跨适配器共用" },
 ];
 
 const basicAppPillars = [
@@ -201,7 +212,7 @@ const basicAppPillars = [
       "全栈代码生成",
       "工作流设计器",
       "企业级消息中心",
-      "六类审计日志",
+      "七类审计日志",
       "链路追踪时间线",
       "网关灰度发布",
     ],
@@ -490,7 +501,7 @@ cd XiHan.BasicApp/backend && dotnet run`"
     >
       <div :class="frameworkVis.visible ? 'reveal-in' : 'reveal-init'">
         <p class="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-cyan">
-          / Framework · 63 模块
+          / Framework · 66 模块
         </p>
         <h2
           class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
@@ -568,11 +579,11 @@ cd XiHan.BasicApp/backend && dotnet run`"
         <h2
           class="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
         >
-          十个子包，各司其职
+          十四个子包，各司其职
         </h2>
         <p class="max-w-2xl mt-3 text-sm text-ink3">
-          面向 Vue 3 的组件库，工程化优先：主题、国际化、图标、Hooks
-          全部独立成包。组件库仍处于实验阶段，接口可能调整，暂不建议生产使用。
+          正在重写为框架无关的设计系统运行时：无样式内核与状态机独立成包，Vue
+          与 Web Components 各自作为适配器接入。重写期间接口仍会调整，暂不建议生产使用。
         </p>
       </div>
 
