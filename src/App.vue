@@ -24,7 +24,7 @@ const products = [
     desc: "基于 .NET 10 的模块化后端框架，66 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OAuth2 与 OIDC、搜索引擎、OpenTelemetry 链路追踪与 AI 集成一体提供。",
     features: ["66 模块", "动态 API", "多租户", "工作流", "OIDC", "链路追踪"],
     link: "https://framework.xihanfun.com",
-    doc: "https://docs.xihanfun.com/cosmos/framework",
+    doc: "https://framework.docs.xihanfun.com",
   },
   {
     idx: "02",
@@ -36,7 +36,7 @@ const products = [
     desc: "正在重写为框架无关的设计系统运行时：14 个子包，内核与状态机不绑定任何框架，Vue 与 Web Components 各自作为适配器接入，定位、高亮、状态机等底层能力自研，不引入第三方运行时依赖。重写期间接口仍会调整，暂不建议生产使用。",
     features: ["14 子包", "框架无关", "无第三方运行时", "多适配器"],
     link: "https://ui.xihanfun.com",
-    doc: "https://docs.xihanfun.com/cosmos/ui",
+    doc: "https://ui.docs.xihanfun.com",
   },
   {
     idx: "03",
@@ -55,7 +55,7 @@ const products = [
       "AI 知识库",
     ],
     link: "https://basicapp.xihanfun.com",
-    doc: "https://docs.xihanfun.com/cosmos/basic-app",
+    doc: "https://basicapp.docs.xihanfun.com",
   },
 ];
 
