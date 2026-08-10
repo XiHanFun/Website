@@ -7,7 +7,7 @@ const links = {
   docs: "https://docs.xihanfun.com",
   github: "https://github.com/XiHanFun",
   gitee: "https://gitee.com/XiHanFun",
-  atomgit: "https://atomgit.com/XiHanFun",
+  gitcode: "https://gitcode.com/XiHanFun",
   nuget: "https://www.nuget.org/profiles/XiHanFun",
   npm: "https://www.npmjs.com/org/xihan-ui",
   qq: "https://qm.qq.com/q/qYp1Urv3z2",
@@ -307,11 +307,11 @@ const communityVis = useScrollAnimation();
             >Gitee</a
           >
           <a
-            :href="links.atomgit"
+            :href="links.gitcode"
             target="_blank"
             rel="noopener"
             class="transition-colors text-ink2 hover:text-cyan sm:inline"
-            >AtomGit</a
+            >GitCode</a
           >
           <a
             :href="links.docs"
@@ -381,11 +381,11 @@ const communityVis = useScrollAnimation();
             >Gitee</a
           >
           <a
-            :href="links.atomgit"
+            :href="links.gitcode"
             target="_blank"
             rel="noopener"
             class="btn btn-ghost"
-            >AtomGit</a
+            >GitCode</a
           >
         </div>
       </div>
@@ -785,11 +785,11 @@ cd XiHan.BasicApp/backend && dotnet run`"
             >Gitee</a
           >
           <a
-            :href="links.atomgit"
+            :href="links.gitcode"
             target="_blank"
             rel="noopener"
             class="btn btn-ghost"
-            >AtomGit</a
+            >GitCode</a
           >
           <a
             :href="links.qq"
