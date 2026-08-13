@@ -18,7 +18,7 @@ const products = [
     idx: "01",
     title: "XiHan.Framework",
     subtitle: "后端框架",
-    status: "v3.11.0",
+    status: "v3.12.0",
     tone: "cyan",
     hasDemo: true,
     desc: "基于 .NET 10 的模块化后端框架，66 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OAuth2 与 OIDC、搜索引擎、OpenTelemetry 链路追踪与 AI 集成一体提供。",
@@ -42,7 +42,7 @@ const products = [
     idx: "03",
     title: "XiHan.BasicApp",
     subtitle: "多租户中后台",
-    status: "v3.11.0",
+    status: "v3.12.0",
     tone: "cyan",
     hasDemo: true,
     desc: "基于 Framework 与 UI 构建的多租户中后台。RBAC + ABAC + 字段级安全、代码生成、工作流设计器、在线聊天（含语音消息）与 AI 助手、消息中心、七类审计、链路追踪、AI 知识库开箱即用，DDD 分层、前后分离、可水平扩展。",
@@ -215,6 +215,7 @@ const basicAppPillars = [
       "七类审计日志",
       "链路追踪时间线",
       "升级引擎与维护模式",
+      "模块可插拔卸载",
       "网关灰度发布",
     ],
     desc: "导入表即近乎零配置生成全栈代码，重新生成不冲掉手写实现，请求落库前自动脱敏",
@@ -245,6 +246,14 @@ const basicAppModules = [
   {
     name: "XiHan.BasicApp.Workflow",
     desc: "工作流定义与实例、可视化设计器、运行态追踪与审批流转",
+  },
+  {
+    name: "XiHan.BasicApp.Chat",
+    desc: "单聊群聊、语音消息、群治理与敏感词，前后端均可整体卸载",
+  },
+  {
+    name: "XiHan.BasicApp.Printing",
+    desc: "打印模板设计器、数据源注册表与租户隔离模板存储",
   },
   { name: "XiHan.BasicApp.WebHost", desc: "启动入口，聚合所有模块" },
 ];
