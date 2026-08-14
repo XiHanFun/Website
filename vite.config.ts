@@ -11,5 +11,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        // 背景层是整个站点里最重的一块，且只有实验室与首页 Hero 用得上，单独切出来
+        manualChunks: {
+          backgrounds: ['@xihan-ui/backgrounds'],
+        },
+      },
+    },
   },
 })

@@ -1,0 +1,18 @@
+allowBuilds:
+  esbuild: true
+
+# @xihan-ui/* 目前是 alpha，按文档要求写精确版本；这里把它们排除在最短发布时长门槛之外。
+minimumReleaseAgeExclude:
+  - '@xihan-ui/backgrounds@1.0.0-alpha.1'
+  - '@xihan-ui/behavior@1.0.0-alpha.1'
+  - '@xihan-ui/code-highlight@1.0.0-alpha.1'
+  - '@xihan-ui/headless@1.0.0-alpha.1'
+  - '@xihan-ui/icons@1.0.0-alpha.1'
+  - '@xihan-ui/kernel@1.0.0-alpha.1'
+  - '@xihan-ui/machine@1.0.0-alpha.1'
+  - '@xihan-ui/markdown@1.0.0-alpha.1'
+  - '@xihan-ui/position@1.0.0-alpha.1'
+  - '@xihan-ui/sound@1.0.0-alpha.1'
+  - '@xihan-ui/styles@1.0.0-alpha.1'
+  - '@xihan-ui/tokens@1.0.0-alpha.1'
+  - '@xihan-ui/vue@1.0.0-alpha.1'
