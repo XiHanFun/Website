@@ -88,8 +88,9 @@ pnpm run preview
 
 推送或提交 PR 到 `main` 分支时，GitHub Actions（`.github/workflows/deploy-website.yml`）会自动安装 Node 24 与 pnpm 11、`pnpm install --frozen-lockfile`、`pnpm run build`，再通过 `JamesIves/github-pages-deploy-action` 把 `dist/` 部署到 `gh-pages` 分支。
 
-两个与 GitHub Pages 有关的细节：
+三个与 GitHub Pages 有关的细节，缺一个站点就是坏的：
 
+- **`public/.nojekyll`**：Pages 默认跑 Jekyll，而 Jekyll 会把 `_` 开头的文件当源文件排除在产物之外。Vite 的共享分片里有一个 `_plugin-vue_export-helper-*.js`，没有这个空文件它就会 404，懒加载的路由分片跟着整片挂掉——表现是页头页脚正常、正文空白。这个文件不能删。
 - **`public/CNAME`**：自定义域名 `www.xihanfun.com` 随 `dist/` 一并发布。放在仓库根目录的那一份不会进产物。
 - **`dist/404.html`**：Pages 是静态托管，直接访问 `/framework` 这类深链接会落到 404；构建后把 `index.html` 复制一份成 `404.html`，Pages 拿它兜底，路由再交回前端。
 
