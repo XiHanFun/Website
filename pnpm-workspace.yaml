@@ -1,7 +1,27 @@
 allowBuilds:
   esbuild: true
 
+# 依赖目录（单一版本事实源）：package.json 一律用 catalog: 引用，升级只改这里一处
+catalog:
+  '@vitejs/plugin-vue': ^5.2.4
+  '@xihan-ui/animations': 1.0.0-alpha.2
+  '@xihan-ui/backgrounds': 1.0.0-alpha.2
+  '@xihan-ui/code-highlight': 1.0.0-alpha.2
+  '@xihan-ui/icons': 1.0.0-alpha.2
+  '@xihan-ui/markdown': 1.0.0-alpha.2
+  '@xihan-ui/motion': 1.0.0-alpha.2
+  '@xihan-ui/sound': 1.0.0-alpha.2
+  '@xihan-ui/styles': 1.0.0-alpha.2
+  '@xihan-ui/tokens': 1.0.0-alpha.2
+  '@xihan-ui/vue': 1.0.0-alpha.2
+  typescript: ^5.9.3
+  vite: ^6.4.1
+  vue: ^3.5.30
+  vue-router: ^4.5.1
+  vue-tsc: ^2.2.12
+
 # @xihan-ui/* 目前是 alpha，按文档要求写精确版本；这里把它们排除在最短发布时长门槛之外。
+# 兄弟包（behavior / headless / kernel / machine / position）是传递依赖，装得到但不直接引。
 minimumReleaseAgeExclude:
   - '@xihan-ui/animations@1.0.0-alpha.2'
   - '@xihan-ui/backgrounds@1.0.0-alpha.2'

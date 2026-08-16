@@ -17,23 +17,23 @@
     "deploy": "pnpm run build"
   },
   "dependencies": {
-    "@xihan-ui/animations": "1.0.0-alpha.2",
-    "@xihan-ui/backgrounds": "1.0.0-alpha.2",
-    "@xihan-ui/code-highlight": "1.0.0-alpha.2",
-    "@xihan-ui/icons": "1.0.0-alpha.2",
-    "@xihan-ui/markdown": "1.0.0-alpha.2",
-    "@xihan-ui/motion": "1.0.0-alpha.2",
-    "@xihan-ui/sound": "1.0.0-alpha.2",
-    "@xihan-ui/styles": "1.0.0-alpha.2",
-    "@xihan-ui/tokens": "1.0.0-alpha.2",
-    "@xihan-ui/vue": "1.0.0-alpha.2",
-    "vue": "^3.5.30",
-    "vue-router": "^4.5.1"
+    "@xihan-ui/animations": "catalog:",
+    "@xihan-ui/backgrounds": "catalog:",
+    "@xihan-ui/code-highlight": "catalog:",
+    "@xihan-ui/icons": "catalog:",
+    "@xihan-ui/markdown": "catalog:",
+    "@xihan-ui/motion": "catalog:",
+    "@xihan-ui/sound": "catalog:",
+    "@xihan-ui/styles": "catalog:",
+    "@xihan-ui/tokens": "catalog:",
+    "@xihan-ui/vue": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.4",
-    "typescript": "^5.9.3",
-    "vite": "^6.4.1",
-    "vue-tsc": "^2.2.12"
+    "@vitejs/plugin-vue": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
   }
 }
