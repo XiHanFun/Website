@@ -440,19 +440,6 @@
     mask-image: linear-gradient(to bottom, black 35%, transparent 100%);
   }
 
-  /*
-   * 背景画面的宿主。
-   *
-   * 摆位归外面那层壳，这里只管撑满：createBackgroundSurface 判定宿主 position 为 static 时
-   * 会内联写一句 position: relative，而函数式 ref 触发时元素还没进文档，读到的必然是 static。
-   * 内联样式压得过任何层里的规则，所以别把定位写在这一层跟它抢，套一层壳最省事。
-   */
-  .bg-fill {
-    display: block;
-    inline-size: 100%;
-    block-size: 100%;
-  }
-
   .hero__inner {
     display: grid;
     gap: clamp(32px, 5vw, 64px);
@@ -636,28 +623,18 @@
 
   /* ---------- 进场动画 ---------- */
 
+  /* 进场前先藏起来，动画由 @xihan-ui/animations 的播放器出 */
   .reveal {
     opacity: 0;
-    transform: translateY(14px);
-    transition:
-      opacity 620ms var(--xh-ease-out),
-      transform 620ms var(--xh-ease-out);
   }
 
   .reveal[data-revealed='true'] {
     opacity: 1;
-    transform: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
-    }
-
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
     }
 
     .panel--hover:hover {

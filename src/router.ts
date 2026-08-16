@@ -7,7 +7,6 @@ export const router = createRouter({
     { path: '/framework', name: 'framework', component: () => import('./pages/FrameworkPage.vue'), meta: { title: 'XiHan.Framework · 曦寒' } },
     { path: '/ui', name: 'ui', component: () => import('./pages/UiPage.vue'), meta: { title: 'XiHan.UI · 曦寒' } },
     { path: '/basicapp', name: 'basicapp', component: () => import('./pages/BasicAppPage.vue'), meta: { title: 'XiHan.BasicApp · 曦寒' } },
-    { path: '/lab', name: 'lab', component: () => import('./pages/LabPage.vue'), meta: { title: '实验室 · 曦寒' } },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
   scrollBehavior(to, _from, savedPosition) {

@@ -54,7 +54,7 @@ import ThemeToggle from './ThemeToggle.vue'
 
         <ThemeToggle />
 
-        <XhDrawerRoot side="right" size="sm" :translations="{ close: '关闭' }">
+        <XhDrawerRoot side="right" size="sm">
           <XhDrawerTrigger class="mobile-only" aria-label="打开导航">☰</XhDrawerTrigger>
           <XhDrawerContent>
             <XhDrawerTitle>导航</XhDrawerTitle>

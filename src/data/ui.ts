@@ -24,11 +24,13 @@ export const packages: UiPackage[] = [
   { name: '@xihan-ui/chat-stream', group: 'features', desc: 'SSE 传输、协议归一、消息分片与会话 store' },
   { name: '@xihan-ui/backgrounds', group: 'features', desc: 'WebGL2 背景效果与数据驱动粒子点云' },
   { name: '@xihan-ui/sound', group: 'features', desc: '程序化 UI 音效，零音频文件，声音是可序列化配方' },
+  { name: '@xihan-ui/animations', group: 'features', desc: '现成动效：进场、注意、错开起播与文字拆分' },
 
   { name: '@xihan-ui/kernel', group: 'engine', desc: '基础原语，框架无关、零运行时依赖' },
   { name: '@xihan-ui/machine', group: 'engine', desc: '轻量状态机运行时，框架无关' },
   { name: '@xihan-ui/headless', group: 'engine', desc: '无样式组件：解剖、状态机与 connect' },
   { name: '@xihan-ui/behavior', group: 'engine', desc: '交互行为：关闭层、焦点域、滚动锁、贴底、在场' },
+  { name: '@xihan-ui/motion', group: 'engine', desc: '动效原语：缓动、弹簧、补间与减弱动效' },
   { name: '@xihan-ui/position', group: 'engine', desc: '定位引擎，无第三方运行时依赖' },
   { name: '@xihan-ui/code-highlight', group: 'engine', desc: '粗粒度词法着色器，无第三方运行时依赖' },
 ]

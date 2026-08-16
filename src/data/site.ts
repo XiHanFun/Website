@@ -13,7 +13,6 @@ export const nav = [
   { to: '/framework', label: '框架' },
   { to: '/ui', label: '组件' },
   { to: '/basicapp', label: '中后台' },
-  { to: '/lab', label: '实验室' },
 ] as const
 
 /** 三处镜像同步维护，Issue 与 PR 在哪一处提都收得到。 */
@@ -54,10 +53,10 @@ export const products: Product[] = [
     route: '/ui',
     title: 'XiHan.UI',
     subtitle: '设计系统运行时',
-    status: 'v1.0.0-alpha.1',
+    status: 'v1.0.0-alpha.2',
     stable: false,
-    desc: '框架无关的设计系统运行时：15 个包已发布 npm，内核与状态机不绑定任何框架，Vue 与 Web Components 各自作为适配器接入同一套无头内核。定位引擎、状态机、代码高亮、WebGL 背景、程序化音效全部自研，底层包不引第三方运行时依赖。alpha 阶段接口仍会调整，不承诺语义化版本。',
-    features: ['15 包', '104 组件', '框架无关', '双适配器', '无第三方运行时'],
+    desc: '框架无关的设计系统运行时：17 个包已发布 npm，内核与状态机不绑定任何框架，Vue 与 Web Components 各自作为适配器接入同一套无头内核。定位引擎、状态机、代码高亮、WebGL 背景、程序化音效全部自研，底层包不引第三方运行时依赖。alpha 阶段接口仍会调整，不承诺语义化版本。',
+    features: ['17 包', '104 组件', '框架无关', '双适配器', '无第三方运行时'],
     demo: null,
     doc: 'https://ui.docs.xihanfun.com',
   },
@@ -85,6 +84,6 @@ export interface Stat {
 export const stats: Stat[] = [
   { label: '后端模块', value: 66, suffix: '个', note: 'XiHan.Framework' },
   { label: '前端组件', value: 104, suffix: '个', note: 'XiHan.UI' },
-  { label: '前端子包', value: 15, suffix: '个', note: '已发布 npm' },
+  { label: '前端子包', value: 17, suffix: '个', note: '已发布 npm' },
   { label: '代码托管', value: 3, suffix: '处', note: 'GitHub / Gitee / GitCode' },
 ]

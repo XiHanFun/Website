@@ -8,30 +8,36 @@ importers:
 
   .:
     dependencies:
+      '@xihan-ui/animations':
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/backgrounds':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/code-highlight':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/icons':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/markdown':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
+      '@xihan-ui/motion':
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/sound':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/styles':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/tokens':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2
       '@xihan-ui/vue':
-        specifier: 1.0.0-alpha.1
-        version: 1.0.0-alpha.1(@xihan-ui/backgrounds@1.0.0-alpha.1)(@xihan-ui/sound@1.0.0-alpha.1)(vue@3.5.41(typescript@5.9.3))
+        specifier: 1.0.0-alpha.2
+        version: 1.0.0-alpha.2(@xihan-ui/backgrounds@1.0.0-alpha.2)(@xihan-ui/sound@1.0.0-alpha.2)(vue@3.5.41(typescript@5.9.3))
       vue:
         specifier: ^3.5.30
         version: 3.5.41(typescript@5.9.3)
@@ -441,60 +447,69 @@ packages:
   '@vue/shared@3.5.41':
     resolution: {integrity: sha512-IOnwSCma8j+9xJT6b8H0dEYidC80NsYmNMlZxRsukYcSoGaDBohog5hDxzeUXdFeGWFA++vWvxqOmrr96VlqMA==}
 
-  '@xihan-ui/backgrounds@1.0.0-alpha.1':
-    resolution: {integrity: sha512-jXiYcfWilsd32WxlcTRNGYusskk9CpKoRSd1SoLdQKx8AxuVzhZQkkciFvofedZ0cXNTUxMAB+13L2MKIDfUCw==}
+  '@xihan-ui/animations@1.0.0-alpha.2':
+    resolution: {integrity: sha512-Qza6TIo5otV9uOxKNVMzYPKyGI5vMHe/hRzYltXxlo5scx4jvmvAcJunjZiKLi+EG4gdJFJLsDFSwLK4nge8LA==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/behavior@1.0.0-alpha.1':
-    resolution: {integrity: sha512-isYQFI1PgjYMbcs0nAvAg/dqoGvEzwJ0ItBqPi0kshiwXZNRo8Cl6tRkWLPP9ZxbB43Zc+FNMCQKtr8FZpMJiw==}
+  '@xihan-ui/backgrounds@1.0.0-alpha.2':
+    resolution: {integrity: sha512-nPWcxWvkRJ49aqvtV5PSggoiayhdwalwRKuMAzFFtinMMfSj2cmXubIjTrORc7fzctKhzrruedn2l4eGzGWHgw==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/code-highlight@1.0.0-alpha.1':
-    resolution: {integrity: sha512-7dE2gFBkMU7yNhhw5fM8H7P3T0O/MgayaucOym0hucJK37+rxvGokjBeZ6m5S/yOPGVF+TqQhXJEc5MN8cJDBQ==}
+  '@xihan-ui/behavior@1.0.0-alpha.2':
+    resolution: {integrity: sha512-iz2xqa4IQuG2Gvc8RG+LwutJ1k87G8GvSgEjWOg5itkSKRL/5hyDXT1v0TsFCHK/XJFJ6nKSijTeIxJJ8pjC6A==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/headless@1.0.0-alpha.1':
-    resolution: {integrity: sha512-7WnWgkgEdK47C/UMj2kJVP/HtP4CYay7h1r5rb/mxB5gQdh0KSQN5YIT/GbjmgdRnlgP0AXOElsJafLYFByW5A==}
+  '@xihan-ui/code-highlight@1.0.0-alpha.2':
+    resolution: {integrity: sha512-r+2lGXzbl9DYHZwN+pJaB0rSkJ/wYiCS2uxiGbk2Rdin9joWLh+5EGy2oOwb6cwkoik9sNev5bdg0Ha4BnkNoQ==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/icons@1.0.0-alpha.1':
-    resolution: {integrity: sha512-+ooBhKCiE449X9MfMJbwlbF6YMqG8s9AUKO9WXuHWgWWPho70T3Mb716mkqbImOg/5R996Q/2ThNRUHRU0ArMQ==}
+  '@xihan-ui/headless@1.0.0-alpha.2':
+    resolution: {integrity: sha512-t2H5h8mU1k+gxEBCeZ8UlOhh8+dQlcyV29S+2pDyBT/Q4YA4m8ynOaIDw4qXMJy9v1K/H3rudzQsGwIlLiBfvA==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/kernel@1.0.0-alpha.1':
-    resolution: {integrity: sha512-o9QsyAfVp6tdfJ19zBLlQgZ6IxQzpziC+6skm8jndVLM6eH/pGeyJiN8iaPQcHqrLGrk7p3SobVVyg3p8LhuzQ==}
+  '@xihan-ui/icons@1.0.0-alpha.2':
+    resolution: {integrity: sha512-0ge9EqAxU8k5iQE4ohWEjt5EJ1KODngeOZx6EmfWYFSzU26alNAvQnx14P+JSKl6IFQncVL6K6WxUdPml9eOtQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  '@xihan-ui/kernel@1.0.0-alpha.2':
+    resolution: {integrity: sha512-LGql8o9536y1JJish4VyRAgEzdmNDY+ipMUhGohWT3tAcV64U2mD12TOfzPMHrBfEd/UT6mE3IFBHL8jEKTqdg==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/machine@1.0.0-alpha.1':
-    resolution: {integrity: sha512-m8tcF3mIcPujJ8u0dIHw875uoDm/bO5jsT7+EtKEplTMwKuF53uy1wrnaD5BoJ6RcH+ndhoqMVykN1M+9kSMGw==}
+  '@xihan-ui/machine@1.0.0-alpha.2':
+    resolution: {integrity: sha512-suSZd7nvOXR2y3G8aPuaP/WHTE4ztylCEXpJX/PSkj2123lxcZOuCVIHdrgeHzCSOXmhmYiEvAxpESse44J4Vg==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/markdown@1.0.0-alpha.1':
-    resolution: {integrity: sha512-Npz/bO3zj9vNHLth9L7hAHdZ2nU7DayyUC1RhQvdc5bwxaIJ97Jp2Ie4XDppLOfdB+K9u/ZXgQMrgpeDH6jYGw==}
+  '@xihan-ui/markdown@1.0.0-alpha.2':
+    resolution: {integrity: sha512-LA0bLixqglsGr+bGfiyehBKCnPyEhU1xBcowSttGemAy+ONItZndcNzoQKfk64yjHUas3n7h+11FHZc+gYBkbQ==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/position@1.0.0-alpha.1':
-    resolution: {integrity: sha512-01JaDN7ONooGVT4jvD9qvRoBeIvEHh7EYe+PxRS97kaK1AL1nKc6S4Ik8gI/uO5+gGP0hT5oZ6WOM3/xB9bgxA==}
+  '@xihan-ui/motion@1.0.0-alpha.2':
+    resolution: {integrity: sha512-KeM8byc12il4aYcaAad2TLgA8DU8QLrAUAZFlC4d0msvvbZYccQmq3skKYtwm/iI4SIFtwat0x8SBjee+emSEw==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/sound@1.0.0-alpha.1':
-    resolution: {integrity: sha512-2ezmqtKX8SNT2IrrFOyirpmqokT0G/ecV3rDD8zRRC1kgIJ7ekG5nrxJT0MhnvOBb0XRxhRvs3gxWXqZ67dOHw==}
+  '@xihan-ui/position@1.0.0-alpha.2':
+    resolution: {integrity: sha512-s+5UwcEujEt9jyORevW31xpYpU/OHDkzpDfG32brLnbOU9uYuB4bFwlPgOT6tHvCe9XKy+qHrRxtnd9s7VgOnw==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/styles@1.0.0-alpha.1':
-    resolution: {integrity: sha512-1Ugd9ejVlPwJnUHeSvEfd2QG58AkcuhSUbdWAY+n2rsh9J7MyQitwdhhqFYsB2vTnAHDUzwKvBAoqWJkAsuCJg==}
+  '@xihan-ui/sound@1.0.0-alpha.2':
+    resolution: {integrity: sha512-1KS9D1EhsxzGRql7rB2feEdfVHMuwUNmH87BFN7CWJACEEQ3N7mp3p1A1DxV7SvRmNdOopYd4+ZdsgopaUplLg==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/tokens@1.0.0-alpha.1':
-    resolution: {integrity: sha512-qspTQ2Pqg7Mf5/8wvhT0fNwCAmp2e03qeUtOUTe0IRPXC5kd9HjsxEIk5tNpMsdjwC0MNDmjk6pfMrkvhPhIvA==}
+  '@xihan-ui/styles@1.0.0-alpha.2':
+    resolution: {integrity: sha512-JRA9Qr0woUXudjTrVlnvUwyb4PnXFjR6plaUP5aCP1x8Qi2hWHTLO/WnptDLWRw2LeGxdgH54fy0NC6JqiBnBw==}
     engines: {node: '>=18'}
 
-  '@xihan-ui/vue@1.0.0-alpha.1':
-    resolution: {integrity: sha512-n7zJiAZ4Ajks825gL7JfeutjXta9VFSKXwJ6PWW+nh9tDPecLQ0Za8frOX4fCTXIDgH9KMCEYCy9U5TfaDhVkg==}
+  '@xihan-ui/tokens@1.0.0-alpha.2':
+    resolution: {integrity: sha512-IbmswvhBGB04LLBsmYqgTvb1BddTwl2prmcy72CNQkSxO1GsxBkhEgBp4QXHa2FrdHyz92jAu4Fu+amPd0zWbw==}
+    engines: {node: '>=18'}
+
+  '@xihan-ui/vue@1.0.0-alpha.2':
+    resolution: {integrity: sha512-OYyG7uXSMMI0OKQwhSgYt0MI1LnMZt0tvS3nXPZY1i1c8eKY5pCWdcQWaCB8ZH60sL0db1yk196tRF3KqDRkrQ==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@xihan-ui/backgrounds': ^1.0.0-alpha.1
-      '@xihan-ui/sound': ^1.0.0-alpha.1
+      '@xihan-ui/backgrounds': ^1.0.0-alpha.2
+      '@xihan-ui/sound': ^1.0.0-alpha.2
       vue: ^3.5.0
     peerDependenciesMeta:
       '@xihan-ui/backgrounds':
@@ -933,62 +948,72 @@ snapshots:
 
   '@vue/shared@3.5.41': {}
 
-  '@xihan-ui/backgrounds@1.0.0-alpha.1':
+  '@xihan-ui/animations@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/behavior': 1.0.0-alpha.1
-      '@xihan-ui/kernel': 1.0.0-alpha.1
+      '@xihan-ui/kernel': 1.0.0-alpha.2
+      '@xihan-ui/motion': 1.0.0-alpha.2
 
-  '@xihan-ui/behavior@1.0.0-alpha.1':
+  '@xihan-ui/backgrounds@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/kernel': 1.0.0-alpha.1
+      '@xihan-ui/behavior': 1.0.0-alpha.2
+      '@xihan-ui/kernel': 1.0.0-alpha.2
 
-  '@xihan-ui/code-highlight@1.0.0-alpha.1':
+  '@xihan-ui/behavior@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/kernel': 1.0.0-alpha.1
+      '@xihan-ui/kernel': 1.0.0-alpha.2
+      '@xihan-ui/motion': 1.0.0-alpha.2
 
-  '@xihan-ui/headless@1.0.0-alpha.1':
+  '@xihan-ui/code-highlight@1.0.0-alpha.2':
+    dependencies:
+      '@xihan-ui/kernel': 1.0.0-alpha.2
+
+  '@xihan-ui/headless@1.0.0-alpha.2':
     dependencies:
       '@internationalized/date': 3.12.3
-      '@xihan-ui/behavior': 1.0.0-alpha.1
-      '@xihan-ui/kernel': 1.0.0-alpha.1
-      '@xihan-ui/machine': 1.0.0-alpha.1
+      '@xihan-ui/behavior': 1.0.0-alpha.2
+      '@xihan-ui/kernel': 1.0.0-alpha.2
+      '@xihan-ui/machine': 1.0.0-alpha.2
+      '@xihan-ui/motion': 1.0.0-alpha.2
 
-  '@xihan-ui/icons@1.0.0-alpha.1': {}
+  '@xihan-ui/icons@1.0.0-alpha.2': {}
 
-  '@xihan-ui/kernel@1.0.0-alpha.1': {}
+  '@xihan-ui/kernel@1.0.0-alpha.2': {}
 
-  '@xihan-ui/machine@1.0.0-alpha.1':
+  '@xihan-ui/machine@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/kernel': 1.0.0-alpha.1
+      '@xihan-ui/kernel': 1.0.0-alpha.2
 
-  '@xihan-ui/markdown@1.0.0-alpha.1': {}
+  '@xihan-ui/markdown@1.0.0-alpha.2': {}
 
-  '@xihan-ui/position@1.0.0-alpha.1':
+  '@xihan-ui/motion@1.0.0-alpha.2': {}
+
+  '@xihan-ui/position@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/kernel': 1.0.0-alpha.1
+      '@xihan-ui/kernel': 1.0.0-alpha.2
 
-  '@xihan-ui/sound@1.0.0-alpha.1':
+  '@xihan-ui/sound@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/kernel': 1.0.0-alpha.1
+      '@xihan-ui/kernel': 1.0.0-alpha.2
 
-  '@xihan-ui/styles@1.0.0-alpha.1':
+  '@xihan-ui/styles@1.0.0-alpha.2':
     dependencies:
-      '@xihan-ui/tokens': 1.0.0-alpha.1
+      '@xihan-ui/tokens': 1.0.0-alpha.2
 
-  '@xihan-ui/tokens@1.0.0-alpha.1': {}
+  '@xihan-ui/tokens@1.0.0-alpha.2': {}
 
-  '@xihan-ui/vue@1.0.0-alpha.1(@xihan-ui/backgrounds@1.0.0-alpha.1)(@xihan-ui/sound@1.0.0-alpha.1)(vue@3.5.41(typescript@5.9.3))':
+  '@xihan-ui/vue@1.0.0-alpha.2(@xihan-ui/backgrounds@1.0.0-alpha.2)(@xihan-ui/sound@1.0.0-alpha.2)(vue@3.5.41(typescript@5.9.3))':
     dependencies:
-      '@xihan-ui/behavior': 1.0.0-alpha.1
-      '@xihan-ui/code-highlight': 1.0.0-alpha.1
-      '@xihan-ui/headless': 1.0.0-alpha.1
-      '@xihan-ui/kernel': 1.0.0-alpha.1
-      '@xihan-ui/machine': 1.0.0-alpha.1
-      '@xihan-ui/position': 1.0.0-alpha.1
+      '@xihan-ui/behavior': 1.0.0-alpha.2
+      '@xihan-ui/code-highlight': 1.0.0-alpha.2
+      '@xihan-ui/headless': 1.0.0-alpha.2
+      '@xihan-ui/kernel': 1.0.0-alpha.2
+      '@xihan-ui/machine': 1.0.0-alpha.2
+      '@xihan-ui/motion': 1.0.0-alpha.2
+      '@xihan-ui/position': 1.0.0-alpha.2
       vue: 3.5.41(typescript@5.9.3)
     optionalDependencies:
-      '@xihan-ui/backgrounds': 1.0.0-alpha.1
-      '@xihan-ui/sound': 1.0.0-alpha.1
+      '@xihan-ui/backgrounds': 1.0.0-alpha.2
+      '@xihan-ui/sound': 1.0.0-alpha.2
 
   alien-signals@1.0.13: {}
 

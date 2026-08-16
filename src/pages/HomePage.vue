@@ -68,7 +68,7 @@ dotnet run`,
 const pitches = [
   {
     k: '模块化',
-    v: '后端 66 个模块按依赖图装配，前端 15 个包按角色分组；用哪块装哪块，不用的那部分连代码都不会进产物。',
+    v: '后端 66 个模块按依赖图装配，前端 17 个包按角色分组；用哪块装哪块，不用的那部分连代码都不会进产物。',
   },
   {
     k: '可追踪',
@@ -84,14 +84,13 @@ const pitches = [
 <template>
   <!-- 首屏 -->
   <section class="hero">
-    <div class="hero__backdrop" aria-hidden="true">
-      <XhBackground
-        class="bg-fill"
-        :effect="nebulaEffect"
-        :params="heroParams"
-        quality="balanced"
-      />
-    </div>
+    <XhBackground
+      class="hero__backdrop"
+      aria-hidden="true"
+      :effect="nebulaEffect"
+      :params="heroParams"
+      quality="balanced"
+    />
     <div class="container hero__inner">
       <div class="stack" style="gap: var(--xh-space-5)">
         <div class="row" style="gap: var(--xh-space-2)">
@@ -114,9 +113,6 @@ const pitches = [
           <a :href="links.docs" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="solid">
             查看文档
           </a>
-          <RouterLink to="/lab" data-scope="button" data-part="root" data-variant="outline">
-            进实验室
-          </RouterLink>
           <a :href="links.github" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="ghost">
             GitHub
           </a>

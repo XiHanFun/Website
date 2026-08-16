@@ -16,7 +16,6 @@ import {
   XhTabsRoot,
 } from '@xihan-ui/vue'
 import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
 import CodeSample from '../components/CodeSample.vue'
 import SectionHead from '../components/SectionHead.vue'
 import { vReveal } from '../composables/reveal'
@@ -81,9 +80,6 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
         <a :href="ui.doc" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="solid">
           阅读文档
         </a>
-        <RouterLink to="/lab" data-scope="button" data-part="root" data-variant="outline">
-          进实验室试组件
-        </RouterLink>
         <a
           href="https://www.npmjs.com/org/xihan-ui"
           target="_blank"
@@ -115,7 +111,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
   <section class="section">
     <div class="container">
       <SectionHead
-        eyebrow="15 个包 · 四个角色组"
+        eyebrow="17 个包 · 四个角色组"
         title="目录名回答的是「跟使用者什么关系」"
         lede="不是「属于哪一层」，而是「怎么到达你手里」：适配器选一个、外观显式装、特性按需自选、引擎跟着适配器自动来。"
       />
