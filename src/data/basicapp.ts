@@ -40,7 +40,7 @@ export const modules: AppModule[] = [
   { name: 'XiHan.BasicApp.Core', desc: '聚合 Framework 多包：认证 / 缓存 / 数据 / 多租户 / 事件总线' },
   { name: 'XiHan.BasicApp.Web.Core', desc: '动态 API、Scalar、SignalR、网关与灰度路由' },
   { name: 'XiHan.BasicApp.Saas', desc: '用户 / 角色 / 权限 / 租户 / 配置 / 字典 / 消息 / 日志 / 任务' },
-  { name: 'XiHan.BasicApp.CodeGeneration', desc: '多数据源导入、配置推断、树表主子表模板、生成与手写代码分离' },
+  { name: 'XiHan.BasicApp.CodeGeneration', desc: '多数据源导入、配置推断、树表主子表模板，产物可下载或写入项目、不冲掉手写实现' },
   { name: 'XiHan.BasicApp.AI', desc: 'AI Provider 库化管理、RAG 知识库、可配置 AI 助手与 MCP Server' },
   { name: 'XiHan.BasicApp.Workflow', desc: '工作流定义与实例、可视化设计器、运行态追踪与审批流转' },
   { name: 'XiHan.BasicApp.Chat', desc: '单聊群聊、语音消息、群治理与敏感词，前后端均可整体卸载' },
