@@ -90,7 +90,7 @@ export const componentGroups = [
   },
   {
     name: '导航',
-    items: ['tabs', 'steps', 'menu', 'menubar', 'context-menu', 'navigation-menu', 'side-nav', 'toolbar', 'breadcrumb', 'anchor', 'pagination', 'back-top', 'float-button'],
+    items: ['tabs', 'segmented', 'steps', 'menu', 'menubar', 'context-menu', 'navigation-menu', 'side-nav', 'toolbar', 'breadcrumb', 'anchor', 'pagination', 'back-top', 'float-button'],
   },
   {
     name: '反馈',
