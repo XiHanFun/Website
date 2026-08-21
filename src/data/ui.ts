@@ -65,26 +65,26 @@ export const principles = [
 export const componentGroups = [
   {
     name: '通用',
-    items: ['button', 'button-group', 'icon', 'icon-wrapper', 'badge', 'avatar', 'avatar-group', 'clipboard', 'toggle', 'toggle-group'],
+    items: ['button', 'button-group', 'icon', 'icon-wrapper', 'badge', 'avatar', 'avatar-group', 'clipboard', 'download-trigger', 'hotkeys', 'toggle', 'toggle-group'],
   },
   {
     name: '布局',
-    items: ['layout', 'flex', 'grid', 'splitter', 'scroll-area', 'separator', 'card', 'page-header', 'affix', 'watermark'],
+    items: ['layout', 'flex', 'grid', 'space', 'masonry', 'splitter', 'scroll-area', 'separator', 'card', 'page-header', 'affix', 'watermark'],
   },
   {
     name: '数据录入',
     items: [
-      'text-field', 'number-field', 'pin-input', 'tags-input', 'mention', 'editable', 'dynamic-input',
+      'text-field', 'password-input', 'number-field', 'pin-input', 'tags-input', 'mention', 'editable', 'dynamic-input',
       'select', 'combobox', 'cascader', 'tree-select', 'listbox', 'transfer',
       'checkbox', 'checkbox-group', 'radio-group', 'switch', 'slider', 'rating',
-      'color-picker', 'date-field', 'date-picker', 'time-field', 'time-picker', 'calendar', 'file-upload', 'form', 'field',
+      'color-picker', 'date-field', 'date-picker', 'time-field', 'time-picker', 'calendar', 'file-upload', 'image-cropper', 'signature-pad', 'form', 'fieldset', 'field',
     ],
   },
   {
     name: '数据展示',
     items: [
-      'table', 'list', 'tree', 'descriptions', 'timeline', 'statistic', 'number-animation', 'countdown', 'time',
-      'carousel', 'image', 'image-viewer', 'marquee', 'qr-code', 'code-block', 'highlight', 'ellipsis',
+      'table', 'list', 'tree', 'descriptions', 'tag', 'timeline', 'statistic', 'number-animation', 'countdown', 'timer', 'time',
+      'carousel', 'image', 'image-viewer', 'marquee', 'qr-code', 'heatmap', 'code-block', 'json-viewer', 'highlight', 'ellipsis',
       'accordion', 'collapsible', 'virtualizer', 'infinite-scroll', 'log', 'typography', 'gradient-text',
     ],
   },
@@ -94,7 +94,7 @@ export const componentGroups = [
   },
   {
     name: '反馈',
-    items: ['alert', 'dialog', 'drawer', 'popover', 'popconfirm', 'popselect', 'hover-card', 'tooltip', 'toast', 'toaster', 'progress', 'spinner', 'skeleton', 'loading-bar', 'result', 'empty-state', 'tour'],
+    items: ['alert', 'dialog', 'drawer', 'popover', 'popconfirm', 'popselect', 'floating-panel', 'hover-card', 'tooltip', 'toast', 'toaster', 'progress', 'spinner', 'skeleton', 'loading-bar', 'result', 'empty-state', 'tour'],
   },
   {
     name: 'AI 对话',
