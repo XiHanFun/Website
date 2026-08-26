@@ -190,7 +190,7 @@ const pitches = [
               <RouterLink :to="p.route" class="link text-sm">本站介绍</RouterLink>
               <a :href="p.doc" target="_blank" rel="noopener" class="link text-sm">文档</a>
               <a v-if="p.demo" :href="p.demo" target="_blank" rel="noopener" class="link text-sm">在线体验</a>
-              <span v-else class="text-sm subtle">alpha 开发中</span>
+              <span v-else class="text-sm subtle">文档内含示例</span>
             </div>
           </XhCardFooter>
         </XhCardRoot>

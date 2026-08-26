@@ -65,7 +65,7 @@ export const frontendStack = [
   'Pinia',
   'Vue Router',
   'Tailwind CSS v4',
-  'Naive UI',
+  'XiHan.UI',
   'SignalR',
 ]
 

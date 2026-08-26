@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import {
-  XhAlertDescription,
-  XhAlertRoot,
-  XhAlertTitle,
   XhBadge,
   XhPageHeaderRoot,
   XhPageHeaderSubtitle,
@@ -68,13 +65,6 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
       </XhPageHeaderRoot>
 
       <p class="lede" style="margin-block-start: var(--xh-space-6)">{{ ui.desc }}</p>
-
-      <XhAlertRoot tone="warning" :closable="false" style="margin-block-start: var(--xh-space-5)">
-        <XhAlertTitle>alpha 阶段</XhAlertTitle>
-        <XhAlertDescription>
-          能装、能跑，但接口还会变，不承诺语义化版本，不建议用于生产。要让行为可复现，请把版本写成精确值而不是区间。
-        </XhAlertDescription>
-      </XhAlertRoot>
 
       <div class="row" style="margin-block-start: var(--xh-space-5)">
         <a :href="ui.doc" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="solid">

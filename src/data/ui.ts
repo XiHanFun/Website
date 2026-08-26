@@ -65,7 +65,7 @@ export const principles = [
 export const componentGroups = [
   {
     name: '通用',
-    items: ['button', 'button-group', 'icon', 'icon-wrapper', 'badge', 'avatar', 'avatar-group', 'clipboard', 'download-trigger', 'hotkeys', 'toggle', 'toggle-group'],
+    items: ['button', 'button-group', 'icon', 'icon-wrapper', 'badge', 'avatar', 'avatar-group', 'clipboard', 'download-trigger', 'hotkeys', 'scrollbar', 'toggle', 'toggle-group'],
   },
   {
     name: '布局',
@@ -94,7 +94,7 @@ export const componentGroups = [
   },
   {
     name: '反馈',
-    items: ['alert', 'dialog', 'drawer', 'popover', 'popconfirm', 'popselect', 'floating-panel', 'hover-card', 'tooltip', 'toast', 'toaster', 'progress', 'spinner', 'skeleton', 'loading-bar', 'result', 'empty-state', 'tour'],
+    items: ['alert', 'notification', 'dialog', 'drawer', 'popover', 'popconfirm', 'popselect', 'floating-panel', 'hover-card', 'tooltip', 'toast', 'progress', 'spinner', 'skeleton', 'loading-bar', 'result', 'empty-state', 'tour'],
   },
   {
     name: 'AI 对话',
