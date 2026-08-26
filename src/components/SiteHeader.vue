@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { MenuIcon } from '@xihan-ui/icons'
 import {
+  XhButton,
   XhDrawerCloseTrigger,
   XhDrawerContent,
+  XhDrawerDescription,
   XhDrawerRoot,
   XhDrawerTitle,
   XhDrawerTrigger,
+  XhIcon,
   XhSeparator,
 } from '@xihan-ui/vue'
 import { RouterLink } from 'vue-router'
@@ -54,12 +58,27 @@ import ThemeToggle from './ThemeToggle.vue'
 
         <ThemeToggle />
 
-        <XhDrawerRoot side="right" size="sm">
-          <XhDrawerTrigger class="mobile-only" aria-label="打开导航">☰</XhDrawerTrigger>
+        <XhDrawerRoot v-slot="{ setOpen }" side="right" size="sm">
+          <!-- as-child：触发器的接线合到按钮上，按钮保留自己的解剖与 ghost 皮肤，
+               否则抽屉触发器皮肤会给它画一道边，和紧邻的 ThemeToggle 对不上 -->
+          <XhDrawerTrigger as-child>
+            <XhButton class="mobile-only" icon-only variant="ghost" size="sm" aria-label="打开导航">
+              <XhIcon :icon="MenuIcon" />
+            </XhButton>
+          </XhDrawerTrigger>
           <XhDrawerContent>
             <XhDrawerTitle>导航</XhDrawerTitle>
+            <XhDrawerDescription>站内页面、代码托管与色彩模式</XhDrawerDescription>
             <nav class="stack" style="gap: var(--xh-space-1); margin-block-start: var(--xh-space-4)">
-              <RouterLink v-for="item in nav" :key="item.to" :to="item.to" class="site-nav__link">
+              <!-- 链接在 content 内部，不触发 closeOnInteractOutside；不自己收起来的话
+                   跳到新页面后抽屉还盖着、背后的滚动锁也还在 -->
+              <RouterLink
+                v-for="item in nav"
+                :key="item.to"
+                :to="item.to"
+                class="site-nav__link"
+                @click="setOpen(false)"
+              >
                 {{ item.label }}
               </RouterLink>
             </nav>
@@ -90,7 +109,7 @@ import ThemeToggle from './ThemeToggle.vue'
               <ThemeControls />
             </div>
 
-            <XhDrawerCloseTrigger>✕</XhDrawerCloseTrigger>
+            <XhDrawerCloseTrigger />
           </XhDrawerContent>
         </XhDrawerRoot>
       </div>

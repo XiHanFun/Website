@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {
-  XhBadge,
   XhMarqueeContent,
   XhMarqueeRoot,
   XhPageHeaderRoot,
   XhPageHeaderSubtitle,
   XhPageHeaderTitle,
   XhTabsRoot,
+  XhTagLabel,
+  XhTagRoot,
 } from '@xihan-ui/vue'
 import CodeSample from '../components/CodeSample.vue'
 import SectionHead from '../components/SectionHead.vue'
@@ -31,7 +32,7 @@ const sampleCode: Record<string, { lang: string, code: string }> = {
   <section class="section section--tight">
     <div class="container">
       <XhPageHeaderRoot bordered size="lg">
-        <XhPageHeaderTitle>XiHan.Framework</XhPageHeaderTitle>
+        <XhPageHeaderTitle><h1>XiHan.Framework</h1></XhPageHeaderTitle>
         <XhPageHeaderSubtitle>
           基于 .NET 10 的模块化后端框架 · {{ framework.status }}
         </XhPageHeaderSubtitle>
@@ -100,7 +101,7 @@ const sampleCode: Record<string, { lang: string, code: string }> = {
       <div class="grid" style="--cols: 1; --cols-sm: 2; --cols-lg: 3">
         <div v-for="(c, i) in capabilities" :key="c.title" v-reveal="i * 60" class="panel">
           <div class="row" style="gap: var(--xh-space-2); margin-block-end: var(--xh-space-3)">
-            <span style="inline-size: 5px; block-size: 5px; border-radius: 999px; background: var(--xh-color-brand-500)" />
+            <span style="inline-size: 5px; block-size: 5px; border-radius: 999px; background: var(--xh-fg-brand)" />
             <h3 class="title-md">{{ c.title }}</h3>
           </div>
           <ul class="stack" style="gap: var(--xh-space-1)">
@@ -123,9 +124,7 @@ const sampleCode: Record<string, { lang: string, code: string }> = {
       <div v-reveal class="panel">
         <XhTabsRoot :collection="samples" default-value="api">
           <template #panel="node">
-            <div style="padding-block-start: var(--xh-space-4)">
-              <CodeSample :code="sampleCode[node.value]!.code" :lang="sampleCode[node.value]!.lang" />
-            </div>
+            <CodeSample :code="sampleCode[node.value]!.code" :lang="sampleCode[node.value]!.lang" />
           </template>
         </XhTabsRoot>
       </div>
@@ -138,13 +137,13 @@ const sampleCode: Record<string, { lang: string, code: string }> = {
       <p class="eyebrow" style="margin-block-end: var(--xh-space-4)">技术选型</p>
       <XhMarqueeRoot auto-fill pause-on-hover :speed="40">
         <XhMarqueeContent>
-          <XhBadge
+          <XhTagRoot
             v-for="t in techStack"
             :key="t"
             variant="outline"
             tone="neutral"
             style="margin-inline-end: var(--xh-space-3)"
-          >{{ t }}</XhBadge>
+          ><XhTagLabel>{{ t }}</XhTagLabel></XhTagRoot>
         </XhMarqueeContent>
       </XhMarqueeRoot>
     </div>

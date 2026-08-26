@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {
-  XhBadge,
   XhPageHeaderRoot,
   XhPageHeaderSubtitle,
   XhPageHeaderTitle,
+  XhTagLabel,
+  XhTagRoot,
   XhTimelineConnector,
   XhTimelineContent,
   XhTimelineDescription,
@@ -41,7 +42,7 @@ const gates = [
   <section class="section section--tight">
     <div class="container">
       <XhPageHeaderRoot bordered size="lg">
-        <XhPageHeaderTitle>XiHan.BasicApp</XhPageHeaderTitle>
+        <XhPageHeaderTitle><h1>XiHan.BasicApp</h1></XhPageHeaderTitle>
         <XhPageHeaderSubtitle>
           基于 Framework 与 UI 构建的多租户中后台 · {{ app.status }}
         </XhPageHeaderSubtitle>
@@ -85,7 +86,7 @@ const gates = [
 
       <div v-reveal class="panel">
         <XhTimelineRoot>
-          <XhTimelineItem v-for="g in gates" :key="g.title">
+          <XhTimelineItem v-for="g in gates" :key="g.title" tone="brand">
             <XhTimelineIndicator />
             <XhTimelineConnector />
             <XhTimelineContent>
@@ -107,7 +108,7 @@ const gates = [
           <h3 class="title-md">{{ p.name }}</h3>
           <ul class="stack" style="gap: var(--xh-space-2)">
             <li v-for="item in p.items" :key="item" class="row text-sm" style="gap: var(--xh-space-2); flex-wrap: nowrap; align-items: flex-start">
-              <span style="margin-block-start: 9px; inline-size: 4px; block-size: 4px; flex-shrink: 0; border-radius: 999px; background: var(--xh-color-brand-500)" />
+              <span style="margin-block-start: 9px; inline-size: 4px; block-size: 4px; flex-shrink: 0; border-radius: 999px; background: var(--xh-fg-brand)" />
               <span>{{ item }}</span>
             </li>
           </ul>
@@ -124,7 +125,9 @@ const gates = [
     <div class="container">
       <SectionHead eyebrow="审计" title="七类日志，落在库里" />
       <div v-reveal class="row">
-        <XhBadge v-for="k in auditKinds" :key="k" variant="subtle" tone="neutral">{{ k }}</XhBadge>
+        <XhTagRoot v-for="k in auditKinds" :key="k" variant="subtle" tone="neutral">
+          <XhTagLabel>{{ k }}</XhTagLabel>
+        </XhTagRoot>
       </div>
       <p class="text-sm subtle" style="margin-block-start: var(--xh-space-4)">
         另有链路追踪时间线与迁移记录两处独立视图，与审计日志分开呈现。

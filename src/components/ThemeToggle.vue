@@ -37,13 +37,13 @@ function cycle(): void {
 
 <template>
   <XhButton
+    icon-only
     variant="ghost"
     size="sm"
     :aria-label="name"
     :title="name"
-    style="--xh-button-px: 0; inline-size: var(--xh-control-h-sm)"
     @click="cycle"
   >
-    <XhIcon :icon="current.icon" size="sm" />
+    <XhIcon :icon="current.icon" />
   </XhButton>
 </template>

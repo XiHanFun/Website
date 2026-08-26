@@ -6,6 +6,7 @@ import SiteHeader from './components/SiteHeader.vue'
 
 // 组件内建文案的中文一次给全站，实例上的 translations 仍然胜出
 provideXhConfig({
+  locale: 'zh-CN',
   translations: {
     'back-top': { trigger: '回到顶部' },
     'drawer': { close: '关闭' },
@@ -22,7 +23,7 @@ provideXhConfig({
     <SiteFooter />
 
     <XhBackTopRoot :visibility-height="600">
-      <XhBackTopTrigger>↑</XhBackTopTrigger>
+      <XhBackTopTrigger />
     </XhBackTopRoot>
   </div>
 </template>

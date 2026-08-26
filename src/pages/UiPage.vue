@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import {
-  XhBadge,
   XhPageHeaderRoot,
   XhPageHeaderSubtitle,
   XhPageHeaderTitle,
   XhTableBody,
+  XhTableCaption,
   XhTableCell,
   XhTableColumnHeader,
   XhTableHeader,
   XhTableRoot,
   XhTableRow,
   XhTabsRoot,
+  XhTagLabel,
+  XhTagRoot,
 } from '@xihan-ui/vue'
 import { computed } from 'vue'
 import CodeSample from '../components/CodeSample.vue'
@@ -58,7 +60,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
   <section class="section section--tight">
     <div class="container">
       <XhPageHeaderRoot bordered size="lg">
-        <XhPageHeaderTitle>XiHan.UI</XhPageHeaderTitle>
+        <XhPageHeaderTitle><h1>XiHan.UI</h1></XhPageHeaderTitle>
         <XhPageHeaderSubtitle>
           框架无关的设计系统运行时 · {{ ui.status }}
         </XhPageHeaderSubtitle>
@@ -85,9 +87,9 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
   <!-- 本站自证 -->
   <section class="section section--tight">
     <div class="container">
-      <div v-reveal class="panel" style="border-color: color-mix(in oklab, var(--xh-color-brand-500) 35%, transparent)">
+      <div v-reveal class="panel" style="border-color: color-mix(in oklab, var(--xh-fg-brand) 35%, transparent)">
         <div class="row" style="gap: var(--xh-space-3)">
-          <XhBadge variant="solid" tone="brand">自证</XhBadge>
+          <XhTagRoot variant="solid" tone="brand"><XhTagLabel>自证</XhTagLabel></XhTagRoot>
           <p class="text-sm muted" style="margin: 0">
             你正在看的这个站点本身就是用 XiHan.UI 搭的：没有引任何其他 UI 库，也没有引 Tailwind。
             顶栏、抽屉、卡片、标签页、代码块、统计数字、首屏背景都是库里的组件，排版层只用设计令牌手写。
@@ -107,16 +109,19 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
       />
 
       <div v-reveal class="row" style="margin-block-end: var(--xh-space-5)">
-        <span v-for="g in packageGroups" :key="g.key" class="chip chip--brand">
-          {{ g.label }} · {{ g.note }}
-        </span>
+        <XhTagRoot v-for="g in packageGroups" :key="g.key" class="pkg-group" variant="outline" tone="brand" size="sm">
+          <XhTagLabel>
+            <span style="font-family: var(--xh-font-family-mono)">{{ g.label }}</span> · {{ g.note }}
+          </XhTagLabel>
+        </XhTagRoot>
       </div>
 
-      <div v-reveal class="panel panel--flush" style="overflow-x: auto">
-        <XhTableRoot :columns="columns" :rows="rows" size="sm">
+      <div v-reveal>
+        <XhTableRoot v-slot="{ columns: cols }" :columns="columns" :rows="rows" size="sm" style="--xh-table-max-h: none">
+          <XhTableCaption class="xh-visually-hidden">XiHan.UI 的 17 个包</XhTableCaption>
           <XhTableHeader>
             <XhTableRow>
-              <XhTableColumnHeader v-for="col in columns" :key="col.id" :value="col.id">
+              <XhTableColumnHeader v-for="col in cols" :key="col.id" :value="col.id">
                 {{ col.label }}
               </XhTableColumnHeader>
             </XhTableRow>
@@ -163,9 +168,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
       <div v-reveal class="panel">
         <XhTabsRoot :collection="usages" default-value="vue" variant="segment">
           <template #panel="node">
-            <div style="padding-block-start: var(--xh-space-4)">
-              <CodeSample :code="usageCode[node.value]!.code" :lang="usageCode[node.value]!.lang" />
-            </div>
+            <CodeSample :code="usageCode[node.value]!.code" :lang="usageCode[node.value]!.lang" />
           </template>
         </XhTabsRoot>
       </div>
@@ -210,3 +213,23 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
     </div>
   </section>
 </template>
+
+<style scoped>
+/* 定宽两列不参与富余宽度分配，剩余宽度全给「职责」。
+   格子是 flex: 1 1 auto（table.css），三列 grow 都是 1 时富余宽度被等量瓜分，
+   写死的 17rem / 9rem 只当下限用。 */
+[data-part='column-header'][data-value='name'],
+[data-part='cell'][data-value='name'],
+[data-part='column-header'][data-value='group'],
+[data-part='cell'][data-value='group'] {
+  flex-grow: 0;
+}
+
+/* 这四枚是「拉丁标识符 + 中文说明」的长串，窄屏要换行，不要被省略号截掉说明。
+   tag 根写死 leading-none，真换行时两行中文字形会上下相贴，行高要一起给 */
+.pkg-group [data-part='label'] {
+  overflow: visible;
+  white-space: normal;
+  line-height: var(--xh-leading-normal);
+}
+</style>

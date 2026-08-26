@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { XhClipboardIndicator, XhClipboardRoot, XhClipboardTrigger, XhCodeBlock } from '@xihan-ui/vue'
+import { CheckIcon } from '@xihan-ui/icons'
+import { XhClipboardIndicator, XhClipboardRoot, XhClipboardTrigger, XhCodeBlock, XhIcon } from '@xihan-ui/vue'
 import { highlighter } from '../highlighter'
 
 defineProps<{
@@ -16,7 +17,7 @@ defineProps<{
       <XhClipboardRoot :value="code">
         <XhClipboardTrigger>
           <XhClipboardIndicator>复制</XhClipboardIndicator>
-          <XhClipboardIndicator copied>✓ 已复制</XhClipboardIndicator>
+          <XhClipboardIndicator copied><XhIcon :icon="CheckIcon" /> 已复制</XhClipboardIndicator>
         </XhClipboardTrigger>
       </XhClipboardRoot>
     </div>

@@ -103,7 +103,7 @@ export const componentGroups = [
 ]
 
 export const usageVue = `<script setup lang="ts">
-import { XhDialogContent, XhDialogRoot, XhDialogTitle, XhDialogTrigger } from '@xihan-ui/vue'
+import { XhButton, XhDialogContent, XhDialogRoot, XhDialogTitle, XhDialogTrigger } from '@xihan-ui/vue'
 </script>
 
 <template>
@@ -145,7 +145,7 @@ export const usageWebComponents = `<!-- 结构由你手写，data-xh-part 标出
   <div data-xh-part="positioner">
     <div data-xh-part="content">
       <h3 data-xh-part="title">确认操作</h3>
-      <button data-xh-part="close-trigger" aria-label="关闭">✕</button>
+      <button data-xh-part="close-trigger" aria-label="关闭"></button>
     </div>
   </div>
 </xh-dialog>`
@@ -164,11 +164,16 @@ import { createThemeController } from '@xihan-ui/tokens/runtime'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// 令牌必须在皮肤之前：皮肤里不写兜底值，令牌缺席就是缺陷，不是降级
-import '@xihan-ui/tokens/tokens.css'
+// 只引皮肤入口：它 @import 的第一份是 layers.css（层序单一真源），第二份就是 tokens.css
 import '@xihan-ui/styles'
 
-// 把主题的五个属性写到 <html> 上，并持久化用户偏好
-createThemeController({ storageKey: 'app-theme' })
+// 把主题的五个属性写到 <html> 上，并持久化用户偏好。
+// 控制器里是 { ...已存偏好, ...initial }，initial 恒压过存档，所以默认档只能在
+// 用户还没选过时才塞进去，否则每次刷新都会把用户的选择顶掉。
+// 另外缺省并不跟随系统，要跟随得显式写 mode: 'system'
+createThemeController({
+  storageKey: 'app-theme',
+  initial: localStorage.getItem('app-theme') === null ? { mode: 'system' } : undefined,
+})
 
 createApp(App).mount('#app')`

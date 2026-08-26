@@ -2,7 +2,6 @@
 import type { ParamValue } from '@xihan-ui/backgrounds'
 import { nebulaEffect } from '@xihan-ui/backgrounds'
 import {
-  XhBadge,
   XhCardBody,
   XhCardDescription,
   XhCardFooter,
@@ -16,6 +15,8 @@ import {
   XhStatisticSuffix,
   XhStatisticValue,
   XhTabsRoot,
+  XhTagLabel,
+  XhTagRoot,
 } from '@xihan-ui/vue'
 import { XhBackground } from '@xihan-ui/vue/backgrounds'
 import { computed } from 'vue'
@@ -29,10 +30,15 @@ import { useTheme } from '../theme'
 const { state } = useTheme()
 
 // 星云自带的底色是近黑的，铺在浅色画布上会把整个首屏洗成灰紫。
-// 浅色档把底色换成画布色、光强收一档，深色档用效果原本的配色
+// 浅色档把底色换成画布色、光强收一档，深色档用效果原本的配色。
+//
+// 两个分支必须声明同一套键：setParams 是并入不是替换（backgrounds 的 surface.setParams
+// 写的是 { ...overrides, ...patch }），深色档只给 speed 的话，切过一次浅色之后
+// 那四个键会永远留在 overrides 里，深色首屏被浅色档的白底洗掉。
+// 这里的四个值就是 nebula 效果自己声明的缺省值。
 const heroParams = computed((): Record<string, ParamValue> => {
   if (state.value?.mode === 'dark')
-    return { speed: 0.55 }
+    return { speed: 0.55, background: '#050416', intensity: 1, opacity: 1, density: 0.35 }
   return { speed: 0.55, background: '#ffffff', intensity: 0.5, opacity: 0.75, density: 0.2 }
 })
 
@@ -94,12 +100,12 @@ const pitches = [
     <div class="container hero__inner">
       <div class="stack" style="gap: var(--xh-space-5)">
         <div class="row" style="gap: var(--xh-space-2)">
-          <XhBadge variant="subtle" tone="brand">.NET 10 + Vue 3</XhBadge>
-          <XhBadge variant="outline" tone="neutral">MIT 开源</XhBadge>
+          <XhTagRoot variant="subtle" tone="brand"><XhTagLabel>.NET 10 + Vue 3</XhTagLabel></XhTagRoot>
+          <XhTagRoot variant="outline" tone="neutral"><XhTagLabel>MIT 开源</XhTagLabel></XhTagRoot>
         </div>
 
         <h1 class="hero__wordmark">
-          <XhGradientText>曦寒</XhGradientText>
+          <XhGradientText from="var(--xh-fg-brand)" to="var(--xh-fg-brand-strong)">曦寒</XhGradientText>
         </h1>
 
         <p class="lede" style="font-size: clamp(1.05rem, 2vw, 1.4rem); color: var(--xh-fg-default)">
@@ -122,9 +128,7 @@ const pitches = [
       <div v-reveal class="panel" style="min-inline-size: 0">
         <XhTabsRoot :collection="starters" default-value="backend" variant="segment" size="sm">
           <template #panel="node">
-            <div style="padding-block-start: var(--xh-space-4)">
-              <CodeSample :code="starterCode[node.value]!.code" :lang="starterCode[node.value]!.lang" />
-            </div>
+            <CodeSample :code="starterCode[node.value]!.code" :lang="starterCode[node.value]!.lang" />
           </template>
         </XhTabsRoot>
       </div>
@@ -170,9 +174,9 @@ const pitches = [
           <XhCardHeader>
             <div class="row" style="justify-content: space-between">
               <span class="mono" style="color: var(--xh-fg-brand)">{{ p.idx }}</span>
-              <XhBadge :variant="p.stable ? 'subtle' : 'outline'" :tone="p.stable ? 'success' : 'warning'">
-                {{ p.status }}
-              </XhBadge>
+              <XhTagRoot :variant="p.stable ? 'subtle' : 'outline'" :tone="p.stable ? 'success' : 'warning'">
+                <XhTagLabel>{{ p.status }}</XhTagLabel>
+              </XhTagRoot>
             </div>
             <XhCardTitle>{{ p.title }}</XhCardTitle>
             <XhCardDescription>{{ p.subtitle }}</XhCardDescription>
@@ -181,7 +185,9 @@ const pitches = [
           <XhCardBody>
             <p class="text-sm muted">{{ p.desc }}</p>
             <div class="row" style="gap: var(--xh-space-2); margin-block-start: var(--xh-space-4)">
-              <span v-for="f in p.features" :key="f" class="chip">{{ f }}</span>
+              <XhTagRoot v-for="f in p.features" :key="f" variant="outline" tone="neutral" size="sm">
+                <XhTagLabel>{{ f }}</XhTagLabel>
+              </XhTagRoot>
             </div>
           </XhCardBody>
 
