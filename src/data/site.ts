@@ -41,7 +41,7 @@ export const products: Product[] = [
     route: '/framework',
     title: 'XiHan.Framework',
     subtitle: '后端框架',
-    status: 'v3.14.0',
+    status: 'v4.0.0',
     stable: true,
     desc: '基于 .NET 10 的模块化后端框架，66 个模块从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OAuth2 与 OIDC、搜索引擎、OpenTelemetry 链路追踪与 AI 集成一体提供。',
     features: ['66 模块', '动态 API', '多租户', '工作流', 'OIDC', '链路追踪'],
