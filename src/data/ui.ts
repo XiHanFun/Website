@@ -32,6 +32,7 @@ export const packages: UiPackage[] = [
   { name: '@xihan-ui/behavior', group: 'engine', desc: '交互行为：关闭层、焦点域、滚动锁、贴底、在场' },
   { name: '@xihan-ui/motion', group: 'engine', desc: '动效原语：缓动、弹簧、补间与减弱动效' },
   { name: '@xihan-ui/position', group: 'engine', desc: '定位引擎，无第三方运行时依赖' },
+  { name: '@xihan-ui/pointer', group: 'engine', desc: '指针会话与拖放、缩放几何，无第三方运行时依赖' },
   { name: '@xihan-ui/code-highlight', group: 'engine', desc: '粗粒度词法着色器，无第三方运行时依赖' },
 ]
 
@@ -69,7 +70,7 @@ export const componentGroups = [
   },
   {
     name: '布局',
-    items: ['layout', 'flex', 'grid', 'space', 'masonry', 'splitter', 'scroll-area', 'separator', 'card', 'page-header', 'affix', 'watermark'],
+    items: ['layout', 'flex', 'grid', 'space', 'masonry', 'splitter', 'resizable', 'sortable', 'scroll-area', 'separator', 'card', 'page-header', 'affix', 'watermark'],
   },
   {
     name: '数据录入',

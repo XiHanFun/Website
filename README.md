@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![Vue](https://img.shields.io/badge/Vue-3.5-42b883)](https://vuejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-6-646cff)](https://vitejs.org/)
-[![XiHan.UI](https://img.shields.io/badge/XiHan.UI-1.0.0-8b5cf6)](https://ui.docs.xihanfun.com)
+[![XiHan.UI](https://img.shields.io/badge/XiHan.UI-1.1.0-8b5cf6)](https://ui.docs.xihanfun.com)
 
 # XiHan.Website
 
@@ -13,7 +13,7 @@
 
 - Vue 3.5（`<script setup>`）+ TypeScript 5.9 + Vue Router 4
 - Vite 6 构建，`@vitejs/plugin-vue`
-- [XiHan.UI](https://ui.docs.xihanfun.com) `1.0.0`
+- [XiHan.UI](https://ui.docs.xihanfun.com) `1.1.0`
   - `@xihan-ui/vue` 组件与状态机运行时
   - `@xihan-ui/styles` 默认皮肤 · `@xihan-ui/tokens` 设计令牌与主题运行时
   - `@xihan-ui/backgrounds` WebGL2 背景 · `@xihan-ui/sound` 程序化音效
@@ -26,7 +26,7 @@
 | --- | --- |
 | `/` | 首屏、三大产品、数字、快速开始、社区 |
 | `/framework` | 66 模块五层架构、能力清单、代码示例、技术选型 |
-| `/ui` | 17 个包与四个角色组、设计原则、三种用法、119 个组件总览、接入方式 |
+| `/ui` | 18 个包与四个角色组、设计原则、三种用法、121 个组件总览、接入方式 |
 | `/basicapp` | 权限三层、三根支柱、七类审计、模块清单、本地启动 |
 | `/lab` | 实验室：主题五轴 / 组件画廊 / 14 种背景效果 / 14 个音效语义名 / 流式 Markdown |
 
