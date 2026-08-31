@@ -28,9 +28,6 @@
 | `/framework` | 66 模块五层架构、能力清单、代码示例、技术选型 |
 | `/ui` | 18 个包与四个角色组、设计原则、三种用法、121 个组件总览、接入方式 |
 | `/basicapp` | 权限三层、三根支柱、七类审计、模块清单、本地启动 |
-| `/lab` | 实验室：主题五轴 / 组件画廊 / 14 种背景效果 / 14 个音效语义名 / 流式 Markdown |
-
-`/lab` 是给 XiHan.UI 用的工作台：改主题的任意一个轴，整页当场跟着变；背景的调参面板由效果自带的参数规格自动生成，不是手写的。
 
 ## 目录结构
 
@@ -40,17 +37,17 @@ Website/
 ├── src/
 │   ├── main.ts               # 皮肤导入、主题运行时、挂载
 │   ├── App.vue               # 站点外壳：顶栏 + 路由出口 + 页脚 + 回到顶部
-│   ├── router.ts             # 五条路由，懒加载
+│   ├── router.ts             # 四条页面路由 + 通配兜底回首页，懒加载
 │   ├── theme.ts              # 主题控制器，整站共用一个实例
 │   ├── highlighter.ts        # 代码着色器，整站共用一份
 │   ├── components/
 │   │   ├── SiteHeader.vue / SiteFooter.vue / SectionHead.vue
-│   │   ├── ThemeControls.vue     # 色彩模式分段控件
-│   │   ├── CodeSample.vue        # 代码块 + 复制按钮
-│   │   └── lab/                  # 实验室五张台子
+│   │   ├── ThemeToggle.vue       # 顶栏色彩模式循环按钮
+│   │   ├── ThemeControls.vue     # 抽屉里的色彩模式分段控件
+│   │   └── CodeSample.vue        # 代码块 + 复制按钮
 │   ├── composables/reveal.ts     # v-reveal 滚动进场指令
 │   ├── data/                     # 站点文案与清单（产品、分层、包、模块）
-│   ├── pages/                    # 五个页面
+│   ├── pages/                    # 四个页面
 │   └── styles/site.css           # 站点自有样式，收在 @layer site
 ├── scripts/spa-fallback.mjs   # 构建后把 index.html 复制成 404.html
 ├── public/                    # 静态资源，原样拷贝到 dist（含 CNAME）
