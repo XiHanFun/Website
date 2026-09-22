@@ -103,7 +103,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
   <section class="section">
     <div class="container">
       <SectionHead
-        eyebrow="18 个包 · 四个角色组"
+        eyebrow="17 个包 · 四个角色组"
         title="目录名回答的是「跟使用者什么关系」"
         lede="不是「属于哪一层」，而是「怎么到达你手里」：适配器选一个、外观显式装、特性按需自选、引擎跟着适配器自动来。"
       />
@@ -118,7 +118,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
 
       <div v-reveal>
         <XhTableRoot v-slot="{ columns: cols }" :columns="columns" :rows="rows" size="sm" style="--xh-table-max-h: none">
-          <XhTableCaption class="xh-visually-hidden">XiHan.UI 的 18 个包</XhTableCaption>
+          <XhTableCaption class="xh-visually-hidden">XiHan.UI 的 17 个包</XhTableCaption>
           <XhTableHeader>
             <XhTableRow>
               <XhTableColumnHeader v-for="col in cols" :key="col.id" :value="col.id">
@@ -180,8 +180,8 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
     <div class="container">
       <SectionHead
         eyebrow="组件总览"
-        :title="`${totalComponents} 个组件，两个适配器同时供货`"
-        lede="每个组件都由无头内核给出解剖与状态机，Vue 组件与自定义元素只是它的两层外壳，行为完全一致。"
+        :title="`${totalComponents} 个组件，三个适配器同时供货`"
+        lede="每个组件都由无头内核给出解剖与状态机，Vue 组件、React 组件与自定义元素只是它的三层外壳，行为完全一致。"
       />
 
       <div class="stack stack--lg">
