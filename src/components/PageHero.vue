@@ -2,7 +2,7 @@
 import type { Product } from '../data/site'
 import { computed } from 'vue'
 
-// 产品页首屏：左侧图编号、产品名、定位句与说明，右侧放该产品的线描示意图
+// 产品页首屏：左侧生态位、产品名、定位句与说明，右侧放该产品的线描示意图
 const props = defineProps<{
   product: Product
 }>()
@@ -16,7 +16,7 @@ const suffix = computed(() => props.product.title.replace(/^XiHan/, ''))
     <div class="frame">
       <div class="page-hero">
         <div class="page-hero__copy">
-          <p class="fig"><b>FIG.{{ product.fig }}</b> {{ product.subtitle }} · {{ product.status }}</p>
+          <p class="fig">{{ product.subtitle }} · {{ product.status }}</p>
           <h1 class="page-hero__title">XiHan<span>{{ suffix }}</span></h1>
           <p class="h-item">{{ product.tagline }}</p>
           <p class="lede">{{ product.desc }}</p>

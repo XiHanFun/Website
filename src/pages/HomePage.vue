@@ -120,7 +120,7 @@ const checks = [
       <div class="cells cells--3" style="border-block-start: var(--xh-stroke-thin) solid var(--site-line)">
         <article v-for="(p, i) in products" :key="p.route" v-reveal="i * 80" class="cell">
           <div class="row" style="justify-content: space-between">
-            <span class="fig"><b>FIG.{{ p.fig }}</b> {{ p.subtitle }}</span>
+            <span class="fig">{{ p.subtitle }}</span>
             <span class="fig">{{ p.status }}</span>
           </div>
           <div class="diagram-frame">
@@ -174,7 +174,6 @@ const checks = [
       />
       <div class="cells cells--3">
         <div v-for="(t, i) in trust" :key="t.kind" v-reveal="i * 60" class="cell" style="gap: var(--xh-space-3)">
-          <span class="fig"><b>FIG.03-{{ i + 1 }}</b></span>
           <TrustGlyph :kind="t.kind" />
           <h3 class="h-item">{{ t.title }}</h3>
           <p class="text-sm text-muted">{{ t.text }}</p>

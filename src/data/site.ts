@@ -27,7 +27,6 @@ export const repos = [
 ] as const
 
 export interface Product {
-  fig: string
   route: string
   title: string
   /** 生态位：后端基座 / 前端基座 / 基础应用 */
@@ -47,7 +46,6 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    fig: '01',
     route: '/framework',
     title: 'XiHan.Framework',
     subtitle: '后端基座',
@@ -61,7 +59,6 @@ export const products: Product[] = [
     repo: 'https://github.com/XiHanFun/XiHan.Framework',
   },
   {
-    fig: '02',
     route: '/ui',
     title: 'XiHan.UI',
     subtitle: '前端基座',
@@ -75,7 +72,6 @@ export const products: Product[] = [
     repo: 'https://github.com/XiHanFun/XiHan.UI',
   },
   {
-    fig: '03',
     route: '/basicapp',
     title: 'XiHan.BasicApp',
     subtitle: '基础应用',
