@@ -7,7 +7,7 @@
 
 曦寒（XiHanFun）官方网站源码，[www.xihanfun.com](https://www.xihanfun.com)。站点展示曦寒生态的三大产品——[XiHan.Framework](https://github.com/XiHanFun/XiHan.Framework)（后端基座）、[XiHan.UI](https://github.com/XiHanFun/XiHan.UI)（前端基座）、[XiHan.BasicApp](https://github.com/XiHanFun/XiHan.BasicApp)（基础应用）——并链接到各自的文档、在线 Demo 与社区入口。
 
-站点本身是 XiHan.UI 的第一个对外消费方：**除 XiHan.UI 外不引任何 UI 库，也不引 CSS 框架**。顶栏、抽屉、卡片、标签页、表格、代码块、统计数字、首屏背景全部来自 `@xihan-ui/vue`，排版层只用 `@xihan-ui/tokens` 的设计令牌手写。
+站点本身是 XiHan.UI 的第一个对外消费方：**除 XiHan.UI 外不引任何 UI 库，也不引 CSS 框架**。顶栏、抽屉、按钮、页签、代码窗与复制都来自 `@xihan-ui/vue`；细线网格、图编号、线描示意图与首屏点阵是站点自绘，颜色、间距与动效全部取自 `@xihan-ui/tokens` 的设计令牌。设计取向见 [PRODUCT.md](./PRODUCT.md)。
 
 ## 技术栈
 
@@ -16,18 +16,18 @@
 - [XiHan.UI](https://ui.docs.xihanfun.com)（版本以 `pnpm-workspace.yaml` 的 catalog 为准）
   - `@xihan-ui/vue` 组件与状态机运行时
   - `@xihan-ui/styles` 默认皮肤 · `@xihan-ui/tokens` 设计令牌与主题运行时
-  - `@xihan-ui/backgrounds` WebGL2 背景 · `@xihan-ui/sound` 程序化音效
-  - `@xihan-ui/markdown` 流式 Markdown · `@xihan-ui/code-highlight` 代码着色
+  - `@xihan-ui/icons` 图标 · `@xihan-ui/animations` 进场动效 · `@xihan-ui/code-highlight` 代码着色
+- 字体：拉丁字形 Archivo、等宽 JetBrains Mono，经 Google Fonts 非阻塞加载，取不到时用回退字体；中文走系统字体
 - 包管理：pnpm 11 / Node 24
 
 ## 页面
 
 | 路由 | 内容 |
 | --- | --- |
-| `/` | 首屏、三大产品、数字、快速开始、社区 |
+| `/` | 首屏点阵、三个产品、组合方式、可信依据、上手命令、行动入口 |
 | `/framework` | 五层模块架构、能力清单、代码示例、技术选型 |
-| `/ui` | 包与四个角色组、设计原则、三种用法、组件总览、接入方式 |
-| `/basicapp` | 权限三层、三根支柱、七类审计、模块清单、本地启动 |
+| `/ui` | 自证、包与四个角色组、设计原则、三种用法、组件总览、接入方式 |
+| `/basicapp` | 权限三层、三根支柱、审计、模块清单、本地启动 |
 
 ## 目录结构
 
@@ -41,10 +41,13 @@ Website/
 │   ├── theme.ts              # 主题控制器，整站共用一个实例
 │   ├── highlighter.ts        # 代码着色器，整站共用一份
 │   ├── components/
-│   │   ├── SiteHeader.vue / SiteFooter.vue / SectionHead.vue
+│   │   ├── SiteHeader.vue / SiteFooter.vue / SectionHead.vue / PageHero.vue
+│   │   ├── LinkButton.vue        # 链接形态的按钮（站内走路由，外链新窗口）
+│   │   ├── CodeWindow.vue        # 代码窗：页签 + 复制 + 代码视图
+│   │   ├── HalftoneFigure.vue    # 首屏点阵，按 public/assets/figure.jpg 取样
+│   │   ├── diagrams/             # 三个产品、组合方式与可信依据的线描示意图
 │   │   ├── ThemeToggle.vue       # 顶栏色彩模式循环按钮
-│   │   ├── ThemeControls.vue     # 抽屉里的色彩模式分段控件
-│   │   └── CodeSample.vue        # 代码块 + 复制按钮
+│   │   └── ThemeControls.vue     # 抽屉里的色彩模式分段控件
 │   ├── composables/reveal.ts     # v-reveal 滚动进场指令
 │   ├── data/                     # 站点文案与清单（产品、分层、包、模块）
 │   ├── pages/                    # 四个页面

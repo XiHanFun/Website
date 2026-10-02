@@ -47,6 +47,8 @@ export function setupTheme(): ThemeController {
   // 所以站点默认的深色只在用户还没选过时才塞进去，否则每次刷新都会把用户的选择顶掉
   controller = createThemeController({
     storageKey: STORAGE_KEY,
+    // 存不进去（隐私模式、配额满）只影响下次打开的默认值，本次会话照常切换
+    onStorageError: detail => console.warn('主题偏好持久化失败', detail),
     initial: hasStoredPreference() ? undefined : { mode: 'dark' },
   })
   sync()

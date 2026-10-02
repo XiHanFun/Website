@@ -1,48 +1,68 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { links, nav, products } from '../data/site'
+import { links, products, repos } from '../data/site'
+
+const docs = [
+  { label: '生态文档', href: links.docs },
+  { label: 'Framework 文档', href: links.frameworkDocs },
+  { label: 'UI 文档', href: links.uiDocs },
+  { label: 'BasicApp 文档', href: links.basicappDocs },
+]
+
+const packages = [
+  { label: 'NuGet', href: links.nuget },
+  { label: 'npm', href: links.npm },
+  { label: 'BasicApp 在线体验', href: links.basicappDemo },
+]
 </script>
 
 <template>
-  <footer class="site-footer">
-    <div class="container">
+  <footer class="site-footer band">
+    <div class="frame frame--marked">
       <div class="site-footer__grid">
-        <div>
-          <div class="site-brand" style="margin-block-end: var(--xh-space-3)">
-            <img src="/assets/logo.png" alt="" width="30" height="30">
-            <span>曦寒</span>
+        <div class="stack" style="gap: var(--xh-space-4)">
+          <div class="site-brand">
+            <img src="/assets/logo.png" alt="" width="28" height="28">
+            <span>曦寒懿</span>
           </div>
-          <p class="text-sm" style="max-inline-size: 34ch">
-            从后端框架、前端组件到完整中后台，一套可落地的企业级开发底座。
+          <p class="text-sm text-muted" style="max-inline-size: 30ch">
+            从后端基座、前端基座到基础应用，一套用心维护的 .NET + Vue 开源底座。
           </p>
         </div>
 
-        <div>
-          <div class="site-footer__title">站点</div>
+        <nav aria-label="产品">
+          <p class="site-footer__title">产品</p>
           <div class="site-footer__list">
-            <RouterLink v-for="item in nav" :key="item.to" :to="item.to">{{ item.label }}</RouterLink>
+            <RouterLink v-for="p in products" :key="p.route" :to="p.route">{{ p.title }}</RouterLink>
           </div>
-        </div>
+        </nav>
 
-        <div>
-          <div class="site-footer__title">文档与仓库</div>
+        <nav aria-label="文档">
+          <p class="site-footer__title">文档</p>
           <div class="site-footer__list">
-            <a v-for="p in products" :key="p.title" :href="p.doc" target="_blank" rel="noopener">
-              {{ p.title }} 文档
-            </a>
-            <a :href="links.github" target="_blank" rel="noopener">GitHub</a>
-            <a :href="links.gitee" target="_blank" rel="noopener">Gitee</a>
-            <a :href="links.gitcode" target="_blank" rel="noopener">GitCode</a>
+            <a v-for="d in docs" :key="d.href" :href="d.href" target="_blank" rel="noopener">{{ d.label }}</a>
+          </div>
+        </nav>
+
+        <nav aria-label="社区">
+          <p class="site-footer__title">社区</p>
+          <div class="site-footer__list">
+            <a v-for="r in repos" :key="r.href" :href="r.href" target="_blank" rel="noopener">{{ r.label }}</a>
             <a :href="links.qq" target="_blank" rel="noopener">QQ 群</a>
           </div>
-        </div>
+        </nav>
+
+        <nav aria-label="分发">
+          <p class="site-footer__title">分发</p>
+          <div class="site-footer__list">
+            <a v-for="p in packages" :key="p.href" :href="p.href" target="_blank" rel="noopener">{{ p.label }}</a>
+          </div>
+        </nav>
       </div>
 
-      <hr class="rule" style="margin-block: var(--xh-space-8) var(--xh-space-5)">
-
-      <div class="row" style="justify-content: space-between">
-        <span class="text-xs">© 2021-Present XiHanFun · MIT License · 曦寒懿</span>
-        <span class="mono text-xs subtle">本站由 @xihan-ui/vue 构建</span>
+      <div class="site-footer__base" style="border-block-start: var(--xh-stroke-thin) solid var(--site-line)">
+        <span>© 2021-Present XiHanFun · MIT License</span>
+        <span class="mono">本站由 XiHan.UI 构建</span>
       </div>
     </div>
   </footer>

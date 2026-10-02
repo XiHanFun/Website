@@ -1,24 +1,12 @@
 <script setup lang="ts">
-import {
-  XhPageHeaderRoot,
-  XhPageHeaderSubtitle,
-  XhPageHeaderTitle,
-  XhTableBody,
-  XhTableCaption,
-  XhTableCell,
-  XhTableColumnHeader,
-  XhTableHeader,
-  XhTableRoot,
-  XhTableRow,
-  XhTabsRoot,
-  XhTagLabel,
-  XhTagRoot,
-} from '@xihan-ui/vue'
-import { computed } from 'vue'
-import CodeSample from '../components/CodeSample.vue'
+import type { CodeItem } from '../components/CodeWindow.vue'
+import CodeWindow from '../components/CodeWindow.vue'
+import DiagramUi from '../components/diagrams/DiagramUi.vue'
+import LinkButton from '../components/LinkButton.vue'
+import PageHero from '../components/PageHero.vue'
 import SectionHead from '../components/SectionHead.vue'
 import { vReveal } from '../composables/reveal'
-import { products } from '../data/site'
+import { links, products } from '../data/site'
 import {
   bootstrapSample,
   componentGroups,
@@ -33,161 +21,114 @@ import {
 
 const ui = products[1]!
 
-const columns = [
-  { id: 'name', label: '包', width: '17rem' },
-  { id: 'group', label: '角色组', width: '9rem' },
-  { id: 'desc', label: '职责' },
+const groupedPackages = packageGroups.map(group => ({
+  ...group,
+  items: packages.filter(p => p.group === group.key),
+}))
+
+const usages: CodeItem[] = [
+  { value: 'vue', label: 'Vue 组件', lang: 'vue', code: usageVue },
+  { value: 'composable', label: '组合式函数', lang: 'vue', code: usageComposable },
+  { value: 'wc', label: '自定义元素', lang: 'html', code: usageWebComponents },
 ]
-
-const rows = computed(() => packages.map(p => ({ id: p.name })))
-
-const usages = [
-  { value: 'vue', label: 'Vue 组件' },
-  { value: 'composable', label: '组合式函数' },
-  { value: 'wc', label: '自定义元素' },
-]
-
-const usageCode: Record<string, { lang: string, code: string }> = {
-  vue: { lang: 'vue', code: usageVue },
-  composable: { lang: 'vue', code: usageComposable },
-  wc: { lang: 'html', code: usageWebComponents },
-}
 </script>
 
 <template>
-  <section class="section section--tight">
-    <div class="container">
-      <XhPageHeaderRoot bordered size="lg">
-        <XhPageHeaderTitle><h1>XiHan.UI</h1></XhPageHeaderTitle>
-        <XhPageHeaderSubtitle>
-          快速、轻量、高效、用心的框架无关 Headless UI 组件库 · {{ ui.status }}
-        </XhPageHeaderSubtitle>
-      </XhPageHeaderRoot>
+  <PageHero :product="ui">
+    <template #actions>
+      <LinkButton :href="ui.doc" size="lg">阅读文档</LinkButton>
+      <LinkButton :href="links.npm" variant="outline" size="lg">npm</LinkButton>
+      <LinkButton :href="ui.repo" variant="ghost" size="lg">GitHub</LinkButton>
+    </template>
+    <template #art>
+      <DiagramUi />
+    </template>
+  </PageHero>
 
-      <p class="lede" style="margin-block-start: var(--xh-space-6)">{{ ui.desc }}</p>
-
-      <div class="row" style="margin-block-start: var(--xh-space-5)">
-        <a :href="ui.doc" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="solid">
-          阅读文档
-        </a>
-        <a
-          href="https://www.npmjs.com/org/xihan-ui"
-          target="_blank"
-          rel="noopener"
-          data-scope="button"
-          data-part="root"
-          data-variant="ghost"
-        >npm</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 本站自证 -->
-  <section class="section section--tight">
-    <div class="container">
-      <div v-reveal class="panel" style="border-color: color-mix(in oklab, var(--xh-fg-brand) 35%, transparent)">
-        <div class="row" style="gap: var(--xh-space-3)">
-          <XhTagRoot variant="solid" tone="brand"><XhTagLabel>自证</XhTagLabel></XhTagRoot>
-          <p class="text-sm muted" style="margin: 0">
-            你正在看的这个站点本身就是用 XiHan.UI 搭的：没有引任何其他 UI 库，也没有引 Tailwind。
-            顶栏、抽屉、卡片、标签页、代码块、统计数字、首屏背景都是库里的组件，排版层只用设计令牌手写。
-          </p>
-        </div>
+  <!-- 自证 -->
+  <section class="band">
+    <div class="frame frame--marked">
+      <div class="row-cell" style="background: transparent">
+        <p class="eyebrow">自证</p>
+        <p class="text-sm text-muted">
+          你正在看的这个站点就是用 XiHan.UI 搭的：没有引其他 UI 库，也没有引 CSS 框架。
+          顶栏、抽屉、按钮、页签、代码窗与复制都来自 @xihan-ui/vue，颜色、间距与动效全部取自设计令牌。
+        </p>
       </div>
     </div>
   </section>
 
   <!-- 包 -->
-  <section class="section">
-    <div class="container">
+  <section class="band">
+    <div class="frame frame--marked frame__pad">
       <SectionHead
-        eyebrow="包 · 四个角色组"
-        title="目录名回答的是「跟使用者什么关系」"
-        lede="不是「属于哪一层」，而是「怎么到达你手里」：适配器选一个、外观显式装、特性按需自选、引擎跟着适配器自动来。"
+        eyebrow="01 / 包"
+        title="按「跟使用者什么关系」分组"
+        lede="不是按「属于哪一层」，而是按「怎么到达你手里」：适配器选一个，外观显式装，特性按需自选，引擎跟着适配器自动来。"
+        split
       />
-
-      <div v-reveal class="row" style="margin-block-end: var(--xh-space-5)">
-        <XhTagRoot v-for="g in packageGroups" :key="g.key" class="pkg-group" variant="outline" tone="brand" size="sm">
-          <XhTagLabel>
-            <span style="font-family: var(--xh-font-family-mono)">{{ g.label }}</span> · {{ g.note }}
-          </XhTagLabel>
-        </XhTagRoot>
-      </div>
-
-      <div v-reveal>
-        <XhTableRoot v-slot="{ columns: cols }" :columns="columns" :rows="rows" size="sm" style="--xh-table-max-h: none">
-          <XhTableCaption class="xh-visually-hidden">XiHan.UI 的包</XhTableCaption>
-          <XhTableHeader>
-            <XhTableRow>
-              <XhTableColumnHeader v-for="col in cols" :key="col.id" :value="col.id">
-                {{ col.label }}
-              </XhTableColumnHeader>
-            </XhTableRow>
-          </XhTableHeader>
-          <XhTableBody>
-            <XhTableRow v-for="p in packages" :key="p.name" :value="p.name">
-              <XhTableCell value="name">
-                <span class="mono" style="color: var(--xh-fg-brand)">{{ p.name }}</span>
-              </XhTableCell>
-              <XhTableCell value="group">
-                <span class="chip">{{ p.group }}</span>
-              </XhTableCell>
-              <XhTableCell value="desc">
-                <span class="text-sm muted">{{ p.desc }}</span>
-              </XhTableCell>
-            </XhTableRow>
-          </XhTableBody>
-        </XhTableRoot>
+      <div v-reveal class="cells">
+        <div v-for="g in groupedPackages" :key="g.key" class="row-cell" style="align-items: start">
+          <div class="stack" style="gap: var(--xh-space-1)">
+            <span class="h-item mono" style="font-size: 1rem">{{ g.label }}</span>
+            <span class="text-xs text-subtle">{{ g.note }}</span>
+          </div>
+          <ul class="stack" style="gap: var(--xh-space-3)">
+            <li v-for="p in g.items" :key="p.name" class="stack" style="gap: 2px">
+              <span class="mono" style="color: var(--xh-fg-brand)">{{ p.name }}</span>
+              <span class="text-sm text-muted">{{ p.desc }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 原则 -->
-  <section class="section">
-    <div class="container">
-      <SectionHead eyebrow="设计原则" title="六条不打折的约束" />
-      <div class="grid" style="--cols: 1; --cols-sm: 2; --cols-lg: 3">
-        <div v-for="(p, i) in principles" :key="p.k" v-reveal="i * 60" class="kv panel">
-          <span class="kv__k">{{ p.k }}</span>
-          <p class="kv__v">{{ p.v }}</p>
+  <section class="band">
+    <div class="frame frame--marked frame__pad">
+      <SectionHead eyebrow="02 / 原则" title="不打折的约束" />
+      <div class="cells cells--3">
+        <div v-for="(p, i) in principles" :key="p.k" v-reveal="i * 50" class="cell" style="gap: var(--xh-space-3)">
+          <span class="fig"><b>{{ String(i + 1).padStart(2, '0') }}</b></span>
+          <h3 class="h-item">{{ p.k }}</h3>
+          <p class="text-sm text-muted">{{ p.v }}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 三种用法 -->
-  <section class="section">
-    <div class="container">
-      <SectionHead
-        eyebrow="三种用法"
-        title="同一个对话框，写三遍"
-        lede="三种写法跑的是同一个状态机、同一份 connect，差别只在谁负责把属性挂到 DOM 上。"
-      />
-      <div v-reveal class="panel">
-        <XhTabsRoot :collection="usages" default-value="vue" variant="segment">
-          <template #panel="node">
-            <CodeSample :code="usageCode[node.value]!.code" :lang="usageCode[node.value]!.lang" />
-          </template>
-        </XhTabsRoot>
+  <section class="band">
+    <div class="frame frame--marked">
+      <div class="cells cells--2">
+        <div class="cell" style="justify-content: center; padding: var(--site-band-py) var(--site-pad)">
+          <p class="eyebrow">03 / 用法</p>
+          <h2 class="h-section">同一个对话框，写三遍</h2>
+          <p class="lede">三种写法跑的是同一个状态机、同一份 connect，差别只在谁负责把属性挂到 DOM 上。</p>
+        </div>
+        <div class="cell code-stage" style="justify-content: center">
+          <div v-reveal style="position: relative">
+            <CodeWindow :items="usages" label="三种用法" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 组件总览 -->
-  <section class="section">
-    <div class="container">
+  <section class="band">
+    <div class="frame frame--marked frame__pad">
       <SectionHead
-        eyebrow="组件总览"
+        eyebrow="04 / 组件"
         title="每个组件，三种写法同时供货"
-        lede="每个组件都由无头内核给出解剖与状态机，Vue 组件、React 组件与自定义元素只是它的三层外壳，行为完全一致。"
+        lede="每个组件都由无头内核给出解剖与状态机，Vue 组件、React 组件与自定义元素只是它的外壳，行为完全一致。"
+        split
       />
-
-      <div class="stack stack--lg">
-        <div v-for="(g, i) in componentGroups" :key="g.name" v-reveal="i * 50">
-          <div class="row" style="justify-content: space-between; margin-block-end: var(--xh-space-3)">
-            <h3 class="title-md">{{ g.name }}</h3>
-          </div>
-          <div class="module-tags">
+      <div v-reveal class="cells">
+        <div v-for="g in componentGroups" :key="g.name" class="row-cell" style="align-items: start">
+          <span class="h-item">{{ g.name }}</span>
+          <div class="chips">
             <span v-for="c in g.items" :key="c" class="chip">{{ c }}</span>
           </div>
         </div>
@@ -196,37 +137,17 @@ const usageCode: Record<string, { lang: string, code: string }> = {
   </section>
 
   <!-- 接入 -->
-  <section class="section">
-    <div class="container">
-      <SectionHead eyebrow="接入" title="装两个包，写两行导入" />
-      <div class="grid" style="--cols: 1; --cols-lg: 2">
-        <div v-reveal class="panel">
-          <CodeSample title="安装" :code="installSample" lang="bash" />
+  <section class="band">
+    <div class="frame frame--marked frame__pad">
+      <SectionHead eyebrow="05 / 接入" title="装两个包，写两行导入" />
+      <div class="cells cells--2">
+        <div class="cell code-stage">
+          <CodeWindow :items="[{ value: 'install', label: '安装', lang: 'bash', code: installSample }]" label="安装" />
         </div>
-        <div v-reveal="80" class="panel">
-          <CodeSample title="接线" :code="bootstrapSample" lang="typescript" />
+        <div class="cell code-stage">
+          <CodeWindow :items="[{ value: 'bootstrap', label: 'main.ts', lang: 'typescript', code: bootstrapSample }]" label="接线" />
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-/* 定宽两列不参与富余宽度分配，剩余宽度全给「职责」。
-   格子是 flex: 1 1 auto（table.css），三列 grow 都是 1 时富余宽度被等量瓜分，
-   写死的 17rem / 9rem 只当下限用。 */
-[data-part='column-header'][data-value='name'],
-[data-part='cell'][data-value='name'],
-[data-part='column-header'][data-value='group'],
-[data-part='cell'][data-value='group'] {
-  flex-grow: 0;
-}
-
-/* 这四枚是「拉丁标识符 + 中文说明」的长串，窄屏要换行，不要被省略号截掉说明。
-   tag 根写死 leading-none，真换行时两行中文字形会上下相贴，行高要一起给 */
-.pkg-group [data-part='label'] {
-  overflow: visible;
-  white-space: normal;
-  line-height: var(--xh-leading-normal);
-}
-</style>

@@ -23,11 +23,14 @@
     <meta name="twitter:description" content="基于 .NET 与 Vue 的企业级开源底座：模块化后端框架、框架无关 Headless UI 组件库、通用中后台内核。" />
     <meta name="twitter:image" content="https://www.xihanfun.com/assets/logo.png" />
 
+    <!-- 拉丁字形与等宽字体；中文走系统字体。样式表不阻塞首屏：取不到时直接用回退字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Sora:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
   </head>
   <body>

@@ -18,12 +18,8 @@
   },
   "dependencies": {
     "@xihan-ui/animations": "catalog:",
-    "@xihan-ui/backgrounds": "catalog:",
     "@xihan-ui/code-highlight": "catalog:",
     "@xihan-ui/icons": "catalog:",
-    "@xihan-ui/markdown": "catalog:",
-    "@xihan-ui/motion": "catalog:",
-    "@xihan-ui/sound": "catalog:",
     "@xihan-ui/styles": "catalog:",
     "@xihan-ui/tokens": "catalog:",
     "@xihan-ui/vue": "catalog:",

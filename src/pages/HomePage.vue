@@ -1,234 +1,249 @@
 <script setup lang="ts">
-import type { ParamValue } from '@xihan-ui/backgrounds'
-import { nebulaEffect } from '@xihan-ui/backgrounds'
-import {
-  XhCardBody,
-  XhCardDescription,
-  XhCardFooter,
-  XhCardHeader,
-  XhCardRoot,
-  XhCardTitle,
-  XhGradientText,
-  XhNumberAnimation,
-  XhStatisticLabel,
-  XhStatisticRoot,
-  XhStatisticSuffix,
-  XhStatisticValue,
-  XhTabsRoot,
-  XhTagLabel,
-  XhTagRoot,
-} from '@xihan-ui/vue'
-import { XhBackground } from '@xihan-ui/vue/backgrounds'
-import { computed } from 'vue'
+import type { CodeItem } from '../components/CodeWindow.vue'
+import { ArrowRightIcon, ArrowUpRightIcon, CheckIcon } from '@xihan-ui/icons'
+import { XhIcon } from '@xihan-ui/vue'
 import { RouterLink } from 'vue-router'
-import CodeSample from '../components/CodeSample.vue'
+import CodeWindow from '../components/CodeWindow.vue'
+import DiagramBasicApp from '../components/diagrams/DiagramBasicApp.vue'
+import DiagramCompose from '../components/diagrams/DiagramCompose.vue'
+import DiagramFramework from '../components/diagrams/DiagramFramework.vue'
+import DiagramUi from '../components/diagrams/DiagramUi.vue'
+import TrustGlyph from '../components/diagrams/TrustGlyph.vue'
+import HalftoneFigure from '../components/HalftoneFigure.vue'
+import LinkButton from '../components/LinkButton.vue'
 import SectionHead from '../components/SectionHead.vue'
 import { vReveal } from '../composables/reveal'
-import { links, products, stats } from '../data/site'
-import { useTheme } from '../theme'
+import { links, products, repos, trust } from '../data/site'
 
-const { state } = useTheme()
+const diagrams = [DiagramFramework, DiagramUi, DiagramBasicApp]
 
-// 星云自带的底色是近黑的，铺在浅色画布上会把整个首屏洗成灰紫。
-// 浅色档把底色换成画布色、光强收一档，深色档用效果原本的配色。
-//
-// 两个分支必须声明同一套键：setParams 是并入不是替换（backgrounds 的 surface.setParams
-// 写的是 { ...overrides, ...patch }），深色档只给 speed 的话，切过一次浅色之后
-// 那四个键会永远留在 overrides 里，深色首屏被浅色档的白底洗掉。
-// 这里的四个值就是 nebula 效果自己声明的缺省值。
-const heroParams = computed((): Record<string, ParamValue> => {
-  if (state.value?.mode === 'dark')
-    return { speed: 0.55, background: '#050416', intensity: 1, opacity: 1, density: 0.35 }
-  return { speed: 0.55, background: '#ffffff', intensity: 0.5, opacity: 0.75, density: 0.2 }
-})
-
-const starters = [
-  { value: 'backend', label: '后端 · NuGet' },
-  { value: 'frontend', label: '前端 · npm' },
-  { value: 'app', label: '中后台 · 克隆即跑' },
+const facts = [
+  { title: 'MIT 开源', note: '全部代码公开，没有企业版' },
+  { title: '三处同步托管', note: 'GitHub · Gitee · GitCode' },
+  { title: '中文文档', note: '开发指南与逐包参考' },
 ]
 
-const starterCode: Record<string, { lang: string, code: string }> = {
-  backend: {
+const entries = [
+  { step: 'A', title: '只要后端能力', text: '在现有 ASP.NET Core 项目里引用需要的 NuGet 包，模块按依赖自动装配。' },
+  { step: 'B', title: '只要前端组件', text: '安装适配器与默认皮肤，Vue、React 或原生自定义元素任选其一。' },
+  { step: 'C', title: '要一套能跑的中后台', text: '克隆 BasicApp，在它的权限、租户与审计之上直接写业务。' },
+]
+
+const starters: CodeItem[] = [
+  {
+    value: 'backend',
+    label: '后端 · NuGet',
     lang: 'bash',
     code: `dotnet add package XiHan.Framework.Core
 dotnet add package XiHan.Framework.Application
 dotnet add package XiHan.Framework.Data
 dotnet add package XiHan.Framework.Web.Api`,
   },
-  frontend: {
+  {
+    value: 'frontend',
+    label: '前端 · npm',
     lang: 'bash',
     code: `pnpm add @xihan-ui/vue @xihan-ui/styles
 
-# 可选：背景层与音效层，用到才装
+# 可选：背景与音效，用到才装
 pnpm add @xihan-ui/backgrounds @xihan-ui/sound`,
   },
-  app: {
+  {
+    value: 'app',
+    label: '中后台 · 克隆即跑',
     lang: 'bash',
     code: `git clone https://github.com/XiHanFun/XiHan.BasicApp
 cd XiHan.BasicApp/backend/src/main/XiHan.BasicApp.WebHost
-dotnet run`,
-  },
-}
+dotnet run
 
-const pitches = [
-  {
-    k: '模块化',
-    v: '后端模块按依赖图装配，前端包按角色分组；用哪块装哪块，不用的那部分连代码都不会进产物。',
+# 另开一个终端
+cd XiHan.BasicApp/frontend && pnpm install && pnpm dev`,
   },
-  {
-    k: '可追踪',
-    v: '从 HTTP 请求到数据库、消息队列、缓存，全链路 span 一路串下来；七类审计日志把「谁在什么时候改了什么」记在库里。',
-  },
-  {
-    k: '开箱即用',
-    v: 'BasicApp 克隆下来就是一套能跑的多租户中后台：权限、代码生成、工作流、消息中心、AI 助手都已经接好线。',
-  },
+]
+
+const checks = [
+  '后端按包引用，模块依赖由框架拓扑排序装配',
+  '前端装一个适配器加一份皮肤，两行导入即可使用',
+  'BasicApp 前后端各一条命令启动',
+  '开发指南、逐包参考与组件文档全部是中文',
 ]
 </script>
 
 <template>
   <!-- 首屏 -->
-  <section class="hero">
-    <XhBackground
-      class="hero__backdrop"
-      aria-hidden="true"
-      :effect="nebulaEffect"
-      :params="heroParams"
-      quality="balanced"
-    />
-    <div class="container hero__inner">
-      <div class="stack" style="gap: var(--xh-space-5)">
-        <div class="row" style="gap: var(--xh-space-2)">
-          <XhTagRoot variant="subtle" tone="brand"><XhTagLabel>.NET + Vue</XhTagLabel></XhTagRoot>
-          <XhTagRoot variant="outline" tone="neutral"><XhTagLabel>MIT 开源</XhTagLabel></XhTagRoot>
+  <section class="band" style="border-block-start: 0">
+    <div class="frame">
+      <div class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">XiHanFun · 曦寒懿开源生态</p>
+          <h1 class="h-display">企业级 .NET + Vue<br>开源开发底座</h1>
+          <p class="lede">
+            后端基座 XiHan.Framework、前端基座 XiHan.UI、基础应用 XiHan.BasicApp。
+            三个仓库各自独立发布，组合起来就是一套开箱即用的中后台。
+          </p>
+          <div class="row">
+            <LinkButton :href="links.docs" size="lg">阅读文档</LinkButton>
+            <LinkButton :href="links.basicappDemo" variant="outline" size="lg">在线体验</LinkButton>
+            <LinkButton :href="links.github" variant="ghost" size="lg">GitHub</LinkButton>
+          </div>
         </div>
 
-        <h1 class="hero__wordmark">
-          <XhGradientText from="var(--xh-fg-brand)" to="var(--xh-fg-brand-strong)">曦寒</XhGradientText>
-        </h1>
-
-        <p class="lede" style="font-size: clamp(1.05rem, 2vw, 1.4rem); color: var(--xh-fg-default)">
-          从后端框架、前端组件到完整中后台，<br class="desk-only">一套可落地的企业级开发底座。
-        </p>
-        <p class="lede text-sm">
-          Framework 打底，UI 拼装，BasicApp 直接跑。三个仓库各自独立发布，也能一起用。
-        </p>
-
-        <div class="row">
-          <a :href="links.docs" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="solid">
-            查看文档
-          </a>
-          <a :href="links.github" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="ghost">
-            GitHub
-          </a>
+        <div class="hero__art">
+          <div class="hero__art-grid" aria-hidden="true" />
+          <HalftoneFigure />
+          <span class="fig hero__fig"><b>FIG.00</b> 曦寒懿</span>
+          <span class="fig hero__coords" aria-hidden="true">N 258° · OKLCH</span>
         </div>
       </div>
 
-      <div v-reveal class="panel" style="min-inline-size: 0">
-        <XhTabsRoot :collection="starters" default-value="backend" variant="segment" size="sm">
-          <template #panel="node">
-            <CodeSample :code="starterCode[node.value]!.code" :lang="starterCode[node.value]!.lang" />
-          </template>
-        </XhTabsRoot>
-      </div>
-    </div>
-  </section>
-
-  <!-- 数字 -->
-  <section class="section section--tight">
-    <div class="container">
-      <div v-reveal class="grid" style="--cols: 2; --cols-lg: 4">
-        <div v-for="s in stats" :key="s.label" class="panel stack" style="gap: var(--xh-space-2)">
-          <XhStatisticRoot size="lg" tone="brand">
-            <XhStatisticLabel>{{ s.label }}</XhStatisticLabel>
-            <XhStatisticValue>
-              <XhNumberAnimation :from="0" :to="s.value" :duration="1400" />
-            </XhStatisticValue>
-            <XhStatisticSuffix>{{ s.suffix }}</XhStatisticSuffix>
-          </XhStatisticRoot>
-          <span class="mono subtle text-xs">{{ s.note }}</span>
+      <div class="hero__facts">
+        <div v-for="f in facts" :key="f.title" class="hero__fact">
+          <strong>{{ f.title }}</strong>
+          <span>{{ f.note }}</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 三大产品 -->
-  <section class="section">
-    <div class="container">
+  <div class="band"><div class="frame frame--marked hatch" /></div>
+
+  <!-- 三个产品 -->
+  <section class="band">
+    <div class="frame frame--marked">
+      <div class="frame__pad" style="padding-block-end: 0">
+        <SectionHead
+          eyebrow="01 / 产品"
+          title="三个仓库，各管一层"
+          lede="后端基座、前端基座与基础应用各自独立发布，可以单独引用，也能组合成一套完整的中后台。"
+          split
+        />
+      </div>
+
+      <div class="cells cells--3" style="border-block-start: var(--xh-stroke-thin) solid var(--site-line)">
+        <article v-for="(p, i) in products" :key="p.route" v-reveal="i * 80" class="cell">
+          <div class="row" style="justify-content: space-between">
+            <span class="fig"><b>FIG.{{ p.fig }}</b> {{ p.subtitle }}</span>
+            <span class="fig">{{ p.status }}</span>
+          </div>
+          <div class="diagram-frame">
+            <component :is="diagrams[i]" />
+          </div>
+          <h3 class="h-product">{{ p.title }}</h3>
+          <p class="text-sm text-muted" style="flex: 1">{{ p.summary }}</p>
+          <div class="links">
+            <RouterLink :to="p.route" class="link-arrow">了解详情 <XhIcon :icon="ArrowRightIcon" /></RouterLink>
+            <a :href="p.doc" target="_blank" rel="noopener" class="link-arrow">文档 <XhIcon :icon="ArrowUpRightIcon" /></a>
+            <a v-if="p.demo" :href="p.demo" target="_blank" rel="noopener" class="link-arrow">在线体验 <XhIcon :icon="ArrowUpRightIcon" /></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 组合方式 -->
+  <section class="band">
+    <div class="frame frame--marked frame__pad">
       <SectionHead
-        eyebrow="三大产品"
-        title="从框架到应用，一套打底"
-        lede="三个仓库分别解决后端骨架、前端外观与业务底座三件事，各自独立可用。"
+        eyebrow="02 / 组合"
+        title="从任意一层开始"
+        lede="BasicApp 的后端引用 Framework，前端引用 UI。你可以只取其中一层，也可以从完整的中后台起步。"
       />
 
-      <div class="grid" style="--cols: 1; --cols-lg: 3">
-        <XhCardRoot
-          v-for="(p, i) in products"
-          :key="p.title"
-          v-reveal="i * 80"
-          variant="outline"
-          segmented
-          hoverable
-        >
-          <XhCardHeader>
-            <div class="row" style="justify-content: space-between">
-              <span class="mono" style="color: var(--xh-fg-brand)">{{ p.idx }}</span>
-              <XhTagRoot :variant="p.stable ? 'subtle' : 'outline'" :tone="p.stable ? 'success' : 'warning'">
-                <XhTagLabel>{{ p.status }}</XhTagLabel>
-              </XhTagRoot>
-            </div>
-            <XhCardTitle>{{ p.title }}</XhCardTitle>
-            <XhCardDescription>{{ p.subtitle }}</XhCardDescription>
-          </XhCardHeader>
-
-          <XhCardBody>
-            <p class="text-sm muted">{{ p.desc }}</p>
-            <div class="row" style="gap: var(--xh-space-2); margin-block-start: var(--xh-space-4)">
-              <XhTagRoot v-for="f in p.features" :key="f" variant="outline" tone="neutral" size="sm">
-                <XhTagLabel>{{ f }}</XhTagLabel>
-              </XhTagRoot>
-            </div>
-          </XhCardBody>
-
-          <XhCardFooter>
-            <div class="row" style="gap: var(--xh-space-4)">
-              <RouterLink :to="p.route" class="link text-sm">本站介绍</RouterLink>
-              <a :href="p.doc" target="_blank" rel="noopener" class="link text-sm">文档</a>
-              <a v-if="p.demo" :href="p.demo" target="_blank" rel="noopener" class="link text-sm">在线体验</a>
-              <span v-else class="text-sm subtle">文档内含示例</span>
-            </div>
-          </XhCardFooter>
-        </XhCardRoot>
+      <div v-reveal style="overflow-x: auto">
+        <div style="min-inline-size: 720px">
+          <DiagramCompose />
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 三条主张 -->
-  <section class="section">
-    <div class="container">
-      <SectionHead eyebrow="为什么是曦寒" title="三条能验证的主张" />
-      <div class="grid" style="--cols: 1; --cols-lg: 3">
-        <div v-for="(p, i) in pitches" :key="p.k" v-reveal="i * 80" class="kv panel">
-          <span class="kv__k">{{ p.k }}</span>
-          <p class="kv__v">{{ p.v }}</p>
+      <div class="cells cells--3" style="margin-block-start: clamp(32px, 4vw, 48px)">
+        <div v-for="e in entries" :key="e.step" class="cell" style="gap: var(--xh-space-3)">
+          <span class="fig"><b>入口 {{ e.step }}</b></span>
+          <h3 class="h-item">{{ e.title }}</h3>
+          <p class="text-sm text-muted">{{ e.text }}</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 社区 -->
-  <section class="section">
-    <div class="container" style="text-align: center">
-      <div v-reveal class="stack" style="align-items: center; gap: var(--xh-space-5)">
-        <p class="eyebrow" style="justify-content: center">社区</p>
-        <h2 class="title-lg">开源 · MIT · 欢迎贡献</h2>
-        <p class="lede">三处镜像同步维护，Issue 与 PR 在哪一处提都收得到。</p>
-        <div class="row" style="justify-content: center">
-          <a :href="links.github" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="outline">GitHub</a>
-          <a :href="links.gitee" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="outline">Gitee</a>
-          <a :href="links.gitcode" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="outline">GitCode</a>
-          <a :href="links.qq" target="_blank" rel="noopener" data-scope="button" data-part="root" data-variant="ghost">QQ 群</a>
+  <!-- 为什么能放心采用 -->
+  <section class="band drench" data-theme="dark">
+    <div class="frame frame--marked frame__pad">
+      <SectionHead
+        eyebrow="03 / 可信"
+        title="为什么能放心采用"
+        lede="下面每一条都能在对应仓库的源码与文档里查到，不是宣传口径。"
+        split
+      />
+      <div class="cells cells--3">
+        <div v-for="(t, i) in trust" :key="t.kind" v-reveal="i * 60" class="cell" style="gap: var(--xh-space-3)">
+          <span class="fig"><b>FIG.03-{{ i + 1 }}</b></span>
+          <TrustGlyph :kind="t.kind" />
+          <h3 class="h-item">{{ t.title }}</h3>
+          <p class="text-sm text-muted">{{ t.text }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 上手 -->
+  <section class="band">
+    <div class="frame frame--marked">
+      <div class="cells cells--2" style="background: var(--site-line)">
+        <div class="cell" style="justify-content: center; padding: var(--site-band-py) var(--site-pad)">
+          <p class="eyebrow">04 / 上手</p>
+          <h2 class="h-section">几行命令就能开始</h2>
+          <ul class="checklist">
+            <li v-for="c in checks" :key="c">
+              <XhIcon :icon="CheckIcon" />
+              <span class="text-sm">{{ c }}</span>
+            </li>
+          </ul>
+          <div class="row" style="margin-block-start: var(--xh-space-2)">
+            <LinkButton :href="links.docs" variant="outline">查看上手指南</LinkButton>
+          </div>
+        </div>
+        <div class="cell code-stage" style="justify-content: center">
+          <div v-reveal style="position: relative">
+            <CodeWindow :items="starters" label="上手方式" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band"><div class="frame frame--marked hatch" /></div>
+
+  <!-- 行动 -->
+  <section class="band">
+    <div class="frame frame--marked">
+      <div class="cells cells--2">
+        <div class="cta-card cta-card--brand">
+          <div class="stack" style="gap: var(--xh-space-3)">
+            <span class="fig"><b>05</b> 开始构建</span>
+            <h2 class="h-section">把它放进你的候选清单</h2>
+            <p class="text-sm text-muted" style="max-inline-size: 40ch">
+              文档覆盖从上手到逐包参考的全部内容，源码与示例都在仓库里。
+            </p>
+          </div>
+          <div class="row">
+            <LinkButton :href="links.docs">阅读文档</LinkButton>
+            <LinkButton :href="links.github" variant="ghost">浏览源码</LinkButton>
+          </div>
+        </div>
+        <div class="cta-card cta-card--teal">
+          <div class="stack" style="gap: var(--xh-space-3)">
+            <span class="fig"><b>06</b> 社区</span>
+            <h2 class="h-section">问题与想法，都欢迎</h2>
+            <p class="text-sm text-muted" style="max-inline-size: 40ch">
+              三处镜像同步维护，Issue 与 PR 在哪一处提都收得到；也可以直接来群里聊。
+            </p>
+          </div>
+          <div class="row">
+            <LinkButton :href="links.qq" variant="outline">加入 QQ 群</LinkButton>
+            <LinkButton v-for="r in repos.filter(x => x.label !== 'GitHub')" :key="r.label" :href="r.href" variant="ghost">
+              {{ r.label }}
+            </LinkButton>
+          </div>
         </div>
       </div>
     </div>
