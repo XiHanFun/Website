@@ -74,7 +74,7 @@ dotnet run`,
 const pitches = [
   {
     k: '模块化',
-    v: '后端 66 个模块按依赖图装配，前端 17 个包按角色分组；用哪块装哪块，不用的那部分连代码都不会进产物。',
+    v: '后端模块按依赖图装配，前端包按角色分组；用哪块装哪块，不用的那部分连代码都不会进产物。',
   },
   {
     k: '可追踪',
@@ -100,7 +100,7 @@ const pitches = [
     <div class="container hero__inner">
       <div class="stack" style="gap: var(--xh-space-5)">
         <div class="row" style="gap: var(--xh-space-2)">
-          <XhTagRoot variant="subtle" tone="brand"><XhTagLabel>.NET 10 + Vue 3</XhTagLabel></XhTagRoot>
+          <XhTagRoot variant="subtle" tone="brand"><XhTagLabel>.NET + Vue</XhTagLabel></XhTagRoot>
           <XhTagRoot variant="outline" tone="neutral"><XhTagLabel>MIT 开源</XhTagLabel></XhTagRoot>
         </div>
 

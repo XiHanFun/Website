@@ -13,8 +13,8 @@ export const packageGroups = [
 ] as const
 
 export const packages: UiPackage[] = [
-  { name: '@xihan-ui/vue', group: 'adapters', desc: 'Vue 3 适配器：组件、组合式函数与状态机运行时' },
-  { name: '@xihan-ui/react', group: 'adapters', desc: 'React 19 适配器：函数组件与 hooks，带载荷的插槽写成函数式 children' },
+  { name: '@xihan-ui/vue', group: 'adapters', desc: 'Vue 适配器：组件、组合式函数与状态机运行时' },
+  { name: '@xihan-ui/react', group: 'adapters', desc: 'React 适配器：函数组件与 hooks，带载荷的插槽写成函数式 children' },
   { name: '@xihan-ui/web-components', group: 'adapters', desc: '自定义元素适配器：Light DOM 行为宿主，不渲染结构' },
 
   { name: '@xihan-ui/tokens', group: 'design', desc: '设计令牌与视觉环境运行时，七个轴写到根元素上' },
@@ -33,6 +33,7 @@ export const packages: UiPackage[] = [
   { name: '@xihan-ui/motion', group: 'engine', desc: '动效原语：缓动、弹簧、补间与减弱动效' },
   { name: '@xihan-ui/position', group: 'engine', desc: '定位引擎，无第三方运行时依赖' },
   { name: '@xihan-ui/pointer', group: 'engine', desc: '指针会话与拖放、缩放几何，无第三方运行时依赖' },
+  { name: '@xihan-ui/viz', group: 'engine', desc: '图表引擎：比例尺、刻度、形状、坐标轴布局与拾取，纯函数，无第三方运行时依赖' },
 ]
 
 export const principles = [
@@ -66,7 +67,7 @@ export const principles = [
 export const componentGroups = [
   {
     name: '通用',
-    items: ['button', 'button-group', 'clipboard', 'download-trigger', 'truncate', 'float-button', 'gradient-text', 'kbd', 'icon', 'icon-wrapper', 'scrollbar', 'toggle', 'toggle-group', 'typography', 'watermark'],
+    items: ['button', 'button-group', 'clipboard', 'download-trigger', 'truncate', 'float-button', 'kbd', 'icon', 'scrollbar', 'toggle', 'toggle-group', 'typography', 'watermark'],
   },
   {
     name: '布局',
@@ -74,7 +75,7 @@ export const componentGroups = [
   },
   {
     name: '导航',
-    items: ['affix', 'anchor', 'back-top', 'breadcrumb', 'context-menu', 'menu', 'menubar', 'navigation-menu', 'page-header', 'pagination', 'segmented', 'side-nav', 'steps', 'tabs', 'toolbar', 'tour'],
+    items: ['affix', 'anchor', 'back-top', 'breadcrumb', 'context-menu', 'menu', 'menubar', 'navigation-menu', 'page-header', 'pagination', 'side-nav', 'steps', 'tabs', 'toolbar', 'tour'],
   },
   {
     name: '数据录入',
@@ -89,13 +90,17 @@ export const componentGroups = [
     name: '数据展示',
     items: [
       'accordion', 'avatar', 'avatar-group', 'bar-code', 'card', 'carousel', 'collapsible', 'color-swatch', 'descriptions', 'empty-state',
-      'heatmap', 'highlight', 'image', 'image-viewer', 'infinite-scroll', 'json-viewer', 'list', 'marquee', 'matrix-code', 'number-animation',
+      'grid-list', 'highlight', 'image', 'image-viewer', 'infinite-scroll', 'json-viewer', 'list', 'marquee', 'matrix-code', 'number-animation',
       'statistic', 'table', 'tag', 'timeline', 'timer', 'timestamp', 'tree', 'virtualizer',
     ],
   },
   {
+    name: '图表',
+    items: ['cartesian-chart', 'funnel-chart', 'graph-chart', 'heatmap', 'hierarchy-chart', 'pie-chart', 'radar-chart', 'sankey-chart', 'sparkline', 'progress-meter'],
+  },
+  {
     name: '反馈',
-    items: ['alert', 'badge', 'loading-bar', 'progress', 'skeleton', 'spinner', 'notification', 'toast'],
+    items: ['alert', 'badge', 'loading-bar', 'progress', 'skeleton', 'spinner', 'notification'],
   },
   {
     name: '浮层',
@@ -103,7 +108,7 @@ export const componentGroups = [
   },
   {
     name: 'AI 对话',
-    items: ['approval', 'code-view', 'diff-view', 'log', 'markdown-stream', 'message-feed', 'prompt-input', 'question-flow', 'reasoning', 'tool-call'],
+    items: ['approval', 'citation', 'code-view', 'diff-view', 'log', 'markdown-stream', 'message-feed', 'prompt-input', 'question-flow', 'reasoning', 'tool-call'],
   },
 ]
 
@@ -155,10 +160,10 @@ export const usageWebComponents = `<!-- 结构由你手写，data-xh-part 标出
   </div>
 </xh-dialog>`
 
-export const installSample = `# Vue 3 项目：适配器 + 默认皮肤
+export const installSample = `# Vue 项目：适配器 + 默认皮肤
 pnpm add @xihan-ui/vue @xihan-ui/styles
 
-# React 19 项目：适配器 + 默认皮肤
+# React 项目：适配器 + 默认皮肤
 pnpm add @xihan-ui/react @xihan-ui/styles
 
 # 原生 / 其它框架：自定义元素 + 默认皮肤

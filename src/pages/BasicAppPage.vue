@@ -44,7 +44,7 @@ const gates = [
       <XhPageHeaderRoot bordered size="lg">
         <XhPageHeaderTitle><h1>XiHan.BasicApp</h1></XhPageHeaderTitle>
         <XhPageHeaderSubtitle>
-          基于 Framework 与 UI 构建的多租户中后台 · {{ app.status }}
+          基于 XiHan.Framework 和 XiHan.UI 的超高颜值通用中后台内核 · {{ app.status }}
         </XhPageHeaderSubtitle>
       </XhPageHeaderRoot>
 
@@ -166,7 +166,7 @@ const gates = [
             <span v-for="t in frontendStack" :key="t" class="chip">{{ t }}</span>
           </div>
           <p class="text-sm subtle">
-            前端是独立的 Vue 3 应用，与后端分离部署；本站用的 XiHan.UI 与它是两套外观，互不牵扯。
+            前端是独立的 Vue 应用，与后端分离部署；本站用的 XiHan.UI 与它是两套外观，互不牵扯。
           </p>
         </div>
       </div>

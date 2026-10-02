@@ -99,7 +99,7 @@ export const capabilities: Capability[] = [
 ]
 
 export const techStack = [
-  '.NET 10',
+  '.NET',
   'SqlSugar',
   'Serilog',
   'Scalar',

@@ -52,8 +52,6 @@ const usageCode: Record<string, { lang: string, code: string }> = {
   composable: { lang: 'vue', code: usageComposable },
   wc: { lang: 'html', code: usageWebComponents },
 }
-
-const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
 </script>
 
 <template>
@@ -62,7 +60,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
       <XhPageHeaderRoot bordered size="lg">
         <XhPageHeaderTitle><h1>XiHan.UI</h1></XhPageHeaderTitle>
         <XhPageHeaderSubtitle>
-          框架无关的设计系统运行时 · {{ ui.status }}
+          快速、轻量、高效、用心的框架无关 Headless UI 组件库 · {{ ui.status }}
         </XhPageHeaderSubtitle>
       </XhPageHeaderRoot>
 
@@ -103,7 +101,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
   <section class="section">
     <div class="container">
       <SectionHead
-        eyebrow="17 个包 · 四个角色组"
+        eyebrow="包 · 四个角色组"
         title="目录名回答的是「跟使用者什么关系」"
         lede="不是「属于哪一层」，而是「怎么到达你手里」：适配器选一个、外观显式装、特性按需自选、引擎跟着适配器自动来。"
       />
@@ -118,7 +116,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
 
       <div v-reveal>
         <XhTableRoot v-slot="{ columns: cols }" :columns="columns" :rows="rows" size="sm" style="--xh-table-max-h: none">
-          <XhTableCaption class="xh-visually-hidden">XiHan.UI 的 17 个包</XhTableCaption>
+          <XhTableCaption class="xh-visually-hidden">XiHan.UI 的包</XhTableCaption>
           <XhTableHeader>
             <XhTableRow>
               <XhTableColumnHeader v-for="col in cols" :key="col.id" :value="col.id">
@@ -180,7 +178,7 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
     <div class="container">
       <SectionHead
         eyebrow="组件总览"
-        :title="`${totalComponents} 个组件，三个适配器同时供货`"
+        title="每个组件，三种写法同时供货"
         lede="每个组件都由无头内核给出解剖与状态机，Vue 组件、React 组件与自定义元素只是它的三层外壳，行为完全一致。"
       />
 
@@ -188,7 +186,6 @@ const totalComponents = componentGroups.reduce((n, g) => n + g.items.length, 0)
         <div v-for="(g, i) in componentGroups" :key="g.name" v-reveal="i * 50">
           <div class="row" style="justify-content: space-between; margin-block-end: var(--xh-space-3)">
             <h3 class="title-md">{{ g.name }}</h3>
-            <span class="mono subtle text-xs">{{ g.items.length }} 个</span>
           </div>
           <div class="module-tags">
             <span v-for="c in g.items" :key="c" class="chip">{{ c }}</span>

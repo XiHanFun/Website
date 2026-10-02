@@ -1,19 +1,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![Vue](https://img.shields.io/badge/Vue-3.5-42b883)](https://vuejs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6-646cff)](https://vitejs.org/)
-[![XiHan.UI](https://img.shields.io/badge/XiHan.UI-1.1.0-8b5cf6)](https://ui.docs.xihanfun.com)
+[![Vue](https://img.shields.io/badge/Vue-42b883)](https://vuejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646cff)](https://vitejs.org/)
+[![XiHan.UI](https://img.shields.io/badge/XiHan.UI-8b5cf6)](https://ui.docs.xihanfun.com)
 
 # XiHan.Website
 
-曦寒（XiHanFun）官方网站源码，[www.xihanfun.com](https://www.xihanfun.com)。站点展示曦寒生态的三大产品——[XiHan.Framework](https://github.com/XiHanFun/XiHan.Framework)（后端框架）、[XiHan.UI](https://github.com/XiHanFun/XiHan.UI)（框架无关设计系统）、[XiHan.BasicApp](https://github.com/XiHanFun/XiHan.BasicApp)（多租户中后台）——并链接到各自的文档、在线 Demo 与社区入口。
+曦寒（XiHanFun）官方网站源码，[www.xihanfun.com](https://www.xihanfun.com)。站点展示曦寒生态的三大产品——[XiHan.Framework](https://github.com/XiHanFun/XiHan.Framework)（后端基座）、[XiHan.UI](https://github.com/XiHanFun/XiHan.UI)（前端基座）、[XiHan.BasicApp](https://github.com/XiHanFun/XiHan.BasicApp)（基础应用）——并链接到各自的文档、在线 Demo 与社区入口。
 
 站点本身是 XiHan.UI 的第一个对外消费方：**除 XiHan.UI 外不引任何 UI 库，也不引 CSS 框架**。顶栏、抽屉、卡片、标签页、表格、代码块、统计数字、首屏背景全部来自 `@xihan-ui/vue`，排版层只用 `@xihan-ui/tokens` 的设计令牌手写。
 
 ## 技术栈
 
-- Vue 3.5（`<script setup>`）+ TypeScript 5.9 + Vue Router 4
-- Vite 6 构建，`@vitejs/plugin-vue`
-- [XiHan.UI](https://ui.docs.xihanfun.com) `1.1.0`
+- Vue（`<script setup>`）+ TypeScript + Vue Router
+- Vite 构建，`@vitejs/plugin-vue`
+- [XiHan.UI](https://ui.docs.xihanfun.com)（版本以 `pnpm-workspace.yaml` 的 catalog 为准）
   - `@xihan-ui/vue` 组件与状态机运行时
   - `@xihan-ui/styles` 默认皮肤 · `@xihan-ui/tokens` 设计令牌与主题运行时
   - `@xihan-ui/backgrounds` WebGL2 背景 · `@xihan-ui/sound` 程序化音效
@@ -25,8 +25,8 @@
 | 路由 | 内容 |
 | --- | --- |
 | `/` | 首屏、三大产品、数字、快速开始、社区 |
-| `/framework` | 66 模块五层架构、能力清单、代码示例、技术选型 |
-| `/ui` | 18 个包与四个角色组、设计原则、三种用法、121 个组件总览、接入方式 |
+| `/framework` | 五层模块架构、能力清单、代码示例、技术选型 |
+| `/ui` | 包与四个角色组、设计原则、三种用法、组件总览、接入方式 |
 | `/basicapp` | 权限三层、三根支柱、七类审计、模块清单、本地启动 |
 
 ## 目录结构
@@ -83,7 +83,7 @@ pnpm run preview
 
 ## 部署
 
-推送或提交 PR 到 `main` 分支时，GitHub Actions（`.github/workflows/deploy-website.yml`）会自动安装 Node 24 与 pnpm 11、`pnpm install --frozen-lockfile`、`pnpm run build`，再通过 `JamesIves/github-pages-deploy-action` 把 `dist/` 部署到 `gh-pages` 分支。
+推送或提交 PR 到 `main` 分支时，GitHub Actions（`.github/workflows/deploy-website.yml`）会自动安装 Node 与 pnpm（版本以工作流为准）、`pnpm install --frozen-lockfile`、`pnpm run build`，再通过 `JamesIves/github-pages-deploy-action` 把 `dist/` 部署到 `gh-pages` 分支。
 
 三个与 GitHub Pages 有关的细节，缺一个站点就是坏的：
 

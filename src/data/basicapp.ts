@@ -59,12 +59,12 @@ export const auditKinds = [
 ]
 
 export const frontendStack = [
-  'Vue 3.5',
+  'Vue',
   'TypeScript',
   'Vite',
   'Pinia',
   'Vue Router',
-  'Tailwind CSS v4',
+  'Tailwind CSS',
   'XiHan.UI',
   'SignalR',
 ]

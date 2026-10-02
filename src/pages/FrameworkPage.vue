@@ -34,7 +34,7 @@ const sampleCode: Record<string, { lang: string, code: string }> = {
       <XhPageHeaderRoot bordered size="lg">
         <XhPageHeaderTitle><h1>XiHan.Framework</h1></XhPageHeaderTitle>
         <XhPageHeaderSubtitle>
-          基于 .NET 10 的模块化后端框架 · {{ framework.status }}
+          快速、轻量、高效、用心的 .NET 现代模块化开发框架 · {{ framework.status }}
         </XhPageHeaderSubtitle>
       </XhPageHeaderRoot>
 
@@ -71,7 +71,7 @@ const sampleCode: Record<string, { lang: string, code: string }> = {
   <section class="section">
     <div class="container">
       <SectionHead
-        eyebrow="66 模块 · 五层"
+        eyebrow="模块化 · 五层"
         title="分层即依赖，依赖可追踪"
         lede="展示、基础设施、领域、应用、核心，自上而下各司其职。模块之间只声明依赖，装配顺序由模块系统按依赖图推导。"
       />
