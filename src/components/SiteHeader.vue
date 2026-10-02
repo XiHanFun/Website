@@ -12,8 +12,7 @@ import {
   XhSeparator,
 } from '@xihan-ui/vue'
 import { RouterLink } from 'vue-router'
-import { links, nav } from '../data/site'
-import LinkButton from './LinkButton.vue'
+import { nav } from '../data/site'
 import ThemeControls from './ThemeControls.vue'
 import ThemeToggle from './ThemeToggle.vue'
 </script>
@@ -34,7 +33,6 @@ import ThemeToggle from './ThemeToggle.vue'
       </nav>
 
       <div class="site-header__actions">
-        <LinkButton :href="links.docs" variant="outline" size="sm">文档</LinkButton>
         <ThemeToggle />
 
         <XhDrawerRoot v-slot="{ setOpen }" side="right" size="sm">
