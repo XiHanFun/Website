@@ -91,8 +91,6 @@ const checks = [
         <div class="hero__art">
           <div class="hero__art-grid" aria-hidden="true" />
           <HalftoneFigure />
-          <span class="fig hero__fig"><b>FIG.00</b> 曦寒懿</span>
-          <span class="fig hero__coords" aria-hidden="true">N 258° · OKLCH</span>
         </div>
       </div>
 

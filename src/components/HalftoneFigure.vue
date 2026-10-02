@@ -65,11 +65,11 @@ function paint(progress: number): void {
   ctx.fillStyle = getComputedStyle(el).color
 
   const { width: sw, height: sh, data } = samples
-  // 人像按高度贴底放置，水平略偏右，给左上角的图编号留白
+  // 人像按高度贴底放置，水平居中
   const scale = Math.min((width * 0.92) / sw, (height * 0.96) / sh)
   const fw = sw * scale
   const fh = sh * scale
-  const ox = (width - fw) / 2 + width * 0.06
+  const ox = (width - fw) / 2
   const oy = height - fh
 
   const step = props.step

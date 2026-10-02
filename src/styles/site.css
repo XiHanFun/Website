@@ -621,20 +621,6 @@
     color: oklch(0.88 0.035 250);
   }
 
-  .hero__fig {
-    position: absolute;
-    inset-block-start: var(--xh-space-5);
-    inset-inline-start: var(--xh-space-5);
-    z-index: 1;
-  }
-
-  .hero__coords {
-    position: absolute;
-    inset-block-end: var(--xh-space-5);
-    inset-inline-end: var(--xh-space-5);
-    z-index: 1;
-  }
-
   .hero__facts {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
