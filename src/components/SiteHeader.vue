@@ -12,7 +12,7 @@ import {
   XhSeparator,
 } from '@xihan-ui/vue'
 import { RouterLink } from 'vue-router'
-import { links, nav, repos } from '../data/site'
+import { links, nav } from '../data/site'
 import LinkButton from './LinkButton.vue'
 import ThemeControls from './ThemeControls.vue'
 import ThemeToggle from './ThemeToggle.vue'
@@ -34,7 +34,6 @@ import ThemeToggle from './ThemeToggle.vue'
       </nav>
 
       <div class="site-header__actions">
-        <LinkButton class="desk-only" :href="links.github" variant="ghost" size="sm">GitHub</LinkButton>
         <LinkButton :href="links.docs" variant="outline" size="sm">文档</LinkButton>
         <ThemeToggle />
 
@@ -47,7 +46,7 @@ import ThemeToggle from './ThemeToggle.vue'
           </XhDrawerTrigger>
           <XhDrawerContent>
             <XhDrawerTitle>导航</XhDrawerTitle>
-            <XhDrawerDescription>站内页面、代码托管与色彩模式</XhDrawerDescription>
+            <XhDrawerDescription>站内页面与色彩模式</XhDrawerDescription>
             <nav class="drawer-nav" aria-label="站点导航">
               <!-- 链接在 content 内部，不触发点外关闭；跳转后要自己收起，否则滚动锁还在 -->
               <RouterLink
@@ -60,17 +59,6 @@ import ThemeToggle from './ThemeToggle.vue'
                 {{ item.label }}
               </RouterLink>
             </nav>
-
-            <XhSeparator decorative style="margin-block: var(--xh-space-5)" />
-
-            <div class="stack" style="gap: var(--xh-space-3)">
-              <span class="fig">代码托管</span>
-              <div class="row" style="gap: var(--xh-space-2)">
-                <LinkButton v-for="repo in repos" :key="repo.label" :href="repo.href" variant="outline" size="sm">
-                  {{ repo.label }}
-                </LinkButton>
-              </div>
-            </div>
 
             <XhSeparator decorative style="margin-block: var(--xh-space-5)" />
 

@@ -84,7 +84,7 @@ const checks = [
           <div class="row">
             <LinkButton :href="links.docs" size="lg">阅读文档</LinkButton>
             <LinkButton :href="links.basicappDemo" variant="outline" size="lg">在线体验</LinkButton>
-            <LinkButton :href="links.github" variant="ghost" size="lg">GitHub</LinkButton>
+            <LinkButton :href="links.github" variant="ghost" size="lg">开源组织</LinkButton>
           </div>
         </div>
 
