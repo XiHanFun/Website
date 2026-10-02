@@ -13,7 +13,7 @@ export const links = {
 } as const
 
 export const nav = [
-  { to: '/', label: '首页' },
+  { to: '/', label: '生态' },
   { to: '/framework', label: '框架' },
   { to: '/ui', label: '组件' },
   { to: '/basicapp', label: '中后台' },

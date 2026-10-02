@@ -45,19 +45,6 @@ const usages: CodeItem[] = [
     </template>
   </PageHero>
 
-  <!-- 自证 -->
-  <section class="band">
-    <div class="frame frame--marked">
-      <div class="row-cell" style="background: transparent">
-        <p class="eyebrow">自证</p>
-        <p class="text-sm text-muted">
-          你正在看的这个站点就是用 XiHan.UI 搭的：没有引其他 UI 库，也没有引 CSS 框架。
-          顶栏、抽屉、按钮、页签、代码窗与复制都来自 @xihan-ui/vue，颜色、间距与动效全部取自设计令牌。
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- 包 -->
   <section class="band">
     <div class="frame frame--marked frame__pad">
