@@ -164,19 +164,21 @@ const checks = [
   </section>
 
   <!-- 为什么能放心采用 -->
-  <section class="band drench" data-theme="dark">
-    <div class="frame frame--marked frame__pad">
-      <SectionHead
-        eyebrow="03 / 可信"
-        title="为什么能放心采用"
-        lede="下面每一条都能在对应仓库的源码与文档里查到，不是宣传口径。"
-        split
-      />
-      <div class="cells cells--3">
-        <div v-for="(t, i) in trust" :key="t.kind" v-reveal="i * 60" class="cell" style="gap: var(--xh-space-3)">
-          <TrustGlyph :kind="t.kind" />
-          <h3 class="h-item">{{ t.title }}</h3>
-          <p class="text-sm text-muted">{{ t.text }}</p>
+  <section class="band">
+    <div class="frame frame--marked">
+      <div class="textured frame__pad">
+        <SectionHead
+          eyebrow="03 / 可信"
+          title="为什么能放心采用"
+          lede="下面每一条都能在对应仓库的源码与文档里查到，不是宣传口径。"
+          split
+        />
+        <div class="cells cells--3 cells--open">
+          <div v-for="(t, i) in trust" :key="t.kind" v-reveal="i * 60" class="cell" style="gap: var(--xh-space-3)">
+            <TrustGlyph :kind="t.kind" />
+            <h3 class="h-item">{{ t.title }}</h3>
+            <p class="text-sm text-muted">{{ t.text }}</p>
+          </div>
         </div>
       </div>
     </div>
