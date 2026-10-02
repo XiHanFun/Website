@@ -38,7 +38,7 @@ const usages: CodeItem[] = [
     <template #actions>
       <LinkButton :href="ui.doc" size="lg">阅读文档</LinkButton>
       <LinkButton :href="links.npm" variant="outline" size="lg">npm</LinkButton>
-      <LinkButton :href="ui.repo" variant="ghost" size="lg">GitHub</LinkButton>
+      <LinkButton :href="ui.repo" variant="ghost" size="lg">源码</LinkButton>
     </template>
     <template #art>
       <DiagramUi />

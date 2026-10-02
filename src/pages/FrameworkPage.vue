@@ -21,7 +21,7 @@ const samples: CodeItem[] = [
   <PageHero :product="framework">
     <template #actions>
       <LinkButton :href="framework.doc" size="lg">阅读文档</LinkButton>
-      <LinkButton v-if="framework.demo" :href="framework.demo" variant="outline" size="lg">在线体验</LinkButton>
+      <LinkButton :href="framework.repo" variant="outline" size="lg">源码</LinkButton>
       <LinkButton :href="links.nuget" variant="ghost" size="lg">NuGet</LinkButton>
     </template>
     <template #art>

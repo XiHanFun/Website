@@ -56,7 +56,7 @@ export const products: Product[] = [
     summary: '模块按依赖图装配，应用服务经动态 API 直接暴露为接口；多租户、工作流、事件总线与 AI 集成开箱可用，优先使用 .NET 原生能力。',
     desc: '从核心、应用、领域、基础设施到展示分层清晰。动态 API、自研事件总线（可切 RabbitMQ / Kafka / Redis）、工作流引擎、后台作业、混合缓存、多租户、OAuth2 与 OIDC、搜索引擎、OpenTelemetry 链路追踪与 AI 集成一体提供。',
     features: ['模块化', '动态 API', '多租户', '工作流', 'OIDC', '链路追踪'],
-    demo: 'https://framework.xihanfun.com',
+    demo: null,
     doc: 'https://framework.docs.xihanfun.com',
     repo: 'https://github.com/XiHanFun/XiHan.Framework',
   },
