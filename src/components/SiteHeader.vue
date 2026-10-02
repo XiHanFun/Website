@@ -9,7 +9,6 @@ import {
   XhDrawerTitle,
   XhDrawerTrigger,
   XhIcon,
-  XhSeparator,
 } from '@xihan-ui/vue'
 import { RouterLink } from 'vue-router'
 import { nav } from '../data/site'
@@ -44,7 +43,8 @@ import ThemeToggle from './ThemeToggle.vue'
           </XhDrawerTrigger>
           <XhDrawerContent>
             <XhDrawerTitle>导航</XhDrawerTitle>
-            <XhDrawerDescription>站内页面与色彩模式</XhDrawerDescription>
+            <!-- 说明只给读屏：content 的 aria-describedby 恒指向它，不渲染会成悬空引用 -->
+            <XhDrawerDescription class="xh-visually-hidden">站内页面与色彩模式</XhDrawerDescription>
             <nav class="drawer-nav" aria-label="站点导航">
               <!-- 链接在 content 内部，不触发点外关闭；跳转后要自己收起，否则滚动锁还在 -->
               <RouterLink
@@ -58,9 +58,7 @@ import ThemeToggle from './ThemeToggle.vue'
               </RouterLink>
             </nav>
 
-            <XhSeparator decorative style="margin-block: var(--xh-space-5)" />
-
-            <div class="stack" style="gap: var(--xh-space-3)">
+            <div class="stack" style="gap: var(--xh-space-3); margin-block-start: var(--xh-space-6)">
               <span class="fig">色彩模式</span>
               <ThemeControls />
             </div>

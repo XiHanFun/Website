@@ -4,7 +4,7 @@ import { XhToggleGroupRoot } from '@xihan-ui/vue'
 import { computed } from 'vue'
 import { useTheme } from '../theme'
 
-const { state, preference, setPreference } = useTheme()
+const { preference, setPreference } = useTheme()
 
 const modes = [
   { value: 'light', label: '浅色' },
@@ -30,5 +30,4 @@ function setMode(value: string | string[] | null): void {
     aria-label="色彩模式"
     @update:value="setMode"
   />
-  <span class="mono subtle text-xs">{{ state?.mode === 'dark' ? '深色生效中' : '浅色生效中' }}</span>
 </template>
